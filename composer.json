@@ -1,0 +1,69 @@
+{
+    "name": "cybercog/laravel-ban",
+    "description": "Ban Eloquent Models",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "cybercog",
+        "cog",
+        "laravel",
+        "eloquent",
+        "trait",
+        "justice",
+        "user",
+        "ban",
+        "block",
+        "restrict",
+        "forbid",
+        "arrest",
+        "jail"
+    ],
+    "authors": [
+        {
+            "name": "Anton Komarev",
+            "email": "a.komarev@cybercog.su",
+            "homepage": "http://ell.folio.su",
+            "role": "Developer"
+        }
+    ],
+    "homepage": "https://github.com/cybercog/laravel-ban",
+    "support": {
+        "email": "a.komarev@cybercog.su",
+        "issues": "https://github.com/cybercog/laravel-ban/issues",
+        "wiki": "https://github.com/cybercog/laravel-ban/wiki",
+        "source": "https://github.com/cybercog/laravel-ban",
+        "docs": "https://github.com/cybercog/laravel-ban/wiki"
+    },
+    "require": {
+        "php": "^5.6|^7.0",
+        "cybercog/laravel-ownership": "^2.2",
+        "illuminate/database": "~5.1.20|~5.2.0|~5.3.0|~5.4.0",
+        "illuminate/events": "~5.1.20|~5.2.0|~5.3.0|~5.4.0",
+        "illuminate/support": "~5.1.20|~5.2.0|~5.3.0|~5.4.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^1.11",
+        "mockery/mockery": "^0.9.8",
+        "orchestra/testbench": "~3.4.0",
+        "orchestra/database": "~3.4.0",
+        "phpunit/phpunit": "^5.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cog\\Ban\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Cog\\Ban\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable" : true
+}
