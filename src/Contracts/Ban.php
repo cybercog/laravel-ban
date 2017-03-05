@@ -9,7 +9,6 @@
  * file that was distributed with this source code.
  */
 
-
 namespace Cog\Ban\Contracts;
 
 use Cog\Ownership\Contracts\HasOwner as HasOwnerContract;

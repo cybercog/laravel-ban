@@ -16,7 +16,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 /**
  * Class ModelWasUnbanned.
- * 
+ *
  * @package Cog\Ban\Events
  */
 class ModelWasUnbanned implements ShouldQueue

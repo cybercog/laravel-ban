@@ -11,7 +11,6 @@
 
 namespace Cog\Ban\Traits;
 
-use Carbon\Carbon;
 use Cog\Ban\Contracts\Ban as BanContract;
 use Cog\Ban\Contracts\BanService as BanServiceContract;
 
