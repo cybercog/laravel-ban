@@ -167,7 +167,7 @@ Route::get('/', [
 
 ### Scheduling
 
-After you have performed the basic installation you can start using the `backup:delete-expired` command. In most cases you'll want to schedule these command so you don't have to manually run it everytime you need to delete expired bans and unban models.
+After you have performed the basic installation you can start using the `ban:delete-expired` command. In most cases you'll want to schedule these command so you don't have to manually run it everytime you need to delete expired bans and unban models.
 
 The commands can be scheduled in Laravel's console kernel, just like any other command.
 
@@ -176,7 +176,7 @@ The commands can be scheduled in Laravel's console kernel, just like any other c
 
 protected function schedule(Schedule $schedule)
 {
-    $schedule->command('backup:delete-expired')->everyMinute();
+    $schedule->command('ban:delete-expired')->everyMinute();
 }
 ```
 
