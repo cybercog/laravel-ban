@@ -87,7 +87,7 @@ class User extends Authenticatable implements CanBeBannedContract
 #### Apply ban for the entity
 
 ```php
-$user->bans()->create();
+$user->bans()->create([]);
 
 $user->ban();
 ```
