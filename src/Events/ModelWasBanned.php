@@ -12,7 +12,7 @@
 namespace Cog\Ban\Events;
 
 use Cog\Ban\Contracts\Ban as BanContract;
-use Cog\Ban\Contracts\CanBeBanned as CanBeBannedContract;
+use Cog\Ban\Contracts\HasBans as HasBansContract;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 /**
@@ -23,7 +23,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class ModelWasBanned implements ShouldQueue
 {
     /**
-     * @var \Cog\Ban\Contracts\CanBeBanned
+     * @var \Cog\Ban\Contracts\HasBans
      */
     private $model;
 
@@ -33,10 +33,10 @@ class ModelWasBanned implements ShouldQueue
     private $ban;
 
     /**
-     * @param \Cog\Ban\Contracts\CanBeBanned $model
+     * @param \Cog\Ban\Contracts\HasBans $model
      * @param \Cog\Ban\Contracts\Ban $ban
      */
-    public function __construct(CanBeBannedContract $model, BanContract $ban)
+    public function __construct(HasBansContract $model, BanContract $ban)
     {
         $this->model = $model;
         $this->ban = $ban;

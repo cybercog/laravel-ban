@@ -11,8 +11,8 @@
 
 namespace Cog\Ban\Tests\Stubs\Models;
 
-use Cog\Ban\Contracts\CanBeBanned as CanBeBannedContract;
-use Cog\Ban\Traits\CanBeBanned;
+use Cog\Ban\Contracts\HasBans as HasBansContract;
+use Cog\Ban\Traits\HasBans;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
@@ -20,9 +20,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  *
  * @package Cog\Ban\Tests\Stubs\Models
  */
-class User extends Authenticatable implements CanBeBannedContract
+class User extends Authenticatable implements HasBansContract
 {
-    use CanBeBanned;
+    use HasBans;
 
     /**
      * The table associated with the model.

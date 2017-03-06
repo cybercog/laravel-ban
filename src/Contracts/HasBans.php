@@ -14,11 +14,11 @@ namespace Cog\Ban\Contracts;
 use Cog\Ownership\Contracts\CanBeOwner as CanBeOwnerContract;
 
 /**
- * Interface CanBeBanned.
+ * Interface HasBans.
  *
  * @package Cog\Ban\Contracts
  */
-interface CanBeBanned extends CanBeOwnerContract
+interface HasBans extends CanBeOwnerContract
 {
     /**
      * Entity Bans.

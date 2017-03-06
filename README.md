@@ -38,6 +38,8 @@ Use case is not limited to User model, any Eloquent model could be banned: Organ
 - Designed to work with Laravel Eloquent models.
 - Using contracts to keep high customization capabilities.
 - Using traits to get functionality out of the box.
+- Model can has many bans.
+- Removed bans keeps in history as Soft deleted record.
 - Most part of the the logic is handled by the `BanService`.
 - Has middleware to prevent banned user route access.
 - Use case is not limited to `User` model, any Eloquent model could be banned.
@@ -72,24 +74,25 @@ php artisan migrate
 ### Prepare bannable model
 
 ```php
-use Cog\Ban\Contracts\CanBeBanned as CanBeBannedContract;
-use Cog\Ban\Traits\CanBeBanned;
+use Cog\Ban\Contracts\HasBans as HasBansContract;
+use Cog\Ban\Traits\HasBans;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements CanBeBannedContract
+class User extends Authenticatable implements HasBansContract
 {
-    use CanBeBanned;
+    use HasBans;
 }
 ```
 
-*Note: `CanBeBanned` contract using `CanBeOwner` contract under the hood. If you are using [`cybercog/laravel-ownership`](https://github.com/cybercog/laravel-ownership) package `CanBeOwner` contract could be omitted from bannable model.*
+*Note: `HasBans` contract using `CanBeOwner` contract under the hood. If you are using [`cybercog/laravel-ownership`](https://github.com/cybercog/laravel-ownership) package `CanBeOwner` contract could be omitted from bannable model.*
 
 ### Prepare bannable model database table
 
-Bannable model must have `nullable timestamp` column named `banned_at`. This value used as flag and simplify checks if user was banned. If you are trying to make default Laravel User model to be bannable you can use this example:
+Bannable model must have `nullable timestamp` column named `banned_at`. This value used as flag and simplify checks if user was banned. If you are trying to make default Laravel User model to be bannable you can use example below.
+
+Create migration file `2017_03_05_000001_add_banned_at_column_to_users_table.php`:
 
 ```php
-// 2017_03_05_000001_add_banned_at_column_to_users_table.php
 <?php
 
 use Illuminate\Database\Migrations\Migration;
