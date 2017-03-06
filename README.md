@@ -11,6 +11,7 @@
 
 Laravel Ban simplify management of eloquent model's ban. Make any model bannable in a minutes!
 
+Use case is not limited to User model, any Eloquent model could be banned: Organizations, Teams, Groups and others.
 
 ## Contents
 
