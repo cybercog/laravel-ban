@@ -17,11 +17,11 @@ use Cog\Ban\Tests\Stubs\Models\User;
 use Cog\Ban\Tests\TestCase;
 
 /**
- * Class CanBeBannedTest.
+ * Class HasBansTest.
  *
  * @package Cog\Ban\Tests\Unit\Traits
  */
-class CanBeBannedTest extends TestCase
+class HasBansTest extends TestCase
 {
     /** @test */
     public function it_can_has_related_ban()

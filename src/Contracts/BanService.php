@@ -11,7 +11,7 @@
 
 namespace Cog\Ban\Contracts;
 
-use Cog\Ban\Contracts\CanBeBanned as CanBeBannedContract;
+use Cog\Ban\Contracts\HasBans as HasBansContract;
 
 /**
  * Interface BanService.
@@ -23,19 +23,19 @@ interface BanService
     /**
      * Ban entity.
      *
-     * @param \Cog\Ban\Contracts\CanBeBanned $bannable
+     * @param \Cog\Ban\Contracts\HasBans $bannable
      * @param array $attributes
      * @return \Cog\Ban\Contracts\Ban
      */
-    public function ban(CanBeBannedContract $bannable, array $attributes = []);
+    public function ban(HasBansContract $bannable, array $attributes = []);
 
     /**
      * Unban entity.
      *
-     * @param \Cog\Ban\Contracts\CanBeBanned $bannable
+     * @param \Cog\Ban\Contracts\HasBans $bannable
      * @return void
      */
-    public function unban(CanBeBannedContract $bannable);
+    public function unban(HasBansContract $bannable);
 
     /**
      * Delete all expired Ban models.

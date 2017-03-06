@@ -15,11 +15,11 @@ use Cog\Ban\Contracts\Ban as BanContract;
 use Cog\Ban\Contracts\BanService as BanServiceContract;
 
 /**
- * Class CanBeBanned.
+ * Class HasBans.
  *
  * @package Cog\Ban\Traits
  */
-trait CanBeBanned
+trait HasBans
 {
     use HasBannedAt;
 

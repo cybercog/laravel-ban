@@ -13,7 +13,7 @@ namespace Cog\Ban\Services;
 
 use Carbon\Carbon;
 use Cog\Ban\Contracts\BanService as BanServiceContract;
-use Cog\Ban\Contracts\CanBeBanned;
+use Cog\Ban\Contracts\HasBans;
 use Cog\Ban\Models\Ban;
 
 /**
@@ -26,11 +26,11 @@ class BanService implements BanServiceContract
     /**
      * Ban entity.
      *
-     * @param \Cog\Ban\Contracts\CanBeBanned $bannable
+     * @param \Cog\Ban\Contracts\HasBans $bannable
      * @param array $attributes
      * @return \Cog\Ban\Contracts\Ban
      */
-    public function ban(CanBeBanned $bannable, array $attributes = [])
+    public function ban(HasBans $bannable, array $attributes = [])
     {
         return $bannable->bans()->create($attributes);
     }
@@ -38,10 +38,10 @@ class BanService implements BanServiceContract
     /**
      * Unban entity.
      *
-     * @param \Cog\Ban\Contracts\CanBeBanned $bannable
+     * @param \Cog\Ban\Contracts\HasBans $bannable
      * @return void
      */
-    public function unban(CanBeBanned $bannable)
+    public function unban(HasBans $bannable)
     {
         $bannable->bans->each(function ($ban) {
             $ban->delete();
