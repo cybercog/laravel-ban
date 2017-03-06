@@ -85,16 +85,17 @@ class User extends Authenticatable implements CanBeBannedContract
 
 ### Prepare bannable model database table
 
-Bannable model must have `nullable timestamp` column named `banned_at`. This value used as flag and simplify checks if user was banned.
+Bannable model must have `nullable timestamp` column named `banned_at`. This value used as flag and simplify checks if user was banned. If you are trying to make default Laravel User model to be bannable you can use this example:
 
 ```php
+// 2017_03_05_000001_add_banned_at_column_to_users_table.php
 <?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddBannedAtColumnToUserTable extends Migration
+class AddBannedAtColumnToUsersTable extends Migration
 {
     public function up()
     {
