@@ -18,6 +18,7 @@ Laravel Ban simplify management of eloquent model's ban. Make any model bannable
 - [Installation](#installation)
 - [Usage](#usage)
     - [Prepare bannable model](#prepare-bannable-model)
+    - [Prepare bannable model database table](#prepare-bannable-model-database-table)
     - [Available methods](#available-methods)
     - [Events](#events)
     - [Middleware](#middleware)
@@ -81,6 +82,35 @@ class User extends Authenticatable implements CanBeBannedContract
 ```
 
 *Note: `CanBeBanned` contract using `CanBeOwner` contract under the hood. If you are using [`cybercog/laravel-ownership`](https://github.com/cybercog/laravel-ownership) package `CanBeOwner` contract could be omitted from bannable model.*
+
+### Prepare bannable model database table
+
+Bannable model must have `nullable timestamp` column named `banned_at`. This value used as flag and simplify checks if user was banned.
+
+```php
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class AddBannedAtColumnToUserTable extends Migration
+{
+    public function up()
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table->timestamp('banned_at')->nullable();
+        });
+    }
+    
+    public function down()
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('banned_at');
+        });
+    }
+}
+```
 
 ### Available methods
 
