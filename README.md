@@ -48,13 +48,13 @@ Use case is not limited to User model, any Eloquent model could be banned: Organ
 
 ## Installation
 
-First, pull in the package through Composer.
+First, pull in the package through Composer:
 
 ```sh
-composer require cybercog/laravel-ban
+$ composer require cybercog/laravel-ban
 ```
 
-And then include the service provider within `app/config/app.php`.
+And then include the service provider within `app/config/app.php`:
 
 ```php
 'providers' => [
@@ -62,11 +62,11 @@ And then include the service provider within `app/config/app.php`.
 ],
 ```
 
-At last you need to publish and run database migrations.
+At last you need to publish and run database migrations:
 
 ```sh
-php artisan vendor:publish --provider="Cog\Ban\Providers\BanServiceProvider" --tag="migrations"
-php artisan migrate
+$ php artisan vendor:publish --provider="Cog\Ban\Providers\BanServiceProvider" --tag="migrations"
+$ php artisan migrate
 ```
 
 ## Usage
@@ -90,7 +90,13 @@ class User extends Authenticatable implements HasBansContract
 
 Bannable model must have `nullable timestamp` column named `banned_at`. This value used as flag and simplify checks if user was banned. If you are trying to make default Laravel User model to be bannable you can use example below.
 
-Create migration file `2017_03_05_000001_add_banned_at_column_to_users_table.php`:
+#### Create a new migration file
+
+```sh
+$ php artisan make:migration add_banned_at_column_to_users_table
+```
+
+Then insert the following code into migration file:
 
 ```php
 <?php
@@ -230,7 +236,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 Run the tests with:
 
 ```sh
-composer test
+$ composer test
 ```
 
 ## Security
