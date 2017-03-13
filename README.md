@@ -133,6 +133,7 @@ $user->bans()->create([]);
 $user->ban();
 ```
 
+
 #### Apply ban for the entity with reason comment
  
 ```php
@@ -177,6 +178,12 @@ $user->isBanned();
 
 ```php
 $user->isNotBanned();
+```
+
+#### Delete expired bans manually
+
+```php
+app(\Cog\Ban\Services\BanService::class)->deleteExpiredBans();
 ```
 
 ### Events
