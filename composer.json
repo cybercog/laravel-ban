@@ -44,8 +44,8 @@
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^1.11",
         "mockery/mockery": "^0.9.8",
-        "orchestra/testbench": "~3.4.0",
         "orchestra/database": "~3.4.0",
+        "orchestra/testbench": "~3.4.0",
         "phpunit/phpunit": "^5.7"
     },
     "autoload": {
