@@ -1,6 +1,6 @@
 {
     "name": "cybercog/laravel-ban",
-    "description": "Ban Eloquent Models",
+    "description": "Laravel Ban simplify blocking and banning Eloquent models.",
     "type": "library",
     "license": "MIT",
     "keywords": [
