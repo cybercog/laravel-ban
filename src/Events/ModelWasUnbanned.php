@@ -24,7 +24,7 @@ class ModelWasUnbanned implements ShouldQueue
     /**
      * @var \Cog\Ban\Contracts\HasBans
      */
-    private $model;
+    public $model;
 
     /**
      * @param \Cog\Ban\Contracts\HasBans $model

@@ -25,12 +25,12 @@ class ModelWasBanned implements ShouldQueue
     /**
      * @var \Cog\Ban\Contracts\HasBans
      */
-    private $model;
+    public $model;
 
     /**
      * @var \Cog\Ban\Contracts\Ban
      */
-    private $ban;
+    public $ban;
 
     /**
      * @param \Cog\Ban\Contracts\HasBans $model
