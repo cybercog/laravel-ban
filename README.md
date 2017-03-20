@@ -21,6 +21,7 @@ Use case is not limited to User model, any Eloquent model could be banned: Organ
     - [Prepare bannable model](#prepare-bannable-model)
     - [Prepare bannable model database table](#prepare-bannable-model-database-table)
     - [Available methods](#available-methods)
+    - [Scopes](#scopes)
     - [Events](#events)
     - [Middleware](#middleware)
     - [Scheduling](#scheduling)
@@ -184,6 +185,51 @@ $user->isNotBanned();
 
 ```php
 app(\Cog\Ban\Services\BanService::class)->deleteExpiredBans();
+```
+
+### Scopes
+
+#### Get all models which are not banned
+
+```php
+$users = User::withoutBanned()->get();
+```
+
+#### Get banned and not banned models
+
+```php
+$users = User::withBanned()->get();
+```
+
+#### Get only banned models
+
+```php
+$users = User::onlyBanned()->get();
+```
+
+#### Scope auto-apply
+
+To apply query scopes all the time you can define `shouldApplyBannedAtScope` method in bannable model. If method returns `true` all banned models will be hidden by default.
+
+```php
+use Cog\Ban\Contracts\HasBans as HasBansContract;
+use Cog\Ban\Traits\HasBans;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable implements HasBansContract
+{
+    use HasBans;
+    
+    /**
+     * Determine if BannedAtScope should be applied by default.
+     *
+     * @return bool
+     */
+    public function shouldApplyBannedAtScope()
+    {
+        return true;
+    }
+}
 ```
 
 ### Events
