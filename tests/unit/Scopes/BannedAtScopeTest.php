@@ -52,7 +52,7 @@ class BannedAtScopeTest extends TestCase
 
         $this->assertCount(3, $entities);
     }
-    
+
     /** @test */
     public function it_can_get_models_with_banned()
     {

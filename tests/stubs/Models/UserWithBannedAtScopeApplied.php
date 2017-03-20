@@ -11,10 +11,6 @@
 
 namespace Cog\Ban\Tests\Stubs\Models;
 
-use Cog\Ban\Contracts\HasBans as HasBansContract;
-use Cog\Ban\Traits\HasBans;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-
 /**
  * Class UserWithBannedAtScopeApplied.
  *
