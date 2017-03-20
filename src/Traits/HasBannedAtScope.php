@@ -11,14 +11,22 @@
 
 namespace Cog\Ban\Traits;
 
+use Cog\Ban\Scopes\BannedAtScope;
+
 /**
- * Class HasBans.
+ * Class HasBannedAtScope.
  *
  * @package Cog\Ban\Traits
  */
-trait HasBans
+trait HasBannedAtScope
 {
-    use HasBannedAtHelpers,
-        HasBannedAtScope,
-        HasBansRelation;
+    /**
+     * Boot the HasBannedAtScope trait for a model.
+     *
+     * @return void
+     */
+    public static function bootHasBannedAtScope()
+    {
+        static::addGlobalScope(new BannedAtScope);
+    }
 }

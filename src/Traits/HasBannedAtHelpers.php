@@ -12,13 +12,14 @@
 namespace Cog\Ban\Traits;
 
 use Carbon\Carbon;
+use Cog\Ban\Contracts\BanService as BanServiceContract;
 
 /**
- * Class HasBannedAt.
+ * Class HasBannedAtHelpers.
  *
  * @package Cog\Ban\Traits
  */
-trait HasBannedAt
+trait HasBannedAtHelpers
 {
     /**
      * Set banned flag.
@@ -62,5 +63,28 @@ trait HasBannedAt
     public function isNotBanned()
     {
         return !$this->isBanned();
+    }
+
+    /**
+     * Ban model.
+     *
+     * @param null|array $attributes
+     * @return \Cog\Ban\Contracts\Ban
+     */
+    public function ban(array $attributes = [])
+    {
+        $ban = app(BanServiceContract::class)->ban($this, $attributes);
+
+        return $ban;
+    }
+
+    /**
+     * Remove ban from model.
+     *
+     * @return void
+     */
+    public function unban()
+    {
+        app(BanServiceContract::class)->unban($this);
     }
 }
