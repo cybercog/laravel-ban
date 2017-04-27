@@ -35,7 +35,7 @@ interface HasBans extends CanBeOwnerContract
     public function setBannedFlag();
 
     /**
-     * Unset accepted flag.
+     * Unset banned flag.
      *
      * @return $this
      */

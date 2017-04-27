@@ -34,7 +34,7 @@ trait HasBannedAtHelpers
     }
 
     /**
-     * Unset accepted flag.
+     * Unset banned flag.
      *
      * @return $this
      */
@@ -73,9 +73,7 @@ trait HasBannedAtHelpers
      */
     public function ban(array $attributes = [])
     {
-        $ban = app(BanServiceContract::class)->ban($this, $attributes);
-
-        return $ban;
+        return app(BanServiceContract::class)->ban($this, $attributes);
     }
 
     /**
