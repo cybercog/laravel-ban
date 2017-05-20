@@ -298,8 +298,11 @@ If you discover any security related issues, please email oss@cybercog.su instea
 
 ## Credits
 
-- [Anton Komarev](https://github.com/a-komarev)
-- [All Contributors](../../contributors)
+|  | @mention |
+|---|---|
+| ![@a-komarev](https://avatars2.githubusercontent.com/u/1849174?s=64) | [@a-komarev](https://github.com/a-komarev) |
+
+[Laravel Ban contributors list](../../contributors)
 
 ## Alternatives
 
