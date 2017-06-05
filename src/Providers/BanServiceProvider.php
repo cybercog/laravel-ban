@@ -20,7 +20,7 @@ use Cog\Ban\Services\BanService;
 use Illuminate\Support\ServiceProvider;
 
 /**
- * Class ModerationServiceProvider.
+ * Class BanServiceProvider.
  *
  * @package Cog\Ban\Providers
  */

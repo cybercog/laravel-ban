@@ -64,6 +64,13 @@
     "config": {
         "sort-packages": true
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Cog\\Ban\\Providers\\BanServiceProvider"
+            ]
+        }
+    },
     "minimum-stability": "dev",
     "prefer-stable" : true
 }
