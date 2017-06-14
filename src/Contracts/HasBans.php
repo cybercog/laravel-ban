@@ -11,14 +11,12 @@
 
 namespace Cog\Ban\Contracts;
 
-use Cog\Ownership\Contracts\CanBeOwner as CanBeOwnerContract;
-
 /**
  * Interface HasBans.
  *
  * @package Cog\Ban\Contracts
  */
-interface HasBans extends CanBeOwnerContract
+interface HasBans
 {
     /**
      * Entity Bans.
@@ -69,4 +67,18 @@ interface HasBans extends CanBeOwnerContract
      * @return bool
      */
     public function isNotBanned();
+
+    /**
+     * Get the value of the model's primary key.
+     *
+     * @return mixed
+     */
+    public function getKey();
+
+    /**
+     * Get the class name for polymorphic relations.
+     *
+     * @return string
+     */
+    public function getMorphClass();
 }
