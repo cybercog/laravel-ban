@@ -27,7 +27,7 @@ class CreateBanTable extends Migration
     {
         Schema::create('ban', function (Blueprint $table) {
             $table->increments('id');
-            $table->morphs('owned_by');
+            $table->morphs('bannable');
             $table->nullableMorphs('created_by');
             $table->text('comment')->nullable();
             $table->timestamp('expired_at')->nullable();

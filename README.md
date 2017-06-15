@@ -89,8 +89,6 @@ class User extends Authenticatable implements HasBansContract
 }
 ```
 
-*Note: `HasBans` contract using `CanBeOwner` contract under the hood. If you are using [`cybercog/laravel-ownership`](https://github.com/cybercog/laravel-ownership) package `CanBeOwner` contract could be omitted from bannable model.*
-
 ### Prepare bannable model database table
 
 Bannable model must have `nullable timestamp` column named `banned_at`. This value used as flag and simplify checks if user was banned. If you are trying to make default Laravel User model to be bannable you can use example below.

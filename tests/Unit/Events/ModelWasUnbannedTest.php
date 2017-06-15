@@ -28,7 +28,7 @@ class ModelWasUnbannedTest extends TestCase
         $this->expectsEvents(ModelWasUnbanned::class);
 
         $ban = factory(Ban::class)->create();
-        $ban->owner->unban();
+        $ban->bannable->unban();
     }
 
     /** @test */

@@ -78,43 +78,13 @@ class Ban extends Model implements BanContract
     }
 
     /**
-     * Owner of the model.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
-     */
-    public function ownedBy()
-    {
-        return $this->morphTo('owned_by');
-    }
-
-    /**
-     * Get the model owner. Alias for `ownedBy()` method.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
-     */
-    public function owner()
-    {
-        return $this->ownedBy();
-    }
-
-    /**
-     * Get the model owner. Alias for `ownedBy()` method.
+     * Bannable model.
      *
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
     public function bannable()
     {
-        return $this->ownedBy();
-    }
-
-    /**
-     * Get the model owner.
-     *
-     * @return \Cog\Ownership\Contracts\CanBeOwner
-     */
-    public function getOwner()
-    {
-        return $this->ownedBy;
+        return $this->morphTo('bannable');
     }
 
     /**
@@ -127,8 +97,8 @@ class Ban extends Model implements BanContract
     public function scopeWhereOwnedBy(Builder $query, HasBansContract $bannable)
     {
         return $query->where([
-            'owned_by_id' => $bannable->getKey(),
-            'owned_by_type' => $bannable->getMorphClass(),
+            'bannable_id' => $bannable->getKey(),
+            'bannable_type' => $bannable->getMorphClass(),
         ]);
     }
 }

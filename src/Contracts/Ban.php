@@ -29,25 +29,11 @@ interface Ban
     public function createdBy();
 
     /**
-     * Owner of the model.
-     *
-     * @return mixed
-     */
-    public function ownedBy();
-
-    /**
      * Get the model owner. Alias for `ownedBy()` method.
      *
      * @return \Cog\Ban\Contracts\HasBans
      */
-    public function owner();
-
-    /**
-     * Get the model owner.
-     *
-     * @return \Cog\Ban\Contracts\HasBans
-     */
-    public function getOwner();
+    public function bannable();
 
     /**
      * Scope a query to only include bans by bannable model.
