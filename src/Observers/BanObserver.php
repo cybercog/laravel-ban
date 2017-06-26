@@ -47,10 +47,10 @@ class BanObserver
      */
     public function created(BanContract $ban)
     {
-        $banOwner = $ban->owner;
-        $banOwner->setBannedFlag($ban->created_at)->save();
+        $bannable = $ban->bannable;
+        $bannable->setBannedFlag($ban->created_at)->save();
 
-        event(new ModelWasBanned($banOwner, $ban));
+        event(new ModelWasBanned($bannable, $ban));
     }
 
     /**
@@ -61,11 +61,11 @@ class BanObserver
      */
     public function deleted(BanContract $ban)
     {
-        $banOwner = $ban->owner;
-        if ($banOwner->bans->count() === 0) {
-            $banOwner->unsetBannedFlag()->save();
+        $bannable = $ban->bannable;
+        if ($bannable->bans->count() === 0) {
+            $bannable->unsetBannedFlag()->save();
 
-            event(new ModelWasUnbanned($banOwner));
+            event(new ModelWasUnbanned($bannable));
         }
     }
 }

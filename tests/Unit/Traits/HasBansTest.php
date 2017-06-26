@@ -28,8 +28,8 @@ class HasBansTest extends TestCase
     {
         $user = factory(User::class)->create();
         factory(Ban::class)->create([
-            'owned_by_id' => $user->getKey(),
-            'owned_by_type' => $user->getMorphClass(),
+            'bannable_id' => $user->getKey(),
+            'bannable_type' => $user->getMorphClass(),
         ]);
 
         $this->assertInstanceOf(Ban::class, $user->bans->first());
@@ -41,8 +41,8 @@ class HasBansTest extends TestCase
         $user = factory(User::class)->create();
 
         factory(Ban::class, 2)->create([
-            'owned_by_id' => $user->getKey(),
-            'owned_by_type' => $user->getMorphClass(),
+            'bannable_id' => $user->getKey(),
+            'bannable_type' => $user->getMorphClass(),
         ]);
 
         $this->assertCount(2, $user->bans);
@@ -68,8 +68,8 @@ class HasBansTest extends TestCase
             'banned_at' => Carbon::now(),
         ]);
         factory(Ban::class)->create([
-            'owned_by_id' => $user->getKey(),
-            'owned_by_type' => $user->getMorphClass(),
+            'bannable_id' => $user->getKey(),
+            'bannable_type' => $user->getMorphClass(),
         ]);
 
         $user->unban();
@@ -85,8 +85,8 @@ class HasBansTest extends TestCase
             'banned_at' => Carbon::now(),
         ]);
         factory(Ban::class)->create([
-            'owned_by_id' => $user->getKey(),
-            'owned_by_type' => $user->getMorphClass(),
+            'bannable_id' => $user->getKey(),
+            'bannable_type' => $user->getMorphClass(),
         ]);
 
         $user->unban();
@@ -102,8 +102,8 @@ class HasBansTest extends TestCase
             'banned_at' => Carbon::now(),
         ]);
         factory(Ban::class)->create([
-            'owned_by_id' => $user->getKey(),
-            'owned_by_type' => $user->getMorphClass(),
+            'bannable_id' => $user->getKey(),
+            'bannable_type' => $user->getMorphClass(),
         ]);
 
         $user->unban();

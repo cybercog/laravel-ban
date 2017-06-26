@@ -11,19 +11,36 @@
 
 namespace Cog\Ban\Contracts;
 
-use Cog\Ownership\Contracts\HasOwner as HasOwnerContract;
+use Cog\Ban\Contracts\HasBans as HasBansContract;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Interface Ban.
  *
  * @package Cog\Ban\Contracts
  */
-interface Ban extends HasOwnerContract
+interface Ban
 {
     /**
      * Entity responsible for ban.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     * @return mixed
      */
     public function createdBy();
+
+    /**
+     * Bannable model.
+     *
+     * @return \Cog\Ban\Contracts\HasBans
+     */
+    public function bannable();
+
+    /**
+     * Scope a query to only include bans by bannable model.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param \Cog\Ban\Contracts\HasBans $bannable
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeWhereBannable(Builder $query, HasBansContract $bannable);
 }

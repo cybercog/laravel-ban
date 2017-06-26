@@ -27,6 +27,6 @@ trait HasBansRelation
      */
     public function bans()
     {
-        return $this->morphMany(app(BanContract::class), 'owned_by');
+        return $this->morphMany(app(BanContract::class), 'bannable');
     }
 }

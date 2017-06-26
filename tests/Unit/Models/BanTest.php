@@ -101,4 +101,33 @@ class BanTest extends TestCase
         // TODO: Mock and check that \Carbon\Carbon::parse() method is called
         $this->assertEquals(Carbon::parse('+1 year')->format('Y'), $ban->expired_at->format('Y'));
     }
+
+    /** @test */
+    public function it_can_belong_to_bannable()
+    {
+        $user = factory(User::class)->create();
+        $ban = factory(Ban::class)->create([
+            'bannable_id' => $user->getKey(),
+            'bannable_type' => $user->getMorphClass(),
+        ]);
+
+        $this->assertInstanceOf(User::class, $ban->bannable);
+    }
+
+    /** @test */
+    public function it_can_scope_models_by_owner()
+    {
+        $user1 = factory(User::class)->create();
+        factory(Ban::class, 4)->create([
+            'bannable_id' => $user1->getKey(),
+            'bannable_type' => $user1->getMorphClass(),
+        ]);
+        $user2 = factory(User::class)->create();
+        factory(Ban::class, 3)->create([
+            'bannable_id' => $user2->getKey(),
+            'bannable_type' => $user2->getMorphClass(),
+        ]);
+
+        $this->assertCount(4, Ban::whereBannable($user1)->get());
+    }
 }

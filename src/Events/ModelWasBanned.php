@@ -33,12 +33,12 @@ class ModelWasBanned implements ShouldQueue
     public $ban;
 
     /**
-     * @param \Cog\Ban\Contracts\HasBans $model
+     * @param \Cog\Ban\Contracts\HasBans $bannable
      * @param \Cog\Ban\Contracts\Ban $ban
      */
-    public function __construct(HasBansContract $model, BanContract $ban)
+    public function __construct(HasBansContract $bannable, BanContract $ban)
     {
-        $this->model = $model;
+        $this->model = $bannable;
         $this->ban = $ban;
     }
 }

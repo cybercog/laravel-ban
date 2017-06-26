@@ -15,7 +15,7 @@ $factory->define(\Cog\Ban\Models\Ban::class, function (\Faker\Generator $faker) 
     $bannable = factory(User::class)->create();
 
     return [
-        'owned_by_id' => $bannable->getKey(),
-        'owned_by_type' => $bannable->getMorphClass(),
+        'bannable_id' => $bannable->getKey(),
+        'bannable_type' => $bannable->getMorphClass(),
     ];
 });

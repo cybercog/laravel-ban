@@ -13,7 +13,8 @@ namespace Cog\Ban\Models;
 
 use Carbon\Carbon;
 use Cog\Ban\Contracts\Ban as BanContract;
-use Cog\Ownership\Traits\HasMorphOwner;
+use Cog\Ban\Contracts\HasBans as HasBansContract;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -24,8 +25,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Ban extends Model implements BanContract
 {
-    use HasMorphOwner,
-        SoftDeletes;
+    use SoftDeletes;
 
     /**
      * The table associated with the model.
@@ -54,16 +54,6 @@ class Ban extends Model implements BanContract
     ];
 
     /**
-     * Entity responsible for ban.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
-     */
-    public function createdBy()
-    {
-        return $this->morphTo('created_by');
-    }
-
-    /**
      * Expired timestamp mutator.
      *
      * @param \Carbon\Carbon|string $value
@@ -75,5 +65,40 @@ class Ban extends Model implements BanContract
         }
 
         $this->attributes['expired_at'] = $value;
+    }
+
+    /**
+     * Entity responsible for ban.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function createdBy()
+    {
+        return $this->morphTo('created_by');
+    }
+
+    /**
+     * Bannable model.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function bannable()
+    {
+        return $this->morphTo('bannable');
+    }
+
+    /**
+     * Scope a query to only include models by owner.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param \Cog\Ban\Contracts\HasBans $bannable
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeWhereBannable(Builder $query, HasBansContract $bannable)
+    {
+        return $query->where([
+            'bannable_id' => $bannable->getKey(),
+            'bannable_type' => $bannable->getMorphClass(),
+        ]);
     }
 }
