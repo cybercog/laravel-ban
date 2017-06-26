@@ -29,7 +29,7 @@ interface Ban
     public function createdBy();
 
     /**
-     * Get the model owner. Alias for `ownedBy()` method.
+     * Bannable model.
      *
      * @return \Cog\Ban\Contracts\HasBans
      */
@@ -42,5 +42,5 @@ interface Ban
      * @param \Cog\Ban\Contracts\HasBans $bannable
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeWhereOwnedBy(Builder $query, HasBansContract $bannable);
+    public function scopeWhereBannable(Builder $query, HasBansContract $bannable);
 }

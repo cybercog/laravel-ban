@@ -94,7 +94,7 @@ class Ban extends Model implements BanContract
      * @param \Cog\Ban\Contracts\HasBans $bannable
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeWhereOwnedBy(Builder $query, HasBansContract $bannable)
+    public function scopeWhereBannable(Builder $query, HasBansContract $bannable)
     {
         return $query->where([
             'bannable_id' => $bannable->getKey(),
