@@ -12,11 +12,11 @@
 namespace Cog\Ban\Traits;
 
 /**
- * Class HasBans.
+ * Trait Bannable.
  *
  * @package Cog\Ban\Traits
  */
-trait HasBans
+trait Bannable
 {
     use HasBannedAtHelpers,
         HasBannedAtScope,

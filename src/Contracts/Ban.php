@@ -11,7 +11,7 @@
 
 namespace Cog\Ban\Contracts;
 
-use Cog\Ban\Contracts\HasBans as HasBansContract;
+use Cog\Ban\Contracts\Bannable as BannableContract;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
@@ -31,7 +31,7 @@ interface Ban
     /**
      * Bannable model.
      *
-     * @return \Cog\Ban\Contracts\HasBans
+     * @return \Cog\Ban\Contracts\Bannable
      */
     public function bannable();
 
@@ -39,8 +39,8 @@ interface Ban
      * Scope a query to only include bans by bannable model.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \Cog\Ban\Contracts\HasBans $bannable
+     * @param \Cog\Ban\Contracts\Bannable $bannable
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeWhereBannable(Builder $query, HasBansContract $bannable);
+    public function scopeWhereBannable(Builder $query, BannableContract $bannable);
 }

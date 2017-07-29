@@ -15,7 +15,7 @@ use Carbon\Carbon;
 use Cog\Ban\Contracts\BanService as BanServiceContract;
 
 /**
- * Class HasBannedAtHelpers.
+ * Trait HasBannedAtHelpers.
  *
  * @package Cog\Ban\Traits
  */

@@ -14,7 +14,7 @@ namespace Cog\Ban\Traits;
 use Cog\Ban\Contracts\Ban as BanContract;
 
 /**
- * Class HasBansRelation.
+ * Trait HasBansRelation.
  *
  * @package Cog\Ban\Traits
  */

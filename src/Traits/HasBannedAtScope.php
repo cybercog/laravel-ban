@@ -14,7 +14,7 @@ namespace Cog\Ban\Traits;
 use Cog\Ban\Scopes\BannedAtScope;
 
 /**
- * Class HasBannedAtScope.
+ * Trait HasBannedAtScope.
  *
  * @package Cog\Ban\Traits
  */

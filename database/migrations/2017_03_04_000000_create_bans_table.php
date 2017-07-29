@@ -14,9 +14,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 /**
- * Class CreateBanTable.
+ * Class CreateBansTable.
  */
-class CreateBanTable extends Migration
+class CreateBansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -25,7 +25,7 @@ class CreateBanTable extends Migration
      */
     public function up()
     {
-        Schema::create('ban', function (Blueprint $table) {
+        Schema::create('bans', function (Blueprint $table) {
             $table->increments('id');
             $table->morphs('bannable');
             $table->nullableMorphs('created_by');
@@ -45,6 +45,6 @@ class CreateBanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ban');
+        Schema::dropIfExists('bans');
     }
 }

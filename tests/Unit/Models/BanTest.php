@@ -103,7 +103,7 @@ class BanTest extends TestCase
     }
 
     /** @test */
-    public function it_can_belong_to_bannable()
+    public function it_can_has_bannable_model()
     {
         $user = factory(User::class)->create();
         $ban = factory(Ban::class)->create([
@@ -115,7 +115,7 @@ class BanTest extends TestCase
     }
 
     /** @test */
-    public function it_can_scope_models_by_owner()
+    public function it_can_scope_bannable_models()
     {
         $user1 = factory(User::class)->create();
         factory(Ban::class, 4)->create([

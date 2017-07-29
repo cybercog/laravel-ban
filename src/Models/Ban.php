@@ -13,7 +13,7 @@ namespace Cog\Ban\Models;
 
 use Carbon\Carbon;
 use Cog\Ban\Contracts\Ban as BanContract;
-use Cog\Ban\Contracts\HasBans as HasBansContract;
+use Cog\Ban\Contracts\Bannable as BannableContract;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -32,7 +32,7 @@ class Ban extends Model implements BanContract
      *
      * @var string
      */
-    protected $table = 'ban';
+    protected $table = 'bans';
 
     /**
      * The attributes that are mass assignable.
@@ -91,10 +91,10 @@ class Ban extends Model implements BanContract
      * Scope a query to only include models by owner.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \Cog\Ban\Contracts\HasBans $bannable
+     * @param \Cog\Ban\Contracts\Bannable $bannable
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeWhereBannable(Builder $query, HasBansContract $bannable)
+    public function scopeWhereBannable(Builder $query, BannableContract $bannable)
     {
         return $query->where([
             'bannable_id' => $bannable->getKey(),

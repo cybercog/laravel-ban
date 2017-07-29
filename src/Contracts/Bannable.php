@@ -12,11 +12,11 @@
 namespace Cog\Ban\Contracts;
 
 /**
- * Interface HasBans.
+ * Interface Bannable.
  *
  * @package Cog\Ban\Contracts
  */
-interface HasBans
+interface Bannable
 {
     /**
      * Entity Bans.
