@@ -136,7 +136,6 @@ $user->bans()->create([]);
 $user->ban();
 ```
 
-
 #### Apply ban for the entity with reason comment
  
 ```php
