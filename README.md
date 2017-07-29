@@ -282,6 +282,10 @@ Of course, the time used in the code above is just example. Adjust it to suit yo
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
+## Upgrading
+
+Please see [UPGRADING](UPGRADING.md) for detailed upgrade instructions.
+
 ## Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
