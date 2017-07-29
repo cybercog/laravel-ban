@@ -1,4 +1,6 @@
-![cog-laravel-ban](https://cloud.githubusercontent.com/assets/1849174/23580161/55a1c060-010d-11e7-9658-efe992bde0a7.png)
+# Laravel Ban
+
+![cog-laravel-ban](https://user-images.githubusercontent.com/1849174/28749192-fe2d2cb4-74c7-11e7-955e-9c48e81106c2.png)
 
 <p align="center">
 <a href="https://travis-ci.org/cybercog/laravel-ban"><img src="https://img.shields.io/travis/cybercog/laravel-ban/master.svg?style=flat-square" alt="Build Status"></a>
