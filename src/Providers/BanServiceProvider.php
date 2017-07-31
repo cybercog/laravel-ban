@@ -31,12 +31,7 @@ class BanServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if ($this->app->runningInConsole()) {
-            $this->publishes([
-                __DIR__ . '/../../database/migrations' => database_path('migrations'),
-            ], 'migrations');
-        }
-
+        $this->bootMigrations();
         $this->bootObservers();
     }
 
@@ -45,9 +40,12 @@ class BanServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(BanContract::class, Ban::class);
-        $this->app->singleton(BanServiceContract::class, BanService::class);
+        $this->registerConsoleCommands();
+        $this->registerContracts();
+    }
 
+    protected function registerConsoleCommands()
+    {
         if ($this->app->runningInConsole()) {
             $this->app->bind('command.ban:delete-expired', DeleteExpiredBans::class);
 
@@ -57,11 +55,26 @@ class BanServiceProvider extends ServiceProvider
         }
     }
 
+    protected function registerContracts()
+    {
+        $this->app->bind(BanContract::class, Ban::class);
+        $this->app->singleton(BanServiceContract::class, BanService::class);
+    }
+
     /**
      * Package models observers.
      */
     protected function bootObservers()
     {
-        app(BanContract::class)->observe(new BanObserver());
+        $this->app->make(BanContract::class)->observe(new BanObserver);
+    }
+
+    protected function bootMigrations()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/../../database/migrations' => database_path('migrations'),
+            ], 'migrations');
+        }
     }
 }
