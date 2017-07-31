@@ -23,19 +23,6 @@ use Orchestra\Testbench\TestCase as Orchestra;
 abstract class TestCase extends Orchestra
 {
     /**
-     * Register a callback to be run before the application is destroyed.
-     * TODO: Remove it when will be pushed to Orchestra Testbench package.
-     *
-     * @param  callable  $callback
-     *
-     * @return void
-     */
-    protected function beforeApplicationDestroyed(callable $callback)
-    {
-        array_unshift($this->beforeApplicationDestroyedCallbacks, $callback);
-    }
-
-    /**
      * Actions to be performed on PHPUnit start.
      */
     protected function setUp()
@@ -87,7 +74,7 @@ abstract class TestCase extends Orchestra
      */
     protected function destroyPackageMigrations()
     {
-        File::cleanDirectory('vendor/orchestra/testbench/fixture/database/migrations');
+        File::cleanDirectory('vendor/orchestra/testbench-core/fixture/database/migrations');
     }
 
     /**
