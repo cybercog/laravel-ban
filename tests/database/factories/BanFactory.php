@@ -9,9 +9,12 @@
  * file that was distributed with this source code.
  */
 
+use Cog\Ban\Models\Ban;
 use Cog\Ban\Tests\Stubs\Models\User;
+use Faker\Generator;
 
-$factory->define(\Cog\Ban\Models\Ban::class, function (\Faker\Generator $faker) {
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(Ban::class, function (Generator $faker) {
     $bannable = factory(User::class)->create();
 
     return [
