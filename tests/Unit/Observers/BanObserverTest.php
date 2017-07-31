@@ -9,9 +9,8 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ban\Tests\Unit\Traits;
+namespace Cog\Ban\Tests\Unit\Observers;
 
-use Cog\Ban\Models\Ban;
 use Cog\Ban\Tests\Stubs\Models\User;
 use Cog\Ban\Tests\TestCase;
 

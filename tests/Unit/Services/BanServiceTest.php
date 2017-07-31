@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ban\Tests\Unit\Traits;
+namespace Cog\Ban\Tests\Unit\Services;
 
 use Carbon\Carbon;
 use Cog\Ban\Models\Ban;

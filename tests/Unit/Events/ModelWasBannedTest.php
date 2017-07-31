@@ -18,7 +18,7 @@ use Cog\Ban\Tests\TestCase;
 /**
  * Class ModelWasBannedTest.
  *
- * @package Cog\Ban\Tests\Unit\Models
+ * @package Cog\Ban\Tests\Unit\Events
  */
 class ModelWasBannedTest extends TestCase
 {

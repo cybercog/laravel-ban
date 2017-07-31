@@ -12,7 +12,6 @@
 namespace Cog\Ban\Tests\Unit\Traits;
 
 use Carbon\Carbon;
-use Cog\Ban\Models\Ban;
 use Cog\Ban\Tests\Stubs\Models\User;
 use Cog\Ban\Tests\TestCase;
 
