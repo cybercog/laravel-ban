@@ -134,18 +134,12 @@ class AddBannedAtColumnToUsersTable extends Migration
 #### Apply ban for the entity
 
 ```php
-$user->bans()->create([]);
-
 $user->ban();
 ```
 
 #### Apply ban for the entity with reason comment
  
 ```php
-$user->bans()->create([
-    'comment' => 'Enjoy your ban!',
-]);
-
 $user->ban([
     'comment' => 'Enjoy your ban!',
 ]);
@@ -154,16 +148,18 @@ $user->ban([
 #### Apply ban for the entity which will be deleted over time
  
 ```php
-$user->bans()->create([
-    'expired_at' => '+1 month',
-]);
-
 $user->ban([
     'expired_at' => '2086-03-28 00:00:00',
 ]);
-```
+``` 
 
-`expired_at` attribute could be `\Carbon\Carbon` instance or any string which could be parsed by `\Carbon\Carbon::parse($string)` method.
+`expired_at` attribute could be `\Carbon\Carbon` instance or any string which could be parsed by `\Carbon\Carbon::parse($string)` method:
+
+```php
+$user->ban([
+    'expired_at' => '+1 month',
+]);
+``` 
 
 #### Remove ban from entity
 
