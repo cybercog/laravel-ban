@@ -66,14 +66,14 @@ And then include the service provider within `app/config/app.php`:
 
 ```php
 'providers' => [
-    Cog\Ban\Providers\BanServiceProvider::class,
+    Cog\Laravel\Ban\Providers\BanServiceProvider::class,
 ],
 ```
 
 At last you need to publish and run database migrations:
 
 ```sh
-$ php artisan vendor:publish --provider="Cog\Ban\Providers\BanServiceProvider" --tag="migrations"
+$ php artisan vendor:publish --provider="Cog\Laravel\Ban\Providers\BanServiceProvider" --tag="migrations"
 $ php artisan migrate
 ```
 
@@ -82,8 +82,8 @@ $ php artisan migrate
 ### Prepare bannable model
 
 ```php
-use Cog\Ban\Contracts\Bannable as BannableContract;
-use Cog\Ban\Traits\Bannable;
+use Cog\Laravel\Ban\Contracts\Bannable as BannableContract;
+use Cog\Laravel\Ban\Traits\Bannable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements BannableContract
@@ -188,7 +188,7 @@ $user->isNotBanned();
 #### Delete expired bans manually
 
 ```php
-app(\Cog\Ban\Services\BanService::class)->deleteExpiredBans();
+app(\Cog\Laravel\Ban\Services\BanService::class)->deleteExpiredBans();
 ```
 
 ### Scopes
@@ -216,8 +216,8 @@ $users = User::onlyBanned()->get();
 To apply query scopes all the time you can define `shouldApplyBannedAtScope` method in bannable model. If method returns `true` all banned models will be hidden by default.
 
 ```php
-use Cog\Ban\Contracts\Bannable as BannableContract;
-use Cog\Ban\Traits\Bannable;
+use Cog\Laravel\Ban\Contracts\Bannable as BannableContract;
+use Cog\Laravel\Ban\Traits\Bannable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements BannableContract
@@ -238,9 +238,9 @@ class User extends Authenticatable implements BannableContract
 
 ### Events
 
-If entity is banned `\Cog\Ban\Events\ModelWasBanned` event is fired.
+If entity is banned `\Cog\Laravel\Ban\Events\ModelWasBanned` event is fired.
 
-Is entity is unbanned `\Cog\Ban\Events\ModelWasUnbanned` event is fired.
+Is entity is unbanned `\Cog\Laravel\Ban\Events\ModelWasUnbanned` event is fired.
 
 ### Middleware
 
@@ -250,7 +250,7 @@ To use it define new middleware in `$routeMiddleware` array of `app/Http/Kernel.
 
 ```php
 protected $routeMiddleware = [
-    'forbid-banned-user' => \Cog\Ban\Http\Middleware\ForbidBannedUser::class,
+    'forbid-banned-user' => \Cog\Laravel\Ban\Http\Middleware\ForbidBannedUser::class,
 ]
 ```
 

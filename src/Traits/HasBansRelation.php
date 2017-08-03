@@ -9,14 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ban\Traits;
+namespace Cog\Laravel\Ban\Traits;
 
-use Cog\Ban\Contracts\Ban as BanContract;
+use Cog\Laravel\Ban\Contracts\Ban as BanContract;
 
 /**
  * Trait HasBansRelation.
  *
- * @package Cog\Ban\Traits
+ * @package Cog\Laravel\Ban\Traits
  */
 trait HasBansRelation
 {

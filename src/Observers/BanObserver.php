@@ -9,23 +9,23 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ban\Observers;
+namespace Cog\Laravel\Ban\Observers;
 
-use Cog\Ban\Contracts\Ban as BanContract;
-use Cog\Ban\Events\ModelWasBanned;
-use Cog\Ban\Events\ModelWasUnbanned;
+use Cog\Laravel\Ban\Contracts\Ban as BanContract;
+use Cog\Laravel\Ban\Events\ModelWasBanned;
+use Cog\Laravel\Ban\Events\ModelWasUnbanned;
 
 /**
  * Class BanObserver.
  *
- * @package Cog\Ban\Observers
+ * @package Cog\Laravel\Ban\Observers
  */
 class BanObserver
 {
     /**
      * Handle the creating event for the Ban model.
      *
-     * @param \Cog\Ban\Contracts\Ban $ban
+     * @param \Cog\Laravel\Ban\Contracts\Ban $ban
      * @return void
      */
     public function creating(BanContract $ban)
@@ -42,7 +42,7 @@ class BanObserver
     /**
      * Handle the created event for the Ban model.
      *
-     * @param \Cog\Ban\Contracts\Ban $ban
+     * @param \Cog\Laravel\Ban\Contracts\Ban $ban
      * @return void
      */
     public function created(BanContract $ban)
@@ -56,7 +56,7 @@ class BanObserver
     /**
      * Handle the deleted event for the Ban model.
      *
-     * @param \Cog\Ban\Contracts\Ban $ban
+     * @param \Cog\Laravel\Ban\Contracts\Ban $ban
      * @return void
      */
     public function deleted(BanContract $ban)

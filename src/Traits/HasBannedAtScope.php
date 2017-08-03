@@ -9,14 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ban\Traits;
+namespace Cog\Laravel\Ban\Traits;
 
-use Cog\Ban\Scopes\BannedAtScope;
+use Cog\Laravel\Ban\Scopes\BannedAtScope;
 
 /**
  * Trait HasBannedAtScope.
  *
- * @package Cog\Ban\Traits
+ * @package Cog\Laravel\Ban\Traits
  */
 trait HasBannedAtScope
 {

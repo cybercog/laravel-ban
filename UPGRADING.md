@@ -9,8 +9,8 @@ We accept PRs to improve this guide.
 
 In your bannable models:
 
-- `Cog\Ban\Traits\HasBans` change to `Cog\Ban\Traits\Bannable`
-- `Cog\Ban\Contracts\HasBans` change to `Cog\Ban\Contracts\Bannable`
+- `Cog\Laravel\Ban\Traits\HasBans` change to `Cog\Laravel\Ban\Traits\Bannable`
+- `Cog\Laravel\Ban\Contracts\HasBans` change to `Cog\Laravel\Ban\Contracts\Bannable`
 
 In classes which works with bans:
 

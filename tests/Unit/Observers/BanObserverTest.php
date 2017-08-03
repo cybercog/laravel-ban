@@ -9,15 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ban\Tests\Unit\Observers;
+namespace Cog\Tests\Laravel\Ban\Unit\Observers;
 
-use Cog\Ban\Tests\Stubs\Models\User;
-use Cog\Ban\Tests\TestCase;
+use Cog\Tests\Laravel\Ban\Stubs\Models\User;
+use Cog\Tests\Laravel\Ban\TestCase;
 
 /**
  * Class BanObserverTest.
  *
- * @package Cog\Ban\Tests\Unit\Observers
+ * @package Cog\Tests\Laravel\Ban\Unit\Observers
  */
 class BanObserverTest extends TestCase
 {

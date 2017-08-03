@@ -9,30 +9,30 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ban\Contracts;
+namespace Cog\Laravel\Ban\Contracts;
 
-use Cog\Ban\Contracts\Bannable as BannableContract;
+use Cog\Laravel\Ban\Contracts\Bannable as BannableContract;
 
 /**
  * Interface BanService.
  *
- * @package Cog\Ban\Contracts
+ * @package Cog\Laravel\Ban\Contracts
  */
 interface BanService
 {
     /**
      * Ban entity.
      *
-     * @param \Cog\Ban\Contracts\Bannable $bannable
+     * @param \Cog\Laravel\Ban\Contracts\Bannable $bannable
      * @param array $attributes
-     * @return \Cog\Ban\Contracts\Ban
+     * @return \Cog\Laravel\Ban\Contracts\Ban
      */
     public function ban(BannableContract $bannable, array $attributes = []);
 
     /**
      * Unban entity.
      *
-     * @param \Cog\Ban\Contracts\Bannable $bannable
+     * @param \Cog\Laravel\Ban\Contracts\Bannable $bannable
      * @return void
      */
     public function unban(BannableContract $bannable);

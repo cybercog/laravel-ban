@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ban\Models;
+namespace Cog\Laravel\Ban\Models;
 
 use Carbon\Carbon;
-use Cog\Ban\Contracts\Ban as BanContract;
-use Cog\Ban\Contracts\Bannable as BannableContract;
+use Cog\Laravel\Ban\Contracts\Ban as BanContract;
+use Cog\Laravel\Ban\Contracts\Bannable as BannableContract;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Ban.
  *
- * @package Cog\Ban\Models
+ * @package Cog\Laravel\Ban\Models
  */
 class Ban extends Model implements BanContract
 {
@@ -91,7 +91,7 @@ class Ban extends Model implements BanContract
      * Scope a query to only include models by owner.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \Cog\Ban\Contracts\Bannable $bannable
+     * @param \Cog\Laravel\Ban\Contracts\Bannable $bannable
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeWhereBannable(Builder $query, BannableContract $bannable)

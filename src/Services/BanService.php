@@ -9,26 +9,26 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ban\Services;
+namespace Cog\Laravel\Ban\Services;
 
 use Carbon\Carbon;
-use Cog\Ban\Contracts\BanService as BanServiceContract;
-use Cog\Ban\Contracts\Bannable;
-use Cog\Ban\Models\Ban;
+use Cog\Laravel\Ban\Contracts\BanService as BanServiceContract;
+use Cog\Laravel\Ban\Contracts\Bannable;
+use Cog\Laravel\Ban\Models\Ban;
 
 /**
  * Class BanService.
  *
- * @package Cog\Ban\Services
+ * @package Cog\Laravel\Ban\Services
  */
 class BanService implements BanServiceContract
 {
     /**
      * Ban entity.
      *
-     * @param \Cog\Ban\Contracts\Bannable $bannable
+     * @param \Cog\Laravel\Ban\Contracts\Bannable $bannable
      * @param array $attributes
-     * @return \Cog\Ban\Contracts\Ban
+     * @return \Cog\Laravel\Ban\Contracts\Ban
      */
     public function ban(Bannable $bannable, array $attributes = [])
     {
@@ -38,7 +38,7 @@ class BanService implements BanServiceContract
     /**
      * Unban entity.
      *
-     * @param \Cog\Ban\Contracts\Bannable $bannable
+     * @param \Cog\Laravel\Ban\Contracts\Bannable $bannable
      * @return void
      */
     public function unban(Bannable $bannable)

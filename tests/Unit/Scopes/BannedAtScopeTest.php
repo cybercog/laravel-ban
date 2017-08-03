@@ -9,17 +9,17 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ban\Tests\Unit\Scopes;
+namespace Cog\Tests\Laravel\Ban\Unit\Scopes;
 
 use Carbon\Carbon;
-use Cog\Ban\Tests\Stubs\Models\User;
-use Cog\Ban\Tests\Stubs\Models\UserWithBannedAtScopeApplied;
-use Cog\Ban\Tests\TestCase;
+use Cog\Tests\Laravel\Ban\Stubs\Models\User;
+use Cog\Tests\Laravel\Ban\Stubs\Models\UserWithBannedAtScopeApplied;
+use Cog\Tests\Laravel\Ban\TestCase;
 
 /**
  * Class BannedAtScopeTest.
  *
- * @package Cog\Ban\Tests\Unit\Scopes
+ * @package Cog\Tests\Laravel\Ban\Unit\Scopes
  */
 class BannedAtScopeTest extends TestCase
 {

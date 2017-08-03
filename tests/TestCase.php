@@ -9,16 +9,16 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ban\Tests;
+namespace Cog\Tests\Laravel\Ban;
 
-use Cog\Ban\Tests\Stubs\Models\User;
+use Cog\Tests\Laravel\Ban\Stubs\Models\User;
 use Illuminate\Support\Facades\File;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 /**
  * Class TestCase.
  *
- * @package Cog\Ban\Tests
+ * @package Cog\Tests\Laravel\Ban
  */
 abstract class TestCase extends Orchestra
 {
@@ -56,7 +56,7 @@ abstract class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            \Cog\Ban\Providers\BanServiceProvider::class,
+            \Cog\Laravel\Ban\Providers\BanServiceProvider::class,
             \Orchestra\Database\ConsoleServiceProvider::class,
         ];
     }

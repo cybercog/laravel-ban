@@ -9,15 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ban\Console\Commands;
+namespace Cog\Laravel\Ban\Console\Commands;
 
-use Cog\Ban\Services\BanService;
+use Cog\Laravel\Ban\Services\BanService;
 use Illuminate\Console\Command;
 
 /**
  * Class DeleteExpiredBans.
  *
- * @package Cog\Ban\Console\Command
+ * @package Cog\Laravel\Ban\Console\Command
  */
 class DeleteExpiredBans extends Command
 {
@@ -38,7 +38,7 @@ class DeleteExpiredBans extends Command
     /**
      * Ban service.
      *
-     * @var \Cog\Ban\Contracts\BanService
+     * @var \Cog\Laravel\Ban\Contracts\BanService
      */
     protected $service;
 

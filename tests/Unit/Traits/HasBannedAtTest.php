@@ -9,16 +9,16 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ban\Tests\Unit\Traits;
+namespace Cog\Tests\Laravel\Ban\Unit\Traits;
 
 use Carbon\Carbon;
-use Cog\Ban\Tests\Stubs\Models\User;
-use Cog\Ban\Tests\TestCase;
+use Cog\Tests\Laravel\Ban\Stubs\Models\User;
+use Cog\Tests\Laravel\Ban\TestCase;
 
 /**
  * Class HasBannedAtTest.
  *
- * @package Cog\Ban\Tests\Unit\Traits
+ * @package Cog\Tests\Laravel\Ban\Unit\Traits
  */
 class HasBannedAtTest extends TestCase
 {

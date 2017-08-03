@@ -9,25 +9,25 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ban\Events;
+namespace Cog\Laravel\Ban\Events;
 
-use Cog\Ban\Contracts\Bannable as BannableContract;
+use Cog\Laravel\Ban\Contracts\Bannable as BannableContract;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 /**
  * Class ModelWasUnbanned.
  *
- * @package Cog\Ban\Events
+ * @package Cog\Laravel\Ban\Events
  */
 class ModelWasUnbanned implements ShouldQueue
 {
     /**
-     * @var \Cog\Ban\Contracts\Bannable
+     * @var \Cog\Laravel\Ban\Contracts\Bannable
      */
     public $model;
 
     /**
-     * @param \Cog\Ban\Contracts\Bannable $model
+     * @param \Cog\Laravel\Ban\Contracts\Bannable $model
      */
     public function __construct(BannableContract $model)
     {

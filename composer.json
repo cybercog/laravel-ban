@@ -49,12 +49,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Cog\\Ban\\": "src/"
+            "Cog\\Laravel\\Ban\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Cog\\Ban\\Tests\\": "tests/"
+            "Cog\\Tests\\Laravel\\Ban\\": "tests/"
         }
     },
     "scripts": {
@@ -66,7 +66,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Cog\\Ban\\Providers\\BanServiceProvider"
+                "Cog\\Laravel\\Ban\\Providers\\BanServiceProvider"
             ]
         }
     },

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ban\Scopes;
+namespace Cog\Laravel\Ban\Scopes;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Scope;
 /**
  * Class BannedAtScope.
  *
- * @package Cog\Ban\Scopes
+ * @package Cog\Laravel\Ban\Scopes
  */
 class BannedAtScope implements Scope
 {

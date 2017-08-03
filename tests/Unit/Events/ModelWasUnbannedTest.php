@@ -9,16 +9,16 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ban\Tests\Unit\Events;
+namespace Cog\Tests\Laravel\Ban\Unit\Events;
 
-use Cog\Ban\Events\ModelWasUnbanned;
-use Cog\Ban\Models\Ban;
-use Cog\Ban\Tests\TestCase;
+use Cog\Laravel\Ban\Events\ModelWasUnbanned;
+use Cog\Laravel\Ban\Models\Ban;
+use Cog\Tests\Laravel\Ban\TestCase;
 
 /**
  * Class ModelWasUnbannedTest.
  *
- * @package Cog\Ban\Tests\Unit\Events
+ * @package Cog\Tests\Laravel\Ban\Unit\Events
  */
 class ModelWasUnbannedTest extends TestCase
 {
