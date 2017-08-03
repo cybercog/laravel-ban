@@ -7,6 +7,8 @@
 Because there are many breaking changes an upgrade is not that easy. There are many edge cases this guide does not cover.
 We accept PRs to improve this guide.
 
+In your project find all `Cog\Ban\` and replace with `Cog\Laravel\Ban\`.
+
 In your bannable models:
 
 - `Cog\Laravel\Ban\Traits\HasBans` change to `Cog\Laravel\Ban\Traits\Bannable`
