@@ -29,7 +29,7 @@ class User extends Authenticatable implements BannableContract
      *
      * @var string
      */
-    protected $table = 'user';
+    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.

@@ -16,11 +16,11 @@ use Cog\Tests\Laravel\Ban\Stubs\Models\User;
 use Cog\Tests\Laravel\Ban\TestCase;
 
 /**
- * Class HasBannedAtTest.
+ * Class HasBannedAtHelpersTest.
  *
  * @package Cog\Tests\Laravel\Ban\Unit\Traits
  */
-class HasBannedAtTest extends TestCase
+class HasBannedAtHelpersTest extends TestCase
 {
     /** @test */
     public function it_can_set_banned_flag()

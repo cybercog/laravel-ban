@@ -17,11 +17,11 @@ use Cog\Tests\Laravel\Ban\Stubs\Models\User;
 use Cog\Tests\Laravel\Ban\TestCase;
 
 /**
- * Class HasBansTest.
+ * Class BannableTest.
  *
  * @package Cog\Tests\Laravel\Ban\Unit\Traits
  */
-class HasBansTest extends TestCase
+class BannableTest extends TestCase
 {
     /** @test */
     public function it_can_has_related_ban()
