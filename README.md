@@ -28,6 +28,7 @@ Use case is not limited to User model, any Eloquent model could be banned: Organ
     - [Middleware](#middleware)
     - [Scheduling](#scheduling)
 - [Change log](#change-log)
+- [Upgrading](#upgrading)
 - [Contributing](#contributing)
 - [Testing](#testing)
 - [Security](#security)
