@@ -17,7 +17,7 @@ use Illuminate\Console\Command;
 /**
  * Class DeleteExpiredBans.
  *
- * @package Cog\Laravel\Ban\Console\Command
+ * @package Cog\Laravel\Ban\Console\Commands
  */
 class DeleteExpiredBans extends Command
 {

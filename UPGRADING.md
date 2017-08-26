@@ -17,7 +17,7 @@ In your bannable models:
 In classes which works with bans:
 
 - Find `Ban::whereOwnedBy` replace with `Ban::whereBannable`
-- Find calls of methods or attributes on ban model `ownedBy`, `owner`, `getOwner` and replace them with `bannable`
+- Find calls of methods or attributes on the Ban model like `ownedBy`, `owner`, `getOwner` and replace them with `bannable`
 
 These database changes should be performed:
 
