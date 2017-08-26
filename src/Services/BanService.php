@@ -12,8 +12,8 @@
 namespace Cog\Laravel\Ban\Services;
 
 use Carbon\Carbon;
-use Cog\Laravel\Ban\Contracts\BanService as BanServiceContract;
-use Cog\Laravel\Ban\Contracts\Bannable;
+use Cog\Contracts\Ban\BanService as BanServiceContract;
+use Cog\Contracts\Ban\Bannable;
 use Cog\Laravel\Ban\Models\Ban;
 
 /**
@@ -26,9 +26,9 @@ class BanService implements BanServiceContract
     /**
      * Ban entity.
      *
-     * @param \Cog\Laravel\Ban\Contracts\Bannable $bannable
+     * @param \Cog\Contracts\Ban\Bannable $bannable
      * @param array $attributes
-     * @return \Cog\Laravel\Ban\Contracts\Ban
+     * @return \Cog\Contracts\Ban\Ban
      */
     public function ban(Bannable $bannable, array $attributes = [])
     {
@@ -38,7 +38,7 @@ class BanService implements BanServiceContract
     /**
      * Unban entity.
      *
-     * @param \Cog\Laravel\Ban\Contracts\Bannable $bannable
+     * @param \Cog\Contracts\Ban\Bannable $bannable
      * @return void
      */
     public function unban(Bannable $bannable)

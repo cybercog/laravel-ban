@@ -12,8 +12,8 @@
 namespace Cog\Laravel\Ban\Providers;
 
 use Cog\Laravel\Ban\Console\Commands\DeleteExpiredBans;
-use Cog\Laravel\Ban\Contracts\Ban as BanContract;
-use Cog\Laravel\Ban\Contracts\BanService as BanServiceContract;
+use Cog\Contracts\Ban\Ban as BanContract;
+use Cog\Contracts\Ban\BanService as BanServiceContract;
 use Cog\Laravel\Ban\Models\Ban;
 use Cog\Laravel\Ban\Observers\BanObserver;
 use Cog\Laravel\Ban\Services\BanService;

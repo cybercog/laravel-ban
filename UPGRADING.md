@@ -12,7 +12,7 @@ In your project find all `Cog\Ban\` and replace with `Cog\Laravel\Ban\`.
 In your bannable models:
 
 - `Cog\Laravel\Ban\Traits\HasBans` change to `Cog\Laravel\Ban\Traits\Bannable`
-- `Cog\Laravel\Ban\Contracts\HasBans` change to `Cog\Laravel\Ban\Contracts\Bannable`
+- `Cog\Laravel\Ban\Contracts\HasBans` change to `Cog\Contracts\Ban\Bannable`
 
 In classes which works with bans:
 

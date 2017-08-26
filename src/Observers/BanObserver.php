@@ -11,7 +11,7 @@
 
 namespace Cog\Laravel\Ban\Observers;
 
-use Cog\Laravel\Ban\Contracts\Ban as BanContract;
+use Cog\Contracts\Ban\Ban as BanContract;
 use Cog\Laravel\Ban\Events\ModelWasBanned;
 use Cog\Laravel\Ban\Events\ModelWasUnbanned;
 
@@ -25,7 +25,7 @@ class BanObserver
     /**
      * Handle the creating event for the Ban model.
      *
-     * @param \Cog\Laravel\Ban\Contracts\Ban $ban
+     * @param \Cog\Contracts\Ban\Ban $ban
      * @return void
      */
     public function creating(BanContract $ban)
@@ -42,7 +42,7 @@ class BanObserver
     /**
      * Handle the created event for the Ban model.
      *
-     * @param \Cog\Laravel\Ban\Contracts\Ban $ban
+     * @param \Cog\Contracts\Ban\Ban $ban
      * @return void
      */
     public function created(BanContract $ban)
@@ -56,7 +56,7 @@ class BanObserver
     /**
      * Handle the deleted event for the Ban model.
      *
-     * @param \Cog\Laravel\Ban\Contracts\Ban $ban
+     * @param \Cog\Contracts\Ban\Ban $ban
      * @return void
      */
     public function deleted(BanContract $ban)

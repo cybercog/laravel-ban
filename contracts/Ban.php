@@ -9,15 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Laravel\Ban\Contracts;
+namespace Cog\Contracts\Ban;
 
-use Cog\Laravel\Ban\Contracts\Bannable as BannableContract;
+use Cog\Contracts\Ban\Bannable as BannableContract;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Interface Ban.
  *
- * @package Cog\Laravel\Ban\Contracts
+ * @package Cog\Contracts\Ban
  */
 interface Ban
 {
@@ -31,7 +31,7 @@ interface Ban
     /**
      * Bannable model.
      *
-     * @return \Cog\Laravel\Ban\Contracts\Bannable
+     * @return \Cog\Contracts\Ban\Bannable
      */
     public function bannable();
 
@@ -39,7 +39,7 @@ interface Ban
      * Scope a query to only include bans by bannable model.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \Cog\Laravel\Ban\Contracts\Bannable $bannable
+     * @param \Cog\Contracts\Ban\Bannable $bannable
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeWhereBannable(Builder $query, BannableContract $bannable);

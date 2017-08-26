@@ -11,7 +11,7 @@
 
 namespace Cog\Laravel\Ban\Traits;
 
-use Cog\Laravel\Ban\Contracts\Ban as BanContract;
+use Cog\Contracts\Ban\Ban as BanContract;
 
 /**
  * Trait HasBansRelation.

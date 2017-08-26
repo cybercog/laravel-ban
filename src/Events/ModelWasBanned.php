@@ -11,8 +11,8 @@
 
 namespace Cog\Laravel\Ban\Events;
 
-use Cog\Laravel\Ban\Contracts\Ban as BanContract;
-use Cog\Laravel\Ban\Contracts\Bannable as BannableContract;
+use Cog\Contracts\Ban\Ban as BanContract;
+use Cog\Contracts\Ban\Bannable as BannableContract;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 /**
@@ -23,18 +23,18 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class ModelWasBanned implements ShouldQueue
 {
     /**
-     * @var \Cog\Laravel\Ban\Contracts\Bannable
+     * @var \Cog\Contracts\Ban\Bannable
      */
     public $model;
 
     /**
-     * @var \Cog\Laravel\Ban\Contracts\Ban
+     * @var \Cog\Contracts\Ban\Ban
      */
     public $ban;
 
     /**
-     * @param \Cog\Laravel\Ban\Contracts\Bannable $bannable
-     * @param \Cog\Laravel\Ban\Contracts\Ban $ban
+     * @param \Cog\Contracts\Ban\Bannable $bannable
+     * @param \Cog\Contracts\Ban\Ban $ban
      */
     public function __construct(BannableContract $bannable, BanContract $ban)
     {

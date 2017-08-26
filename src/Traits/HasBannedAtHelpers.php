@@ -12,7 +12,7 @@
 namespace Cog\Laravel\Ban\Traits;
 
 use Carbon\Carbon;
-use Cog\Laravel\Ban\Contracts\BanService as BanServiceContract;
+use Cog\Contracts\Ban\BanService as BanServiceContract;
 
 /**
  * Trait HasBannedAtHelpers.
@@ -69,7 +69,7 @@ trait HasBannedAtHelpers
      * Ban model.
      *
      * @param null|array $attributes
-     * @return \Cog\Laravel\Ban\Contracts\Ban
+     * @return \Cog\Contracts\Ban\Ban
      */
     public function ban(array $attributes = [])
     {

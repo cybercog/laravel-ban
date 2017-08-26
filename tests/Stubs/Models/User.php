@@ -11,7 +11,7 @@
 
 namespace Cog\Tests\Laravel\Ban\Stubs\Models;
 
-use Cog\Laravel\Ban\Contracts\Bannable as BannableContract;
+use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Laravel\Ban\Traits\Bannable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

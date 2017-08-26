@@ -12,8 +12,8 @@
 namespace Cog\Laravel\Ban\Models;
 
 use Carbon\Carbon;
-use Cog\Laravel\Ban\Contracts\Ban as BanContract;
-use Cog\Laravel\Ban\Contracts\Bannable as BannableContract;
+use Cog\Contracts\Ban\Ban as BanContract;
+use Cog\Contracts\Ban\Bannable as BannableContract;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -91,7 +91,7 @@ class Ban extends Model implements BanContract
      * Scope a query to only include models by owner.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \Cog\Laravel\Ban\Contracts\Bannable $bannable
+     * @param \Cog\Contracts\Ban\Bannable $bannable
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeWhereBannable(Builder $query, BannableContract $bannable)

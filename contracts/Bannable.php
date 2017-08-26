@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Laravel\Ban\Contracts;
+namespace Cog\Contracts\Ban;
 
 /**
  * Interface Bannable.
  *
- * @package Cog\Laravel\Ban\Contracts
+ * @package Cog\Contracts\Ban
  */
 interface Bannable
 {
@@ -43,7 +43,7 @@ interface Bannable
      * Ban model.
      *
      * @param null|array $attributes
-     * @return \Cog\Laravel\Ban\Contracts\Ban
+     * @return \Cog\Contracts\Ban\Ban
      */
     public function ban(array $attributes = []);
 

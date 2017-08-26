@@ -49,6 +49,7 @@
     },
     "autoload": {
         "psr-4": {
+            "Cog\\Contracts\\Ban\\": "contracts/",
             "Cog\\Laravel\\Ban\\": "src/"
         }
     },

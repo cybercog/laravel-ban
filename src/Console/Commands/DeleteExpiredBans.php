@@ -38,7 +38,7 @@ class DeleteExpiredBans extends Command
     /**
      * Ban service.
      *
-     * @var \Cog\Laravel\Ban\Contracts\BanService
+     * @var \Cog\Contracts\Ban\BanService
      */
     protected $service;
 
