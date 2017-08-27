@@ -4,12 +4,18 @@ All notable changes to `laravel-ban` will be documented in this file.
 
 ## [3.0.0] - 2017-08-27
 
+### Added
+
+- Laravel 5.5 support ([#7](https://github.com/cybercog/laravel-ban/pull/7))
+- Add package auto discovery for L5.5 ([#8](https://github.com/cybercog/laravel-ban/pull/8))
+- Auto-loading migrations
+
 ### Changed
 
 - `Cog\Ban\Contracts\Ban` moved to `Cog\Contracts\Ban\Ban`
 - `Cog\Ban\Contracts\HasBans` moved to `Cog\Contracts\Ban\HasBans`
 - `Cog\Ban\Contracts\BanService` moved to `Cog\Contracts\Ban\BanService`
-- All classes namespaces changed from `Cog\Ban\*` to `Cog\Laravel\Ban\*`
+- All classes namespaces moved from `Cog\Ban\*` to `Cog\Laravel\Ban\*`
 - Renamed database table `ban` to `bans`
 - Renamed database column `owned_by_id` to `bannable_id`
 - Renamed database column `owned_by_type` to `bannable_type`
@@ -20,9 +26,9 @@ All notable changes to `laravel-ban` will be documented in this file.
 
 ### Removed
 
-- Dependency Laravel Ownership
-- Removed Ban model `owner` method
-- Removed Ban model `getOwner` method
+- Dropped Laravel Ownership Dependency ([#9](https://github.com/cybercog/laravel-ban/pull/9))
+- Removed `owner` method from Ban model
+- Removed `getOwner` method from Ban model
 
 ## [2.1.0] - 2017-03-21
 
