@@ -35,7 +35,7 @@ interface Bannable
     /**
      * Entity Bans.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     * @return mixed
      */
     public function bans();
 
