@@ -9,23 +9,23 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ban\Observers;
+namespace Cog\Laravel\Ban\Observers;
 
-use Cog\Ban\Contracts\Ban as BanContract;
-use Cog\Ban\Events\ModelWasBanned;
-use Cog\Ban\Events\ModelWasUnbanned;
+use Cog\Contracts\Ban\Ban as BanContract;
+use Cog\Laravel\Ban\Events\ModelWasBanned;
+use Cog\Laravel\Ban\Events\ModelWasUnbanned;
 
 /**
  * Class BanObserver.
  *
- * @package Cog\Ban\Observers
+ * @package Cog\Laravel\Ban\Observers
  */
 class BanObserver
 {
     /**
      * Handle the creating event for the Ban model.
      *
-     * @param \Cog\Ban\Contracts\Ban $ban
+     * @param \Cog\Contracts\Ban\Ban $ban
      * @return void
      */
     public function creating(BanContract $ban)
@@ -42,30 +42,30 @@ class BanObserver
     /**
      * Handle the created event for the Ban model.
      *
-     * @param \Cog\Ban\Contracts\Ban $ban
+     * @param \Cog\Contracts\Ban\Ban $ban
      * @return void
      */
     public function created(BanContract $ban)
     {
-        $banOwner = $ban->owner;
-        $banOwner->setBannedFlag($ban->created_at)->save();
+        $bannable = $ban->bannable;
+        $bannable->setBannedFlag($ban->created_at)->save();
 
-        event(new ModelWasBanned($banOwner, $ban));
+        event(new ModelWasBanned($bannable, $ban));
     }
 
     /**
      * Handle the deleted event for the Ban model.
      *
-     * @param \Cog\Ban\Contracts\Ban $ban
+     * @param \Cog\Contracts\Ban\Ban $ban
      * @return void
      */
     public function deleted(BanContract $ban)
     {
-        $banOwner = $ban->owner;
-        if ($banOwner->bans->count() === 0) {
-            $banOwner->unsetBannedFlag()->save();
+        $bannable = $ban->bannable;
+        if ($bannable->bans->count() === 0) {
+            $bannable->unsetBannedFlag()->save();
 
-            event(new ModelWasUnbanned($banOwner));
+            event(new ModelWasUnbanned($bannable));
         }
     }
 }

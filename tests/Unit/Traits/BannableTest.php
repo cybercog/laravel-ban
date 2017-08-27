@@ -9,27 +9,27 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ban\Tests\Unit\Traits;
+namespace Cog\Tests\Laravel\Ban\Unit\Traits;
 
 use Carbon\Carbon;
-use Cog\Ban\Models\Ban;
-use Cog\Ban\Tests\Stubs\Models\User;
-use Cog\Ban\Tests\TestCase;
+use Cog\Laravel\Ban\Models\Ban;
+use Cog\Tests\Laravel\Ban\Stubs\Models\User;
+use Cog\Tests\Laravel\Ban\TestCase;
 
 /**
- * Class HasBansTest.
+ * Class BannableTest.
  *
- * @package Cog\Ban\Tests\Unit\Traits
+ * @package Cog\Tests\Laravel\Ban\Unit\Traits
  */
-class HasBansTest extends TestCase
+class BannableTest extends TestCase
 {
     /** @test */
     public function it_can_has_related_ban()
     {
         $user = factory(User::class)->create();
         factory(Ban::class)->create([
-            'owned_by_id' => $user->getKey(),
-            'owned_by_type' => $user->getMorphClass(),
+            'bannable_id' => $user->getKey(),
+            'bannable_type' => $user->getMorphClass(),
         ]);
 
         $this->assertInstanceOf(Ban::class, $user->bans->first());
@@ -41,8 +41,8 @@ class HasBansTest extends TestCase
         $user = factory(User::class)->create();
 
         factory(Ban::class, 2)->create([
-            'owned_by_id' => $user->getKey(),
-            'owned_by_type' => $user->getMorphClass(),
+            'bannable_id' => $user->getKey(),
+            'bannable_type' => $user->getMorphClass(),
         ]);
 
         $this->assertCount(2, $user->bans);
@@ -68,8 +68,8 @@ class HasBansTest extends TestCase
             'banned_at' => Carbon::now(),
         ]);
         factory(Ban::class)->create([
-            'owned_by_id' => $user->getKey(),
-            'owned_by_type' => $user->getMorphClass(),
+            'bannable_id' => $user->getKey(),
+            'bannable_type' => $user->getMorphClass(),
         ]);
 
         $user->unban();
@@ -85,8 +85,8 @@ class HasBansTest extends TestCase
             'banned_at' => Carbon::now(),
         ]);
         factory(Ban::class)->create([
-            'owned_by_id' => $user->getKey(),
-            'owned_by_type' => $user->getMorphClass(),
+            'bannable_id' => $user->getKey(),
+            'bannable_type' => $user->getMorphClass(),
         ]);
 
         $user->unban();
@@ -102,8 +102,8 @@ class HasBansTest extends TestCase
             'banned_at' => Carbon::now(),
         ]);
         factory(Ban::class)->create([
-            'owned_by_id' => $user->getKey(),
-            'owned_by_type' => $user->getMorphClass(),
+            'bannable_id' => $user->getKey(),
+            'bannable_type' => $user->getMorphClass(),
         ]);
 
         $user->unban();

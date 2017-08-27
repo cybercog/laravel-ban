@@ -9,17 +9,17 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ban\Tests\Unit\Models;
+namespace Cog\Tests\Laravel\Ban\Unit\Models;
 
 use Carbon\Carbon;
-use Cog\Ban\Models\Ban;
-use Cog\Ban\Tests\Stubs\Models\User;
-use Cog\Ban\Tests\TestCase;
+use Cog\Laravel\Ban\Models\Ban;
+use Cog\Tests\Laravel\Ban\Stubs\Models\User;
+use Cog\Tests\Laravel\Ban\TestCase;
 
 /**
  * Class BanTest.
  *
- * @package Cog\Ban\Tests\Unit\Models
+ * @package Cog\Tests\Laravel\Ban\Unit\Models
  */
 class BanTest extends TestCase
 {
@@ -100,5 +100,34 @@ class BanTest extends TestCase
 
         // TODO: Mock and check that \Carbon\Carbon::parse() method is called
         $this->assertEquals(Carbon::parse('+1 year')->format('Y'), $ban->expired_at->format('Y'));
+    }
+
+    /** @test */
+    public function it_can_has_bannable_model()
+    {
+        $user = factory(User::class)->create();
+        $ban = factory(Ban::class)->create([
+            'bannable_id' => $user->getKey(),
+            'bannable_type' => $user->getMorphClass(),
+        ]);
+
+        $this->assertInstanceOf(User::class, $ban->bannable);
+    }
+
+    /** @test */
+    public function it_can_scope_bannable_models()
+    {
+        $user1 = factory(User::class)->create();
+        factory(Ban::class, 4)->create([
+            'bannable_id' => $user1->getKey(),
+            'bannable_type' => $user1->getMorphClass(),
+        ]);
+        $user2 = factory(User::class)->create();
+        factory(Ban::class, 3)->create([
+            'bannable_id' => $user2->getKey(),
+            'bannable_type' => $user2->getMorphClass(),
+        ]);
+
+        $this->assertCount(4, Ban::whereBannable($user1)->get());
     }
 }

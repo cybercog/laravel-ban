@@ -36,10 +36,9 @@
     },
     "require": {
         "php": "^5.6|^7.0",
-        "cybercog/laravel-ownership": "^3.0",
-        "illuminate/database": "~5.1.20|~5.2.0|~5.3.0|~5.4.0",
-        "illuminate/events": "~5.1.20|~5.2.0|~5.3.0|~5.4.0",
-        "illuminate/support": "~5.1.20|~5.2.0|~5.3.0|~5.4.0"
+        "illuminate/database": "~5.1.20|~5.2|~5.3|~5.4|~5.5",
+        "illuminate/events": "~5.1.20|~5.2|~5.3|~5.4|~5.5",
+        "illuminate/support": "~5.1.20|~5.2|~5.3|~5.4|~5.5"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^1.11",
@@ -50,12 +49,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Cog\\Ban\\": "src/"
+            "Cog\\Contracts\\Ban\\": "contracts/",
+            "Cog\\Laravel\\Ban\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Cog\\Ban\\Tests\\": "tests/"
+            "Cog\\Tests\\Laravel\\Ban\\": "tests/"
         }
     },
     "scripts": {
@@ -63,6 +63,13 @@
     },
     "config": {
         "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Cog\\Laravel\\Ban\\Providers\\BanServiceProvider"
+            ]
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable" : true

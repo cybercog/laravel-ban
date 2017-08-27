@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ban\Http\Middleware;
+namespace Cog\Laravel\Ban\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
@@ -17,7 +17,7 @@ use Illuminate\Contracts\Auth\Guard;
 /**
  * Class ForbidBannedUser.
  *
- * @package Cog\Ban\Http\Middleware
+ * @package Cog\Laravel\Ban\Http\Middleware
  */
 class ForbidBannedUser
 {

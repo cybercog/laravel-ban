@@ -9,13 +9,16 @@
  * file that was distributed with this source code.
  */
 
-use Cog\Ban\Tests\Stubs\Models\User;
+use Cog\Laravel\Ban\Models\Ban;
+use Cog\Tests\Laravel\Ban\Stubs\Models\User;
+use Faker\Generator;
 
-$factory->define(\Cog\Ban\Models\Ban::class, function (\Faker\Generator $faker) {
+/* @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(Ban::class, function (Generator $faker) {
     $bannable = factory(User::class)->create();
 
     return [
-        'owned_by_id' => $bannable->getKey(),
-        'owned_by_type' => $bannable->getMorphClass(),
+        'bannable_id' => $bannable->getKey(),
+        'bannable_type' => $bannable->getMorphClass(),
     ];
 });

@@ -9,28 +9,28 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ban\Services;
+namespace Cog\Laravel\Ban\Services;
 
 use Carbon\Carbon;
-use Cog\Ban\Contracts\BanService as BanServiceContract;
-use Cog\Ban\Contracts\HasBans;
-use Cog\Ban\Models\Ban;
+use Cog\Contracts\Ban\Bannable;
+use Cog\Contracts\Ban\BanService as BanServiceContract;
+use Cog\Laravel\Ban\Models\Ban;
 
 /**
  * Class BanService.
  *
- * @package Cog\Ban\Services
+ * @package Cog\Laravel\Ban\Services
  */
 class BanService implements BanServiceContract
 {
     /**
      * Ban entity.
      *
-     * @param \Cog\Ban\Contracts\HasBans $bannable
+     * @param \Cog\Contracts\Ban\Bannable $bannable
      * @param array $attributes
-     * @return \Cog\Ban\Contracts\Ban
+     * @return \Cog\Contracts\Ban\Ban
      */
-    public function ban(HasBans $bannable, array $attributes = [])
+    public function ban(Bannable $bannable, array $attributes = [])
     {
         return $bannable->bans()->create($attributes);
     }
@@ -38,10 +38,10 @@ class BanService implements BanServiceContract
     /**
      * Unban entity.
      *
-     * @param \Cog\Ban\Contracts\HasBans $bannable
+     * @param \Cog\Contracts\Ban\Bannable $bannable
      * @return void
      */
-    public function unban(HasBans $bannable)
+    public function unban(Bannable $bannable)
     {
         $bannable->bans->each(function ($ban) {
             $ban->delete();

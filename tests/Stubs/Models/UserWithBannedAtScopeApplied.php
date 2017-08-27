@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ban\Tests\Stubs\Models;
+namespace Cog\Tests\Laravel\Ban\Stubs\Models;
 
 /**
  * Class UserWithBannedAtScopeApplied.
  *
- * @package Cog\Ban\Tests\Stubs\Models
+ * @package Cog\Tests\Laravel\Ban\Stubs\Models
  */
 class UserWithBannedAtScopeApplied extends User
 {

@@ -9,21 +9,33 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ban\Contracts;
-
-use Cog\Ownership\Contracts\CanBeOwner as CanBeOwnerContract;
+namespace Cog\Contracts\Ban;
 
 /**
- * Interface HasBans.
+ * Interface Bannable.
  *
- * @package Cog\Ban\Contracts
+ * @package Cog\Contracts\Ban
  */
-interface HasBans extends CanBeOwnerContract
+interface Bannable
 {
+    /**
+     * Get the value of the model's primary key.
+     *
+     * @return mixed
+     */
+    public function getKey();
+
+    /**
+     * Get the class name for polymorphic relations.
+     *
+     * @return string
+     */
+    public function getMorphClass();
+
     /**
      * Entity Bans.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     * @return mixed
      */
     public function bans();
 
@@ -45,7 +57,7 @@ interface HasBans extends CanBeOwnerContract
      * Ban model.
      *
      * @param null|array $attributes
-     * @return \Cog\Ban\Contracts\Ban
+     * @return \Cog\Contracts\Ban\Ban
      */
     public function ban(array $attributes = []);
 

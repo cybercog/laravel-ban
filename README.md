@@ -1,4 +1,6 @@
-![cog-laravel-ban](https://cloud.githubusercontent.com/assets/1849174/23580161/55a1c060-010d-11e7-9658-efe992bde0a7.png)
+# Laravel Ban
+
+![cog-laravel-ban](https://user-images.githubusercontent.com/1849174/28749192-fe2d2cb4-74c7-11e7-955e-9c48e81106c2.png)
 
 <p align="center">
 <a href="https://travis-ci.org/cybercog/laravel-ban"><img src="https://img.shields.io/travis/cybercog/laravel-ban/master.svg?style=flat-square" alt="Build Status"></a>
@@ -18,14 +20,15 @@ Use case is not limited to User model, any Eloquent model could be banned: Organ
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-    - [Prepare bannable model](#prepare-bannable-model)
-    - [Prepare bannable model database table](#prepare-bannable-model-database-table)
-    - [Available methods](#available-methods)
-    - [Scopes](#scopes)
-    - [Events](#events)
-    - [Middleware](#middleware)
-    - [Scheduling](#scheduling)
+  - [Prepare bannable model](#prepare-bannable-model)
+  - [Prepare bannable model database table](#prepare-bannable-model-database-table)
+  - [Available methods](#available-methods)
+  - [Scopes](#scopes)
+  - [Events](#events)
+  - [Middleware](#middleware)
+  - [Scheduling](#scheduling)
 - [Change log](#change-log)
+- [Upgrading](#upgrading)
 - [Contributing](#contributing)
 - [Testing](#testing)
 - [Security](#security)
@@ -63,14 +66,14 @@ And then include the service provider within `app/config/app.php`:
 
 ```php
 'providers' => [
-    Cog\Ban\Providers\BanServiceProvider::class,
+    Cog\Laravel\Ban\Providers\BanServiceProvider::class,
 ],
 ```
 
 At last you need to publish and run database migrations:
 
 ```sh
-$ php artisan vendor:publish --provider="Cog\Ban\Providers\BanServiceProvider" --tag="migrations"
+$ php artisan vendor:publish --provider="Cog\Laravel\Ban\Providers\BanServiceProvider" --tag="migrations"
 $ php artisan migrate
 ```
 
@@ -79,17 +82,15 @@ $ php artisan migrate
 ### Prepare bannable model
 
 ```php
-use Cog\Ban\Contracts\HasBans as HasBansContract;
-use Cog\Ban\Traits\HasBans;
+use Cog\Contracts\Ban\Bannable as BannableContract;
+use Cog\Laravel\Ban\Traits\Bannable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements HasBansContract
+class User extends Authenticatable implements BannableContract
 {
-    use HasBans;
+    use Bannable;
 }
 ```
-
-*Note: `HasBans` contract using `CanBeOwner` contract under the hood. If you are using [`cybercog/laravel-ownership`](https://github.com/cybercog/laravel-ownership) package `CanBeOwner` contract could be omitted from bannable model.*
 
 ### Prepare bannable model database table
 
@@ -133,19 +134,12 @@ class AddBannedAtColumnToUsersTable extends Migration
 #### Apply ban for the entity
 
 ```php
-$user->bans()->create([]);
-
 $user->ban();
 ```
-
 
 #### Apply ban for the entity with reason comment
  
 ```php
-$user->bans()->create([
-    'comment' => 'Enjoy your ban!',
-]);
-
 $user->ban([
     'comment' => 'Enjoy your ban!',
 ]);
@@ -154,16 +148,18 @@ $user->ban([
 #### Apply ban for the entity which will be deleted over time
  
 ```php
-$user->bans()->create([
-    'expired_at' => '+1 month',
-]);
-
 $user->ban([
     'expired_at' => '2086-03-28 00:00:00',
 ]);
-```
+``` 
 
-`expired_at` attribute could be `\Carbon\Carbon` instance or any string which could be parsed by `\Carbon\Carbon::parse($string)` method.
+`expired_at` attribute could be `\Carbon\Carbon` instance or any string which could be parsed by `\Carbon\Carbon::parse($string)` method:
+
+```php
+$user->ban([
+    'expired_at' => '+1 month',
+]);
+``` 
 
 #### Remove ban from entity
 
@@ -188,7 +184,7 @@ $user->isNotBanned();
 #### Delete expired bans manually
 
 ```php
-app(\Cog\Ban\Services\BanService::class)->deleteExpiredBans();
+app(\Cog\Laravel\Ban\Services\BanService::class)->deleteExpiredBans();
 ```
 
 ### Scopes
@@ -216,13 +212,13 @@ $users = User::onlyBanned()->get();
 To apply query scopes all the time you can define `shouldApplyBannedAtScope` method in bannable model. If method returns `true` all banned models will be hidden by default.
 
 ```php
-use Cog\Ban\Contracts\HasBans as HasBansContract;
-use Cog\Ban\Traits\HasBans;
+use Cog\Contracts\Ban\Bannable as BannableContract;
+use Cog\Laravel\Ban\Traits\Bannable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements HasBansContract
+class User extends Authenticatable implements BannableContract
 {
-    use HasBans;
+    use Bannable;
     
     /**
      * Determine if BannedAtScope should be applied by default.
@@ -238,9 +234,9 @@ class User extends Authenticatable implements HasBansContract
 
 ### Events
 
-If entity is banned `\Cog\Ban\Events\ModelWasBanned` event is fired.
+If entity is banned `\Cog\Laravel\Ban\Events\ModelWasBanned` event is fired.
 
-Is entity is unbanned `\Cog\Ban\Events\ModelWasUnbanned` event is fired.
+Is entity is unbanned `\Cog\Laravel\Ban\Events\ModelWasUnbanned` event is fired.
 
 ### Middleware
 
@@ -250,7 +246,7 @@ To use it define new middleware in `$routeMiddleware` array of `app/Http/Kernel.
 
 ```php
 protected $routeMiddleware = [
-    'forbid-banned-user' => \Cog\Ban\Http\Middleware\ForbidBannedUser::class,
+    'forbid-banned-user' => \Cog\Laravel\Ban\Http\Middleware\ForbidBannedUser::class,
 ]
 ```
 
@@ -283,6 +279,10 @@ Of course, the time used in the code above is just example. Adjust it to suit yo
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+
+## Upgrading
+
+Please see [UPGRADING](UPGRADING.md) for detailed upgrade instructions.
 
 ## Contributing
 

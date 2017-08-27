@@ -9,27 +9,27 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ban\Tests\Stubs\Models;
+namespace Cog\Tests\Laravel\Ban\Stubs\Models;
 
-use Cog\Ban\Contracts\HasBans as HasBansContract;
-use Cog\Ban\Traits\HasBans;
+use Cog\Contracts\Ban\Bannable as BannableContract;
+use Cog\Laravel\Ban\Traits\Bannable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * Class User.
  *
- * @package Cog\Ban\Tests\Stubs\Models
+ * @package Cog\Tests\Laravel\Ban\Stubs\Models
  */
-class User extends Authenticatable implements HasBansContract
+class User extends Authenticatable implements BannableContract
 {
-    use HasBans;
+    use Bannable;
 
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'user';
+    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.

@@ -9,45 +9,52 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ban\Providers;
+namespace Cog\Laravel\Ban\Providers;
 
-use Cog\Ban\Console\Commands\DeleteExpiredBans;
-use Cog\Ban\Contracts\Ban as BanContract;
-use Cog\Ban\Contracts\BanService as BanServiceContract;
-use Cog\Ban\Models\Ban;
-use Cog\Ban\Observers\BanObserver;
-use Cog\Ban\Services\BanService;
+use Cog\Laravel\Ban\Console\Commands\DeleteExpiredBans;
+use Cog\Contracts\Ban\Ban as BanContract;
+use Cog\Contracts\Ban\BanService as BanServiceContract;
+use Cog\Laravel\Ban\Models\Ban;
+use Cog\Laravel\Ban\Observers\BanObserver;
+use Cog\Laravel\Ban\Services\BanService;
 use Illuminate\Support\ServiceProvider;
 
 /**
- * Class ModerationServiceProvider.
+ * Class BanServiceProvider.
  *
- * @package Cog\Ban\Providers
+ * @package Cog\Laravel\Ban\Providers
  */
 class BanServiceProvider extends ServiceProvider
 {
     /**
      * Perform post-registration booting of services.
+     *
+     * @return void
      */
     public function boot()
     {
-        if ($this->app->runningInConsole()) {
-            $this->publishes([
-                __DIR__ . '/../../database/migrations' => database_path('migrations'),
-            ], 'migrations');
-        }
-
-        $this->bootObservers();
+        $this->registerPublishes();
+        $this->registerObservers();
     }
 
     /**
      * Register bindings in the container.
+     *
+     * @return void
      */
     public function register()
     {
-        $this->app->bind(BanContract::class, Ban::class);
-        $this->app->singleton(BanServiceContract::class, BanService::class);
+        $this->registerContracts();
+        $this->registerConsoleCommands();
+    }
 
+    /**
+     * Register Ban's console commands.
+     *
+     * @return void
+     */
+    protected function registerConsoleCommands()
+    {
         if ($this->app->runningInConsole()) {
             $this->app->bind('command.ban:delete-expired', DeleteExpiredBans::class);
 
@@ -58,10 +65,41 @@ class BanServiceProvider extends ServiceProvider
     }
 
     /**
-     * Package models observers.
+     * Register Ban's classes in the container.
+     *
+     * @return void
      */
-    protected function bootObservers()
+    protected function registerContracts()
     {
-        app(BanContract::class)->observe(new BanObserver());
+        $this->app->bind(BanContract::class, Ban::class);
+        $this->app->singleton(BanServiceContract::class, BanService::class);
+    }
+
+    /**
+     * Register Ban's models observers.
+     *
+     * @return void
+     */
+    protected function registerObservers()
+    {
+        $this->app->make(BanContract::class)->observe(new BanObserver);
+    }
+
+    /**
+     * Setup the resource publishing groups for Ban.
+     *
+     * @return void
+     */
+    protected function registerPublishes()
+    {
+        if ($this->app->runningInConsole()) {
+            $migrationsPath = __DIR__ . '/../../database/migrations';
+
+            $this->publishes([
+                $migrationsPath => database_path('migrations'),
+            ], 'migrations');
+
+            $this->loadMigrationsFrom($migrationsPath);
+        }
     }
 }

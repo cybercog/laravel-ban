@@ -9,33 +9,33 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ban\Contracts;
+namespace Cog\Contracts\Ban;
 
-use Cog\Ban\Contracts\HasBans as HasBansContract;
+use Cog\Contracts\Ban\Bannable as BannableContract;
 
 /**
  * Interface BanService.
  *
- * @package Cog\Ban\Contracts
+ * @package Cog\Contracts\Ban
  */
 interface BanService
 {
     /**
      * Ban entity.
      *
-     * @param \Cog\Ban\Contracts\HasBans $bannable
+     * @param \Cog\Contracts\Ban\Bannable $bannable
      * @param array $attributes
-     * @return \Cog\Ban\Contracts\Ban
+     * @return \Cog\Contracts\Ban\Ban
      */
-    public function ban(HasBansContract $bannable, array $attributes = []);
+    public function ban(BannableContract $bannable, array $attributes = []);
 
     /**
      * Unban entity.
      *
-     * @param \Cog\Ban\Contracts\HasBans $bannable
+     * @param \Cog\Contracts\Ban\Bannable $bannable
      * @return void
      */
-    public function unban(HasBansContract $bannable);
+    public function unban(BannableContract $bannable);
 
     /**
      * Delete all expired Ban models.

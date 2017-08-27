@@ -9,15 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ban\Traits;
+namespace Cog\Laravel\Ban\Traits;
 
 use Carbon\Carbon;
-use Cog\Ban\Contracts\BanService as BanServiceContract;
+use Cog\Contracts\Ban\BanService as BanServiceContract;
 
 /**
- * Class HasBannedAtHelpers.
+ * Trait HasBannedAtHelpers.
  *
- * @package Cog\Ban\Traits
+ * @package Cog\Laravel\Ban\Traits
  */
 trait HasBannedAtHelpers
 {
@@ -69,7 +69,7 @@ trait HasBannedAtHelpers
      * Ban model.
      *
      * @param null|array $attributes
-     * @return \Cog\Ban\Contracts\Ban
+     * @return \Cog\Contracts\Ban\Ban
      */
     public function ban(array $attributes = [])
     {
