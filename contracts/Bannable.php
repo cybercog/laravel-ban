@@ -19,6 +19,20 @@ namespace Cog\Contracts\Ban;
 interface Bannable
 {
     /**
+     * Get the value of the model's primary key.
+     *
+     * @return mixed
+     */
+    public function getKey();
+
+    /**
+     * Get the class name for polymorphic relations.
+     *
+     * @return string
+     */
+    public function getMorphClass();
+
+    /**
      * Entity Bans.
      *
      * @return \Illuminate\Database\Eloquent\Relations\MorphMany
@@ -67,18 +81,4 @@ interface Bannable
      * @return bool
      */
     public function isNotBanned();
-
-    /**
-     * Get the value of the model's primary key.
-     *
-     * @return mixed
-     */
-    public function getKey();
-
-    /**
-     * Get the class name for polymorphic relations.
-     *
-     * @return string
-     */
-    public function getMorphClass();
 }

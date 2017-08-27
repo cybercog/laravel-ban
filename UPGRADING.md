@@ -7,12 +7,13 @@
 Because there are many breaking changes an upgrade is not that easy. There are many edge cases this guide does not cover.
 We accept PRs to improve this guide.
 
-In your project find all `Cog\Ban\` and replace with `Cog\Laravel\Ban\`.
+Find and replace: 
 
-In your bannable models:
-
-- `Cog\Laravel\Ban\Traits\HasBans` change to `Cog\Laravel\Ban\Traits\Bannable`
-- `Cog\Laravel\Ban\Contracts\HasBans` change to `Cog\Contracts\Ban\Bannable`
+- Find all `Cog\Ban\Contracts\Ban` and replace with `Cog\Contracts\Ban\Ban`
+- Find all `Cog\Ban\Contracts\HasBans` and replace with `Cog\Contracts\Ban\Bannable`
+- Find all `Cog\Ban\Contracts\BanService` and replace with `Cog\Contracts\Ban\BanService`
+- Find all `Cog\Ban\Traits\HasBans` and replace with `Cog\Laravel\Ban\Traits\Bannable`
+- Find all `Cog\Ban` and replace with `Cog\Laravel\Ban`
 
 In classes which works with bans:
 

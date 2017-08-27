@@ -6,7 +6,10 @@ All notable changes to `laravel-ban` will be documented in this file.
 
 ### Changed
 
-- All classes namespaces changed from `Cog\Ban\*` to `Cog\Laravel\Ban\*`  
+- `Cog\Ban\Contracts\Ban` moved to `Cog\Contracts\Ban\Ban`
+- `Cog\Ban\Contracts\HasBans` moved to `Cog\Contracts\Ban\HasBans`
+- `Cog\Ban\Contracts\BanService` moved to `Cog\Contracts\Ban\BanService`
+- All classes namespaces changed from `Cog\Ban\*` to `Cog\Laravel\Ban\*`
 - Renamed database table `ban` to `bans`
 - Renamed database column `owned_by_id` to `bannable_id`
 - Renamed database column `owned_by_type` to `bannable_type`

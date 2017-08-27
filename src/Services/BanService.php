@@ -12,8 +12,8 @@
 namespace Cog\Laravel\Ban\Services;
 
 use Carbon\Carbon;
-use Cog\Contracts\Ban\BanService as BanServiceContract;
 use Cog\Contracts\Ban\Bannable;
+use Cog\Contracts\Ban\BanService as BanServiceContract;
 use Cog\Laravel\Ban\Models\Ban;
 
 /**
