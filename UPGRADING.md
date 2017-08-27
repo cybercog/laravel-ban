@@ -25,3 +25,11 @@ These database changes should be performed:
 - Rename `ban` table to `bans`
 - Rename `bans` database column `owned_by_id` to `bannable_id`
 - Rename `bans` database column `owned_by_type` to `bannable_type`
+- Update name of migration file:
+```mysql
+UPDATE migrations SET migration = '2017_03_04_000000_create_bans_table' WHERE migration = '2017_03_04_000000_create_ban_table';
+```
+
+Migration files:
+
+- Delete `database/migrations/2017_03_04_000000_create_ban_table.php` migration file (from v3 service provider automatically loading migration files or republish it if custom changes are required to be done).

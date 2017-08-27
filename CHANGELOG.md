@@ -2,7 +2,7 @@
 
 All notable changes to `laravel-ban` will be documented in this file.
 
-## [3.0.0] - WIP
+## [3.0.0] - 2017-08-27
 
 ### Changed
 

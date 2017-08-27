@@ -28,22 +28,31 @@ class BanServiceProvider extends ServiceProvider
 {
     /**
      * Perform post-registration booting of services.
+     *
+     * @return void
      */
     public function boot()
     {
-        $this->bootMigrations();
-        $this->bootObservers();
+        $this->registerPublishes();
+        $this->registerObservers();
     }
 
     /**
      * Register bindings in the container.
+     *
+     * @return void
      */
     public function register()
     {
-        $this->registerConsoleCommands();
         $this->registerContracts();
+        $this->registerConsoleCommands();
     }
 
+    /**
+     * Register Ban's console commands.
+     *
+     * @return void
+     */
     protected function registerConsoleCommands()
     {
         if ($this->app->runningInConsole()) {
@@ -55,6 +64,11 @@ class BanServiceProvider extends ServiceProvider
         }
     }
 
+    /**
+     * Register Ban's classes in the container.
+     *
+     * @return void
+     */
     protected function registerContracts()
     {
         $this->app->bind(BanContract::class, Ban::class);
@@ -62,19 +76,30 @@ class BanServiceProvider extends ServiceProvider
     }
 
     /**
-     * Package models observers.
+     * Register Ban's models observers.
+     *
+     * @return void
      */
-    protected function bootObservers()
+    protected function registerObservers()
     {
         $this->app->make(BanContract::class)->observe(new BanObserver);
     }
 
-    protected function bootMigrations()
+    /**
+     * Setup the resource publishing groups for Ban.
+     *
+     * @return void
+     */
+    protected function registerPublishes()
     {
         if ($this->app->runningInConsole()) {
+            $migrationsPath = __DIR__ . '/../../database/migrations';
+
             $this->publishes([
-                __DIR__ . '/../../database/migrations' => database_path('migrations'),
+                $migrationsPath => database_path('migrations'),
             ], 'migrations');
+
+            $this->loadMigrationsFrom($migrationsPath);
         }
     }
 }
