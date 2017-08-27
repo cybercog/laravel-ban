@@ -25,9 +25,23 @@ These database changes should be performed:
 - Rename `ban` table to `bans`
 - Rename `bans` database column `owned_by_id` to `bannable_id`
 - Rename `bans` database column `owned_by_type` to `bannable_type`
-- Update name of migration file:
+- Update name of migration file in `migrations` table from `2017_03_04_000000_create_ban_table` to `2017_03_04_000000_create_bans_table`
+
+To make all changes in MySQL you could run these 3 commands one by one:
+
 ```mysql
-UPDATE migrations SET migration = '2017_03_04_000000_create_bans_table' WHERE migration = '2017_03_04_000000_create_ban_table';
+ALTER TABLE `ban` RENAME TO `bans`;
+
+  ALTER TABLE `bans` 
+CHANGE COLUMN `owned_by_id` `bannable_id` INT(10) UNSIGNED NOT NULL,
+CHANGE COLUMN `owned_by_type` `bannable_type` VARCHAR(255) NOT NULL,
+   DROP INDEX `ban_owned_by_id_owned_by_type_index`,
+    ADD INDEX `ban_bannable_id_bannable_type_index` (`bannable_id` ASC, `bannable_type` ASC);
+
+UPDATE `migrations`
+   SET `migration` = '2017_03_04_000000_create_bans_table'
+ WHERE `migration` = '2017_03_04_000000_create_ban_table'
+ LIMIT 1;
 ```
 
 Migration files:
