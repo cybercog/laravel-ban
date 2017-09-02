@@ -66,7 +66,10 @@ abstract class TestCase extends Orchestra
      */
     protected function publishPackageMigrations()
     {
-        $this->artisan('vendor:publish', ['--force' => '']);
+        $this->artisan('vendor:publish', [
+            '--force' => '',
+            '--tag' => 'migrations',
+        ]);
     }
 
     /**
@@ -74,7 +77,7 @@ abstract class TestCase extends Orchestra
      */
     protected function destroyPackageMigrations()
     {
-        File::cleanDirectory('vendor/orchestra/testbench-core/fixture/database/migrations');
+        File::cleanDirectory('vendor/orchestra/testbench-core/laravel/database/migrations');
     }
 
     /**
