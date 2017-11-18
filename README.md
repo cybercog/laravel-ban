@@ -32,22 +32,22 @@ Use case is not limited to User model, any Eloquent model could be banned: Organ
 - [Contributing](#contributing)
 - [Testing](#testing)
 - [Security](#security)
-- [Credits](#credits)
+- [Contributors](#contributors)
 - [Alternatives](#alternatives)
 - [License](#license)
 - [About CyberCog](#about-cybercog)
 
 ## Features
 
-- Designed to work with Laravel Eloquent models.
-- Using contracts to keep high customization capabilities.
-- Using traits to get functionality out of the box.
 - Model can has many bans.
 - Removed bans keeps in history as Soft deleted record.
 - Most part of the the logic is handled by the `BanService`.
 - Has middleware to prevent banned user route access.
 - Use case is not limited to `User` model, any Eloquent model could be banned.
 - Events firing on models `ban` and `unban`.
+- Designed to work with Laravel Eloquent models.
+- Using contracts to keep high customization capabilities.
+- Using traits to get functionality out of the box.
 - Following PHP Standard Recommendations:
   - [PSR-1 (Basic Coding Standard)](http://www.php-fig.org/psr/psr-1/).
   - [PSR-2 (Coding Style Guide)](http://www.php-fig.org/psr/psr-2/).
@@ -62,13 +62,19 @@ First, pull in the package through Composer:
 $ composer require cybercog/laravel-ban
 ```
 
-And then include the service provider within `app/config/app.php`:
+#### Registering package
+
+> The package will automatically register itself. But if you are using Laravel 5.4 or earlier releases you require this step.
+
+Include the service provider within `app/config/app.php`:
 
 ```php
 'providers' => [
     Cog\Laravel\Ban\Providers\BanServiceProvider::class,
 ],
 ```
+
+#### Apply database migrations
 
 At last you need to publish and run database migrations:
 
@@ -300,11 +306,10 @@ $ composer test
 
 If you discover any security related issues, please email open@cybercog.su instead of using the issue tracker.
 
-## Credits
+## Contributors
 
-|  | @mention |
-|---|---|
-| ![@a-komarev](https://avatars2.githubusercontent.com/u/1849174?s=64) | [@a-komarev](https://github.com/a-komarev) |
+| <a href="https://github.com/a-komarev">![@a-komarev](https://avatars.githubusercontent.com/u/1849174?s=110)<br />Anton Komarev</a> |
+| :---: |
 
 [Laravel Ban contributors list](../../contributors)
 
