@@ -64,7 +64,7 @@ $ composer require cybercog/laravel-ban
 
 #### Registering package
 
-> The package will automatically register itself. But if you are using Laravel 5.4 or earlier releases you require this step.
+> The package will automatically register itself. This step required for Laravel 5.4 or earlier releases only.
 
 Include the service provider within `app/config/app.php`:
 
