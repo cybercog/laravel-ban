@@ -39,6 +39,6 @@ class ModelWasBannedTest extends TestCase
 
         $entity = factory(User::class)->create();
 
-        $entity->bans()->create();
+        $entity->bans()->create([]);
     }
 }
