@@ -11,10 +11,10 @@
 
 use Cog\Laravel\Ban\Models\Ban;
 use Cog\Tests\Laravel\Ban\Stubs\Models\User;
-use Faker\Generator;
+use Faker\Generator as Faker;
 
 /* @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(Ban::class, function (Generator $faker) {
+$factory->define(Ban::class, function (Faker $faker) {
     $bannable = factory(User::class)->create();
 
     return [

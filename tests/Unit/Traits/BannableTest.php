@@ -27,12 +27,14 @@ class BannableTest extends TestCase
     public function it_can_has_related_ban()
     {
         $user = factory(User::class)->create();
-        factory(Ban::class)->create([
+        $ban = factory(Ban::class)->create([
             'bannable_id' => $user->getKey(),
             'bannable_type' => $user->getMorphClass(),
         ]);
 
-        $this->assertInstanceOf(Ban::class, $user->bans->first());
+        $assertBan = $user->bans->first();
+        $this->assertInstanceOf(Ban::class, $assertBan);
+        $this->assertEquals($ban->getKey(), $assertBan->getKey());
     }
 
     /** @test */
@@ -56,7 +58,7 @@ class BannableTest extends TestCase
         ]);
 
         $user->ban();
-        $user = $user->fresh();
+        $user->refresh();
 
         $this->assertNotNull($user->banned_at);
     }
@@ -73,7 +75,7 @@ class BannableTest extends TestCase
         ]);
 
         $user->unban();
-        $user = $user->fresh();
+        $user->refresh();
 
         $this->assertNull($user->banned_at);
     }
@@ -90,7 +92,7 @@ class BannableTest extends TestCase
         ]);
 
         $user->unban();
-        $user = $user->fresh();
+        $user->refresh();
 
         $this->assertCount(0, $user->bans);
     }
@@ -107,7 +109,7 @@ class BannableTest extends TestCase
         ]);
 
         $user->unban();
-        $user = $user->fresh();
+        $user->refresh();
 
         $this->assertCount(1, $user->bans()->withTrashed()->get());
     }
@@ -162,7 +164,7 @@ class BannableTest extends TestCase
             'comment' => 'Enjoy your ban',
             'expired_at' => '+1 month',
         ]);
-        $user = $user->fresh();
+        $user->refresh();
 
         $this->assertInstanceOf(Ban::class, $ban);
         $this->assertTrue($user->isBanned());

@@ -10,10 +10,10 @@
  */
 
 use Cog\Tests\Laravel\Ban\Stubs\Models\User;
-use Faker\Generator;
+use Faker\Generator as Faker;
 
 /* @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(User::class, function (Generator $faker) {
+$factory->define(User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
     ];
