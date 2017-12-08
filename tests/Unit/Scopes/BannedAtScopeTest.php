@@ -35,6 +35,7 @@ class BannedAtScopeTest extends TestCase
         ]);
 
         $entities = User::all();
+
         $this->assertCount(5, $entities);
     }
 

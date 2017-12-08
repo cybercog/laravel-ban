@@ -61,6 +61,7 @@ class BanTest extends TestCase
     public function it_can_has_ban_creator()
     {
         $bannedBy = factory(User::class)->create();
+
         $ban = factory(Ban::class)->create([
             'created_by_id' => $bannedBy->getKey(),
             'created_by_type' => $bannedBy->getMorphClass(),
@@ -106,6 +107,7 @@ class BanTest extends TestCase
     public function it_can_has_bannable_model()
     {
         $user = factory(User::class)->create();
+
         $ban = factory(Ban::class)->create([
             'bannable_id' => $user->getKey(),
             'bannable_type' => $user->getMorphClass(),
@@ -128,6 +130,8 @@ class BanTest extends TestCase
             'bannable_type' => $user2->getMorphClass(),
         ]);
 
-        $this->assertCount(4, Ban::whereBannable($user1)->get());
+        $bannableModels = Ban::whereBannable($user1)->get();
+
+        $this->assertCount(4, $bannableModels);
     }
 }

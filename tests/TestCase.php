@@ -24,6 +24,8 @@ abstract class TestCase extends Orchestra
 {
     /**
      * Actions to be performed on PHPUnit start.
+     *
+     * @return void
      */
     protected function setUp()
     {
@@ -63,6 +65,8 @@ abstract class TestCase extends Orchestra
 
     /**
      * Publish package migrations.
+     *
+     * @return void
      */
     protected function publishPackageMigrations()
     {
@@ -74,6 +78,8 @@ abstract class TestCase extends Orchestra
 
     /**
      * Delete all published package migrations.
+     *
+     * @return void
      */
     protected function destroyPackageMigrations()
     {
@@ -82,6 +88,8 @@ abstract class TestCase extends Orchestra
 
     /**
      * Perform unit test database migrations.
+     *
+     * @return void
      */
     protected function migrateUnitTestTables()
     {
@@ -92,6 +100,8 @@ abstract class TestCase extends Orchestra
 
     /**
      * Perform package database migrations.
+     *
+     * @return void
      */
     protected function migratePackageTables()
     {

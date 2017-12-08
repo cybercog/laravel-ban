@@ -28,6 +28,7 @@ class ModelWasBannedTest extends TestCase
         $this->expectsEvents(ModelWasBanned::class);
 
         $entity = factory(User::class)->create();
+
         $entity->ban();
     }
 
@@ -37,6 +38,7 @@ class ModelWasBannedTest extends TestCase
         $this->expectsEvents(ModelWasBanned::class);
 
         $entity = factory(User::class)->create();
-        $entity->bans()->create([]);
+
+        $entity->bans()->create();
     }
 }

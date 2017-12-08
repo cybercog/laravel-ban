@@ -32,8 +32,8 @@ class BanServiceTest extends TestCase
         factory(Ban::class, 4)->create([
             'expired_at' => Carbon::now()->addMonth(),
         ]);
-
         $banService = new BanService();
+
         $banService->deleteExpiredBans();
 
         $this->assertCount(4, Ban::all());

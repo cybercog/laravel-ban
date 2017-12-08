@@ -28,9 +28,9 @@ class BanObserverTest extends TestCase
             'banned_at' => null,
         ]);
 
-        $user->bans()->create([]);
+        $user->bans()->create();
 
-        $user = $user->fresh();
+        $user->refresh();
         $this->assertNotNull($user->banned_at);
     }
 }
