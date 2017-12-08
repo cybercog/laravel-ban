@@ -27,7 +27,11 @@ class BannedAtScope implements Scope
      *
      * @var array
      */
-    protected $extensions = ['WithBanned', 'WithoutBanned', 'OnlyBanned'];
+    protected $extensions = [
+        'WithBanned',
+        'WithoutBanned',
+        'OnlyBanned',
+    ];
 
     /**
      * Apply the scope to a given Eloquent query builder.

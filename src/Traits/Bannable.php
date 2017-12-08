@@ -18,7 +18,7 @@ namespace Cog\Laravel\Ban\Traits;
  */
 trait Bannable
 {
-    use HasBannedAtHelpers,
-        HasBannedAtScope,
-        HasBansRelation;
+    use HasBannedAtHelpers;
+    use HasBannedAtScope;
+    use HasBansRelation;
 }
