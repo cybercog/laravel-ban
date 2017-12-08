@@ -190,7 +190,7 @@ $user->isNotBanned();
 #### Delete expired bans manually
 
 ```php
-app(\Cog\Laravel\Ban\Services\BanService::class)->deleteExpiredBans();
+app(\Cog\Contracts\Ban\BanService::class)->deleteExpiredBans();
 ```
 
 ### Scopes
