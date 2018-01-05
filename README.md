@@ -1,6 +1,7 @@
 # Laravel Ban
 
 ![cog-laravel-ban](https://user-images.githubusercontent.com/1849174/28749192-fe2d2cb4-74c7-11e7-955e-9c48e81106c2.png)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcybercog%2Flaravel-ban.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fcybercog%2Flaravel-ban?ref=badge_shield)
 
 <p align="center">
 <a href="https://travis-ci.org/cybercog/laravel-ban"><img src="https://img.shields.io/travis/cybercog/laravel-ban/master.svg?style=flat-square" alt="Build Status"></a>
@@ -321,6 +322,9 @@ If you discover any security related issues, please email open@cybercog.su inste
 
 - `Laravel Ban` package is open-sourced software licensed under the [MIT License](LICENSE).
 - `Fat Boss In Jail` image licensed under [Creative Commons 3.0](https://creativecommons.org/licenses/by/3.0/us/) by Gan Khoon Lay.
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcybercog%2Flaravel-ban.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fcybercog%2Flaravel-ban?ref=badge_large)
 
 ## About CyberCog
 
