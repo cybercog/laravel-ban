@@ -27,7 +27,7 @@ Use case is not limited to User model, any Eloquent model could be banned: Organ
   - [Events](#events)
   - [Middleware](#middleware)
   - [Scheduling](#scheduling)
-- [Change log](#change-log)
+- [Changelog](#changelog)
 - [Upgrading](#upgrading)
 - [Contributing](#contributing)
 - [Testing](#testing)
@@ -282,7 +282,7 @@ protected function schedule(Schedule $schedule)
 
 Of course, the time used in the code above is just example. Adjust it to suit your own preferences.
 
-## Change log
+## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
@@ -299,7 +299,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 Run the tests with:
 
 ```sh
-$ composer test
+$ vendor/bin/phpunit
 ```
 
 ## Security
