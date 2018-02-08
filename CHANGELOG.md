@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-ban` will be documented in this file.
 
+## [3.1.0] - 2018-02-08
+
+### Added
+
+- Laravel 5.6 support ([#18](https://github.com/cybercog/laravel-ban/pull/18))
+
 ## [3.0.0] - 2017-08-27
 
 ### Added
@@ -57,6 +63,7 @@ All notable changes to `laravel-ban` will be documented in this file.
 
 - Initial release
 
+[3.1.0]: https://github.com/cybercog/laravel-ban/compare/3.0.0...3.1.0
 [3.0.0]: https://github.com/cybercog/laravel-ban/compare/2.1.1...3.0.0
 [2.1.0]: https://github.com/cybercog/laravel-ban/compare/2.0.1...2.1.0
 [2.0.1]: https://github.com/cybercog/laravel-ban/compare/2.0.0...2.0.1
