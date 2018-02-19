@@ -319,7 +319,7 @@ If you discover any security related issues, please email open@cybercog.su inste
 
 ## License
 
-- `Laravel Ban` package is open-sourced software licensed under the [MIT License](LICENSE).
+- `Laravel Ban` package is open-sourced software licensed under the [MIT License](LICENSE) by Anton Komarev.
 - `Fat Boss In Jail` image licensed under [Creative Commons 3.0](https://creativecommons.org/licenses/by/3.0/us/) by Gan Khoon Lay.
 
 ## About CyberCog
