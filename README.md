@@ -1,6 +1,6 @@
 # Laravel Ban
 
-![cog-laravel-ban](https://user-images.githubusercontent.com/1849174/28749192-fe2d2cb4-74c7-11e7-955e-9c48e81106c2.png)
+![cog-laravel-ban](https://user-images.githubusercontent.com/1849174/44558308-1d8e0580-a74c-11e8-8e2a-ec297bbc3f12.png)
 
 <p align="center">
 <a href="https://github.com/cybercog/laravel-ban/releases"><img src="https://img.shields.io/github/release/cybercog/laravel-ban.svg?style=flat-square" alt="Releases"></a>
