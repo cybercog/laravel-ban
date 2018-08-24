@@ -286,7 +286,7 @@ Of course, the time used in the code above is just example. Adjust it to suit yo
 
 ## Integrations
 
-- [Laravel Nova](https://github.com/cybercog/laravel-nova-ban)
+- [Laravel Nova Ban](https://github.com/cybercog/laravel-nova-ban)
 
 ## Changelog
 
