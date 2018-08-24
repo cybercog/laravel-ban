@@ -28,6 +28,7 @@ Use case is not limited to User model, any Eloquent model could be banned: Organ
   - [Events](#events)
   - [Middleware](#middleware)
   - [Scheduling](#scheduling)
+- [Integrations](#integrations)
 - [Changelog](#changelog)
 - [Upgrading](#upgrading)
 - [Contributing](#contributing)
@@ -282,6 +283,10 @@ protected function schedule(Schedule $schedule)
 ```
 
 Of course, the time used in the code above is just example. Adjust it to suit your own preferences.
+
+## Integrations
+
+- [Laravel Nova](https://github.com/cybercog/laravel-nova-ban)
 
 ## Changelog
 
