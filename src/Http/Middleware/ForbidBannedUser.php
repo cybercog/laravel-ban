@@ -49,7 +49,6 @@ class ForbidBannedUser
         $user = $this->auth->user();
 
         if ($user && $user->isBanned()) {
-            
             auth()->logout();
             return redirect()->back()->withInput()->withErrors([
                 'login' => 'This account is blocked.',
