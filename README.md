@@ -267,6 +267,14 @@ Route::get('/', [
 ]);
 ```
 
+If you want force logout banned user on protected routes access, use `LogsOutBannedUser` middleware instead:
+
+```php
+protected $routeMiddleware = [
+    'logs-out-banned-user' => \Cog\Laravel\Ban\Http\Middleware\LogsOutBannedUser::class,
+]
+```
+
 ### Scheduling
 
 After you have performed the basic installation you can start using the `ban:delete-expired` command. In most cases you'll want to schedule these command so you don't have to manually run it everytime you need to delete expired bans and unban models.
@@ -314,8 +322,8 @@ If you discover any security related issues, please email open@cybercog.su inste
 
 ## Contributors
 
-| <a href="https://github.com/antonkomarev">![@antonkomarev](https://avatars.githubusercontent.com/u/1849174?s=110)<br />Anton Komarev</a> |
-| :---: |
+| <a href="https://github.com/antonkomarev">![@antonkomarev](https://avatars.githubusercontent.com/u/1849174?s=110)<br />Anton Komarev</a> | <a href="https://github.com/badrshs">![@badrshs](https://avatars.githubusercontent.com/u/26596347?s=110)<br />badr aldeen shek salim</a> |  
+| :---: | :---: |
 
 [Laravel Ban contributors list](../../contributors)
 

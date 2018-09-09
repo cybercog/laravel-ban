@@ -14,13 +14,14 @@ namespace Cog\Laravel\Ban\Http\Middleware;
 use Closure;
 use Cog\Contracts\Ban\Bannable as BannableContract;
 use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Contracts\Auth\StatefulGuard as StatefulGuardContract;
 
 /**
- * Class ForbidBannedUser.
+ * Class LogsOutBannedUser.
  *
  * @package Cog\Laravel\Ban\Http\Middleware
  */
-class ForbidBannedUser
+class LogsOutBannedUser
 {
     /**
      * The Guard implementation.
@@ -50,6 +51,11 @@ class ForbidBannedUser
         $user = $this->auth->user();
 
         if ($user && $user instanceof BannableContract && $user->isBanned()) {
+            if ($this->auth instanceof StatefulGuardContract) {
+                // TODO: Cover with tests
+                $this->auth->logout();
+            }
+
             return redirect()->back()->withInput()->withErrors([
                 'login' => 'This account is blocked.',
             ]);
