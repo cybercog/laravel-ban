@@ -2,18 +2,25 @@
 
 All notable changes to `laravel-ban` will be documented in this file.
 
+## [3.2.0] - 2018-09-09
+
+### Added
+
+- ([#26](https://github.com/cybercog/laravel-ban/pull/26)) Laravel 5.7 support
+- ([#25](https://github.com/cybercog/laravel-ban/pull/25)) Middleware to force logout banned users
+
 ## [3.1.0] - 2018-02-08
 
 ### Added
 
-- Laravel 5.6 support ([#18](https://github.com/cybercog/laravel-ban/pull/18))
+- ([#18](https://github.com/cybercog/laravel-ban/pull/18)) Laravel 5.6 support
 
 ## [3.0.0] - 2017-08-27
 
 ### Added
 
-- Laravel 5.5 support ([#7](https://github.com/cybercog/laravel-ban/pull/7))
-- Add package auto discovery for L5.5 ([#8](https://github.com/cybercog/laravel-ban/pull/8))
+- ([#7](https://github.com/cybercog/laravel-ban/pull/7)) Laravel 5.5 support
+- ([#8](https://github.com/cybercog/laravel-ban/pull/8)) Add package auto discovery for L5.5
 - Auto-loading migrations
 
 ### Changed
@@ -32,7 +39,7 @@ All notable changes to `laravel-ban` will be documented in this file.
 
 ### Removed
 
-- Dropped Laravel Ownership Dependency ([#9](https://github.com/cybercog/laravel-ban/pull/9))
+- ([#9](https://github.com/cybercog/laravel-ban/pull/9)) Dropped Laravel Ownership Dependency
 - Removed `owner` method from Ban model
 - Removed `getOwner` method from Ban model
 
@@ -50,7 +57,7 @@ All notable changes to `laravel-ban` will be documented in this file.
 
 ### Changed
 
-- Events properties are public now: [#4](https://github.com/cybercog/laravel-ban/pull/4)
+- [#4](https://github.com/cybercog/laravel-ban/pull/4) Events properties are public now
 
 ## [2.0.0] - 2017-03-06
 
@@ -63,6 +70,7 @@ All notable changes to `laravel-ban` will be documented in this file.
 
 - Initial release
 
+[3.2.0]: https://github.com/cybercog/laravel-ban/compare/3.1.0...3.2.0
 [3.1.0]: https://github.com/cybercog/laravel-ban/compare/3.0.0...3.1.0
 [3.0.0]: https://github.com/cybercog/laravel-ban/compare/2.1.1...3.0.0
 [2.1.0]: https://github.com/cybercog/laravel-ban/compare/2.0.1...2.1.0
