@@ -134,4 +134,28 @@ class BanTest extends TestCase
 
         $this->assertCount(4, $bannableModels);
     }
+
+    /** @test */
+    public function it_can_check_if_ban_is_permanent()
+    {
+        $permanentBan = new Ban();
+        $temporaryBan = new Ban([
+            'expired_at' => '2086-03-28 00:00:00',
+        ]);
+
+        $this->assertTrue($permanentBan->isPermanent());
+        $this->assertFalse($temporaryBan->isPermanent());
+    }
+
+    /** @test */
+    public function it_can_check_if_ban_is_temporary()
+    {
+        $permanentBan = new Ban();
+        $temporaryBan = new Ban([
+            'expired_at' => '2086-03-28 00:00:00',
+        ]);
+
+        $this->assertFalse($permanentBan->isTemporary());
+        $this->assertTrue($temporaryBan->isTemporary());
+    }
 }

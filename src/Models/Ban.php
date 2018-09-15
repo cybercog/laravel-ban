@@ -68,6 +68,26 @@ class Ban extends Model implements BanContract
     }
 
     /**
+     * Determine if Ban is permanent.
+     *
+     * @return bool
+     */
+    public function isPermanent()
+    {
+        return !isset($this->attributes['expired_at']) || is_null($this->attributes['expired_at']);
+    }
+
+    /**
+     * Determine if Ban is temporary.
+     *
+     * @return bool
+     */
+    public function isTemporary()
+    {
+        return !$this->isPermanent();
+    }
+
+    /**
      * Entity responsible for ban.
      *
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
@@ -97,8 +117,8 @@ class Ban extends Model implements BanContract
     public function scopeWhereBannable(Builder $query, BannableContract $bannable)
     {
         return $query->where([
-            'bannable_id' => $bannable->getKey(),
             'bannable_type' => $bannable->getMorphClass(),
+            'bannable_id' => $bannable->getKey(),
         ]);
     }
 }
