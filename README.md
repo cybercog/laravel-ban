@@ -195,6 +195,34 @@ $user->isNotBanned();
 app(\Cog\Contracts\Ban\BanService::class)->deleteExpiredBans();
 ```
 
+#### Determine if ban is permanent
+
+```php
+$ban = $user->ban();
+
+$ban->isPermanent(); // true
+```
+
+Or pass `null` value.
+
+```php
+$ban = $user->ban([
+   'expired_at' => null,
+]);
+
+$ban->isPermanent(); // true
+```
+
+#### Determine if ban is temporary
+
+```php
+$ban = $user->ban([
+   'expired_at' => '2086-03-28 00:00:00',
+]);
+
+$ban->isTemporary(); // true
+```
+
 ### Scopes
 
 #### Get all models which are not banned

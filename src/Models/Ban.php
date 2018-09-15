@@ -61,11 +61,7 @@ class Ban extends Model implements BanContract
      */
     public function setExpiredAtAttribute($value)
     {
-        if (is_null($value)) {
-            return;
-        }
-
-        if (!$value instanceof Carbon) {
+        if (!is_null($value) && !$value instanceof Carbon) {
             $value = Carbon::parse($value);
         }
 

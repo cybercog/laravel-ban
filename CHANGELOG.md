@@ -8,6 +8,10 @@ All notable changes to `laravel-ban` will be documented in this file.
 
 - ([#27](https://github.com/cybercog/laravel-ban/pull/27)) Add `isPermanent` & `isTemporary` ban checks
 
+### Fixed
+
+- ([#27](https://github.com/cybercog/laravel-ban/pull/27)) Stop trying to parse `null` value for `expired_at` as Carbon value
+
 ## [3.2.0] - 2018-09-09
 
 ### Added
