@@ -58,6 +58,16 @@ class BanTest extends TestCase
     }
 
     /** @test */
+    public function it_not_modify_null_expired_at()
+    {
+        $ban = new Ban([
+            'expired_at' => null,
+        ]);
+
+        $this->assertNull($ban->expired_at);
+    }
+
+    /** @test */
     public function it_can_has_ban_creator()
     {
         $bannedBy = factory(User::class)->create();
@@ -157,5 +167,16 @@ class BanTest extends TestCase
 
         $this->assertFalse($permanentBan->isTemporary());
         $this->assertTrue($temporaryBan->isTemporary());
+    }
+
+    /** @test */
+    public function it_can_check_if_ban_with_null_expired_at_is_permanent()
+    {
+        $permanentBan = new Ban([
+            'expired_at' => null,
+        ]);
+
+        $this->assertTrue($permanentBan->isPermanent());
+        $this->assertFalse($permanentBan->isTemporary());
     }
 }

@@ -57,9 +57,14 @@ class Ban extends Model implements BanContract
      * Expired timestamp mutator.
      *
      * @param \Carbon\Carbon|string $value
+     * @return void
      */
     public function setExpiredAtAttribute($value)
     {
+        if (is_null($value)) {
+            return;
+        }
+
         if (!$value instanceof Carbon) {
             $value = Carbon::parse($value);
         }
