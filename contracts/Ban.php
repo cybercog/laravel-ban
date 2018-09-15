@@ -11,9 +11,6 @@
 
 namespace Cog\Contracts\Ban;
 
-use Cog\Contracts\Ban\Bannable as BannableContract;
-use Illuminate\Database\Eloquent\Builder;
-
 /**
  * Interface Ban.
  *
@@ -36,11 +33,16 @@ interface Ban
     public function bannable();
 
     /**
-     * Scope a query to only include bans by bannable model.
+     * Determine if Ban is permanent.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \Cog\Contracts\Ban\Bannable $bannable
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return bool
      */
-    public function scopeWhereBannable(Builder $query, BannableContract $bannable);
+    public function isPermanent();
+
+    /**
+     * Determine if Ban is temporary.
+     *
+     * @return bool
+     */
+    public function isTemporary();
 }

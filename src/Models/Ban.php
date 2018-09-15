@@ -57,14 +57,35 @@ class Ban extends Model implements BanContract
      * Expired timestamp mutator.
      *
      * @param \Carbon\Carbon|string $value
+     * @return void
      */
     public function setExpiredAtAttribute($value)
     {
-        if (!$value instanceof Carbon) {
+        if (!is_null($value) && !$value instanceof Carbon) {
             $value = Carbon::parse($value);
         }
 
         $this->attributes['expired_at'] = $value;
+    }
+
+    /**
+     * Determine if Ban is permanent.
+     *
+     * @return bool
+     */
+    public function isPermanent()
+    {
+        return !isset($this->attributes['expired_at']) || is_null($this->attributes['expired_at']);
+    }
+
+    /**
+     * Determine if Ban is temporary.
+     *
+     * @return bool
+     */
+    public function isTemporary()
+    {
+        return !$this->isPermanent();
     }
 
     /**
@@ -97,8 +118,8 @@ class Ban extends Model implements BanContract
     public function scopeWhereBannable(Builder $query, BannableContract $bannable)
     {
         return $query->where([
-            'bannable_id' => $bannable->getKey(),
             'bannable_type' => $bannable->getMorphClass(),
+            'bannable_id' => $bannable->getKey(),
         ]);
     }
 }
