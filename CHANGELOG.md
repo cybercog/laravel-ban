@@ -80,6 +80,7 @@ All notable changes to `laravel-ban` will be documented in this file.
 
 - Initial release
 
+[3.3.0]: https://github.com/cybercog/laravel-ban/compare/3.2.0...3.3.0
 [3.2.0]: https://github.com/cybercog/laravel-ban/compare/3.1.0...3.2.0
 [3.1.0]: https://github.com/cybercog/laravel-ban/compare/3.0.0...3.1.0
 [3.0.0]: https://github.com/cybercog/laravel-ban/compare/2.1.1...3.0.0
