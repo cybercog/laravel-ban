@@ -36,7 +36,7 @@ class BanTest extends TestCase
     /** @test */
     public function it_can_fill_expired_at()
     {
-        $expiredAt = Carbon::now()->format('Y-m-d H:i:s');
+        $expiredAt = Carbon::now()->toDateTimeString();
 
         $ban = new Ban([
             'expired_at' => $expiredAt,
@@ -46,15 +46,23 @@ class BanTest extends TestCase
     }
 
     /** @test */
-    public function it_can_cast_expired_at()
+    public function it_casts_expired_at()
     {
-        $expiredAt = Carbon::now();
-
         $ban = new Ban([
-            'expired_at' => $expiredAt,
+            'expired_at' => '2018-03-28 00:00:00',
         ]);
 
         $this->assertInstanceOf(Carbon::class, $ban->expired_at);
+    }
+
+    /** @test */
+    public function it_casts_deleted_at()
+    {
+        $ban = factory(Ban::class)->create([
+            'deleted_at' => '2018-03-28 00:00:00',
+        ]);
+
+        $this->assertInstanceOf(Carbon::class, $ban->deleted_at);
     }
 
     /** @test */
