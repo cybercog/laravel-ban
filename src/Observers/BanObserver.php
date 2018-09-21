@@ -47,7 +47,7 @@ class BanObserver
      */
     public function created(BanContract $ban)
     {
-        $bannable = $ban->bannable;
+        $bannable = $ban->bannable()->withBanned()->first();
         $bannable->setBannedFlag($ban->created_at)->save();
 
         event(new ModelWasBanned($bannable, $ban));
@@ -61,7 +61,7 @@ class BanObserver
      */
     public function deleted(BanContract $ban)
     {
-        $bannable = $ban->bannable;
+        $bannable = $ban->bannable()->withBanned()->first();
         if ($bannable->bans->count() === 0) {
             $bannable->unsetBannedFlag()->save();
 

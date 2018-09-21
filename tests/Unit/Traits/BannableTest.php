@@ -14,6 +14,7 @@ namespace Cog\Tests\Laravel\Ban\Unit\Traits;
 use Carbon\Carbon;
 use Cog\Laravel\Ban\Models\Ban;
 use Cog\Tests\Laravel\Ban\Stubs\Models\User;
+use Cog\Tests\Laravel\Ban\Stubs\Models\UserWithBannedAtScopeApplied;
 use Cog\Tests\Laravel\Ban\TestCase;
 
 /**
@@ -68,6 +69,37 @@ class BannableTest extends TestCase
     public function it_can_unban()
     {
         $user = factory(User::class)->create([
+            'banned_at' => Carbon::now(),
+        ]);
+        factory(Ban::class)->create([
+            'bannable_id' => $user->getKey(),
+            'bannable_type' => $user->getMorphClass(),
+        ]);
+
+        $user->unban();
+
+        $user->refresh();
+        $this->assertNull($user->banned_at);
+    }
+
+    /** @test */
+    public function it_can_ban_user_with_banned_at_scope_applied()
+    {
+        $user = factory(UserWithBannedAtScopeApplied::class)->create([
+            'banned_at' => Carbon::now(),
+        ]);
+
+        $user->ban();
+
+        // TODO: Replace with `$user->refresh()` after throwing Laravel 5.4 support
+        $user = UserWithBannedAtScopeApplied::query()->whereKey($user->getKey())->withBanned()->firstOrFail();
+        $this->assertNotNull($user->banned_at);
+    }
+
+    /** @test */
+    public function it_can_unban_user_with_banned_at_scope_applied()
+    {
+        $user = factory(UserWithBannedAtScopeApplied::class)->create([
             'banned_at' => Carbon::now(),
         ]);
         factory(Ban::class)->create([
