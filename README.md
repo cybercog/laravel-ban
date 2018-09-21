@@ -48,6 +48,7 @@ Use case is not limited to User model, any Eloquent model could be banned: Organ
 - Use case is not limited to `User` model, any Eloquent model could be banned.
 - Events firing on models `ban` and `unban`.
 - Designed to work with Laravel Eloquent models.
+- Has [Laravel Nova support](https://github.com/cybercog/laravel-nova-ban).
 - Using contracts to keep high customization capabilities.
 - Using traits to get functionality out of the box.
 - Following PHP Standard Recommendations:
@@ -350,8 +351,8 @@ If you discover any security related issues, please email open@cybercog.su inste
 
 ## Contributors
 
-| <a href="https://github.com/antonkomarev">![@antonkomarev](https://avatars.githubusercontent.com/u/1849174?s=110)<br />Anton Komarev</a> | <a href="https://github.com/badrshs">![@badrshs](https://avatars.githubusercontent.com/u/26596347?s=110)<br />badr aldeen shek salim</a> |  
-| :---: | :---: |
+| <a href="https://github.com/antonkomarev">![@antonkomarev](https://avatars.githubusercontent.com/u/1849174?s=110)<br />Anton Komarev</a> | <a href="https://github.com/badrshs">![@badrshs](https://avatars.githubusercontent.com/u/26596347?s=110)<br />badr aldeen shek salim</a> | <a href="https://github.com/rickmacgillis">![@rickmacgillis](https://avatars.githubusercontent.com/u/8941225?s=110)<br />Rick Mac Gillis</a> |
+| :---: | :---: | :---: |
 
 [Laravel Ban contributors list](../../contributors)
 
@@ -361,7 +362,7 @@ If you discover any security related issues, please email open@cybercog.su inste
 
 ## License
 
-- `Laravel Ban` package is open-sourced software licensed under the [MIT License](LICENSE) by Anton Komarev.
+- `Laravel Ban` package is open-sourced software licensed under the [MIT License](LICENSE) by [Anton Komarev](https://github.com/antonkomarev/).
 - `Fat Boss In Jail` image licensed under [Creative Commons 3.0](https://creativecommons.org/licenses/by/3.0/us/) by Gan Khoon Lay.
 
 ## About CyberCog

@@ -2,6 +2,16 @@
 
 All notable changes to `laravel-ban` will be documented in this file.
 
+## [3.4.0] - 2018-09-21
+
+### Added
+
+- ([#29](https://github.com/cybercog/laravel-ban/pull/29)) Add `datetime` cast for the `deleted_at` attribute
+
+### Fixed
+
+- ([#30](https://github.com/cybercog/laravel-ban/pull/30)) Fixed bannable models ban & unban with applied BannedAtScope
+
 ## [3.3.0] - 2018-09-16
 
 ### Added
@@ -80,6 +90,7 @@ All notable changes to `laravel-ban` will be documented in this file.
 
 - Initial release
 
+[3.4.0]: https://github.com/cybercog/laravel-ban/compare/3.3.0...3.4.0
 [3.3.0]: https://github.com/cybercog/laravel-ban/compare/3.2.0...3.3.0
 [3.2.0]: https://github.com/cybercog/laravel-ban/compare/3.1.0...3.2.0
 [3.1.0]: https://github.com/cybercog/laravel-ban/compare/3.0.0...3.1.0
