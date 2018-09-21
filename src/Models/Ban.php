@@ -51,6 +51,7 @@ class Ban extends Model implements BanContract
      */
     protected $casts = [
         'expired_at' => 'datetime',
+        'deleted_at' => 'datetime',
     ];
 
     /**
