@@ -91,7 +91,8 @@ class BannableTest extends TestCase
 
         $user->ban();
 
-        $user->refresh();
+        // TODO: Replace with `$user->refresh()` after throwing Laravel 5.4 support
+        $user = UserWithBannedAtScopeApplied::query()->whereKey($user->getKey())->withBanned()->firstOrFail();
         $this->assertNotNull($user->banned_at);
     }
 
