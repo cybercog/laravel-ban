@@ -42,6 +42,8 @@ class Ban extends Model implements BanContract
     protected $fillable = [
         'comment',
         'expired_at',
+        'created_by_type',
+        'created_by_id',
     ];
 
     /**

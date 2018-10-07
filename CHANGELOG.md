@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-ban` will be documented in this file.
 
+## [3.5.0] - 2018-10-07
+
+### Added
+
+- ([#35](https://github.com/cybercog/laravel-ban/pull/35)) Ban `created_by_type` & `created_by_id` are fillable now
+
 ## [3.4.0] - 2018-09-21
 
 ### Added
@@ -90,6 +96,7 @@ All notable changes to `laravel-ban` will be documented in this file.
 
 - Initial release
 
+[3.5.0]: https://github.com/cybercog/laravel-ban/compare/3.4.0...3.5.0
 [3.4.0]: https://github.com/cybercog/laravel-ban/compare/3.3.0...3.4.0
 [3.3.0]: https://github.com/cybercog/laravel-ban/compare/3.2.0...3.3.0
 [3.2.0]: https://github.com/cybercog/laravel-ban/compare/3.1.0...3.2.0
