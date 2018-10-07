@@ -31,10 +31,10 @@ class BanObserver
     public function creating(BanContract $ban)
     {
         $bannedBy = auth()->user();
-        if ($bannedBy) {
-            $ban->forceFill([
-                'created_by_id' => $bannedBy->getKey(),
+        if ($bannedBy && is_null($ban->created_by_type) && is_null($ban->created_by_id)) {
+            $ban->fill([
                 'created_by_type' => $bannedBy->getMorphClass(),
+                'created_by_id' => $bannedBy->getKey(),
             ]);
         }
     }

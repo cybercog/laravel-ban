@@ -30,7 +30,7 @@ class BanTest extends TestCase
             'comment' => 'Enjoy your ban!',
         ]);
 
-        $this->assertEquals('Enjoy your ban!', $ban->comment);
+        $this->assertSame('Enjoy your ban!', $ban->comment);
     }
 
     /** @test */
@@ -43,6 +43,26 @@ class BanTest extends TestCase
         ]);
 
         $this->assertEquals($expiredAt, $ban->expired_at);
+    }
+
+    /** @test */
+    public function it_can_fill_created_by_type()
+    {
+        $ban = new Ban([
+            'created_by_type' => 'TestType',
+        ]);
+
+        $this->assertSame('TestType', $ban->created_by_type);
+    }
+
+    /** @test */
+    public function it_can_fill_created_by_id()
+    {
+        $ban = new Ban([
+            'created_by_id' => '4',
+        ]);
+
+        $this->assertSame('4', $ban->created_by_id);
     }
 
     /** @test */
@@ -81,11 +101,42 @@ class BanTest extends TestCase
         $bannedBy = factory(User::class)->create();
 
         $ban = factory(Ban::class)->create([
-            'created_by_id' => $bannedBy->getKey(),
             'created_by_type' => $bannedBy->getMorphClass(),
+            'created_by_id' => $bannedBy->getKey(),
         ]);
 
         $this->assertInstanceOf(User::class, $ban->createdBy);
+    }
+
+    /** @test */
+    public function it_can_set_custom_ban_creator()
+    {
+        $bannable = factory(User::class)->create();
+        $bannedBy = factory(User::class)->create();
+
+        $ban = $bannable->bans()->create([
+            'created_by_type' => $bannedBy->getMorphClass(),
+            'created_by_id' => $bannedBy->getKey(),
+        ]);
+
+        $this->assertTrue($ban->createdBy->is($bannedBy));
+    }
+
+    /** @test */
+    public function it_not_overwrite_ban_creator_with_auth_user_if_custom_value_is_provided()
+    {
+        $bannable = factory(User::class)->create();
+        $bannedBy = factory(User::class)->create();
+        $currentUser = factory(User::class)->create();
+
+        $this->actingAs($currentUser);
+
+        $ban = $bannable->bans()->create([
+            'created_by_type' => $bannedBy->getMorphClass(),
+            'created_by_id' => $bannedBy->getKey(),
+        ]);
+
+        $this->assertTrue($ban->createdBy->is($bannedBy));
     }
 
     /** @test */
