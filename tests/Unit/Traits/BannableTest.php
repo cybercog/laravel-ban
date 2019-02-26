@@ -9,23 +9,20 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Cog\Tests\Laravel\Ban\Unit\Traits;
 
-use Carbon\Carbon;
 use Cog\Laravel\Ban\Models\Ban;
 use Cog\Tests\Laravel\Ban\Stubs\Models\User;
 use Cog\Tests\Laravel\Ban\Stubs\Models\UserWithBannedAtScopeApplied;
 use Cog\Tests\Laravel\Ban\TestCase;
+use Illuminate\Support\Carbon;
 
-/**
- * Class BannableTest.
- *
- * @package Cog\Tests\Laravel\Ban\Unit\Traits
- */
 class BannableTest extends TestCase
 {
     /** @test */
-    public function it_can_has_related_ban()
+    public function it_can_has_related_ban(): void
     {
         $user = factory(User::class)->create();
 
@@ -35,12 +32,11 @@ class BannableTest extends TestCase
         ]);
 
         $assertBan = $user->bans->first();
-        $this->assertInstanceOf(Ban::class, $assertBan);
-        $this->assertEquals($ban->getKey(), $assertBan->getKey());
+        $this->assertTrue($ban->is($assertBan));
     }
 
     /** @test */
-    public function it_can_has_many_related_bans()
+    public function it_can_has_many_related_bans(): void
     {
         $user = factory(User::class)->create();
 
@@ -53,7 +49,7 @@ class BannableTest extends TestCase
     }
 
     /** @test */
-    public function it_can_ban()
+    public function it_can_ban(): void
     {
         $user = factory(User::class)->create([
             'banned_at' => null,
@@ -66,7 +62,7 @@ class BannableTest extends TestCase
     }
 
     /** @test */
-    public function it_can_unban()
+    public function it_can_unban(): void
     {
         $user = factory(User::class)->create([
             'banned_at' => Carbon::now(),
@@ -83,7 +79,7 @@ class BannableTest extends TestCase
     }
 
     /** @test */
-    public function it_can_ban_user_with_banned_at_scope_applied()
+    public function it_can_ban_user_with_banned_at_scope_applied(): void
     {
         $user = factory(UserWithBannedAtScopeApplied::class)->create([
             'banned_at' => Carbon::now(),
@@ -97,7 +93,7 @@ class BannableTest extends TestCase
     }
 
     /** @test */
-    public function it_can_unban_user_with_banned_at_scope_applied()
+    public function it_can_unban_user_with_banned_at_scope_applied(): void
     {
         $user = factory(UserWithBannedAtScopeApplied::class)->create([
             'banned_at' => Carbon::now(),
@@ -114,7 +110,7 @@ class BannableTest extends TestCase
     }
 
     /** @test */
-    public function it_can_delete_ban_on_unban()
+    public function it_can_delete_ban_on_unban(): void
     {
         $user = factory(User::class)->create([
             'banned_at' => Carbon::now(),
@@ -131,7 +127,7 @@ class BannableTest extends TestCase
     }
 
     /** @test */
-    public function it_can_soft_delete_ban_on_unban()
+    public function it_can_soft_delete_ban_on_unban(): void
     {
         $user = factory(User::class)->create([
             'banned_at' => Carbon::now(),
@@ -148,7 +144,7 @@ class BannableTest extends TestCase
     }
 
     /** @test */
-    public function it_can_return_ban_model()
+    public function it_can_return_ban_model(): void
     {
         $user = factory(User::class)->create([
             'banned_at' => null,
@@ -160,7 +156,7 @@ class BannableTest extends TestCase
     }
 
     /** @test */
-    public function it_can_has_empty_banned_by()
+    public function it_can_has_empty_banned_by(): void
     {
         $user = factory(User::class)->create([
             'banned_at' => null,
@@ -172,7 +168,7 @@ class BannableTest extends TestCase
     }
 
     /** @test */
-    public function it_can_has_current_user_as_banned_by()
+    public function it_can_has_current_user_as_banned_by(): void
     {
         $bannedBy = factory(User::class)->create();
         $user = factory(User::class)->create([
@@ -182,12 +178,11 @@ class BannableTest extends TestCase
 
         $ban = $user->ban();
 
-        $this->assertInstanceOf(User::class, $ban->createdBy);
-        $this->assertEquals($bannedBy->getKey(), $ban->createdBy->getKey());
+        $this->assertTrue($bannedBy->is($ban->createdBy));
     }
 
     /** @test */
-    public function it_can_ban_via_ban_relation_create()
+    public function it_can_ban_via_ban_relation_create(): void
     {
         $user = factory(User::class)->create([
             'banned_at' => null,
@@ -204,7 +199,7 @@ class BannableTest extends TestCase
     }
 
     /** @test */
-    public function it_can_ban_with_comment()
+    public function it_can_ban_with_comment(): void
     {
         $user = factory(User::class)->create([
             'banned_at' => null,
@@ -214,11 +209,11 @@ class BannableTest extends TestCase
             'comment' => 'Enjoy your ban',
         ]);
 
-        $this->assertEquals('Enjoy your ban', $ban->comment);
+        $this->assertSame('Enjoy your ban', $ban->comment);
     }
 
     /** @test */
-    public function it_can_ban_with_expiration_date()
+    public function it_can_ban_with_expiration_date(): void
     {
         $user = factory(User::class)->create([
             'banned_at' => null,

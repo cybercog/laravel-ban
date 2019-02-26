@@ -9,17 +9,14 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Cog\Tests\Laravel\Ban\Stubs\Models;
 
 use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Laravel\Ban\Traits\Bannable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-/**
- * Class User.
- *
- * @package Cog\Tests\Laravel\Ban\Stubs\Models
- */
 class User extends Authenticatable implements BannableContract
 {
     use Bannable;

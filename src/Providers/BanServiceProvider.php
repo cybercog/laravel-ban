@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Cog\Laravel\Ban\Providers;
 
 use Cog\Laravel\Ban\Console\Commands\DeleteExpiredBans;
@@ -19,33 +21,30 @@ use Cog\Laravel\Ban\Observers\BanObserver;
 use Cog\Laravel\Ban\Services\BanService;
 use Illuminate\Support\ServiceProvider;
 
-/**
- * Class BanServiceProvider.
- *
- * @package Cog\Laravel\Ban\Providers
- */
 class BanServiceProvider extends ServiceProvider
 {
-    /**
-     * Perform post-registration booting of services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        $this->registerPublishes();
-        $this->registerObservers();
-    }
-
     /**
      * Register bindings in the container.
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerContracts();
         $this->registerConsoleCommands();
+    }
+
+    /**
+     * Perform post-registration booting of services.
+     *
+     * @return void
+     *
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
+    public function boot(): void
+    {
+        $this->registerPublishes();
+        $this->registerObservers();
     }
 
     /**
@@ -53,7 +52,7 @@ class BanServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerConsoleCommands()
+    protected function registerConsoleCommands(): void
     {
         if ($this->app->runningInConsole()) {
             $this->app->bind('command.ban:delete-expired', DeleteExpiredBans::class);
@@ -69,7 +68,7 @@ class BanServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerContracts()
+    protected function registerContracts(): void
     {
         $this->app->bind(BanContract::class, Ban::class);
         $this->app->singleton(BanServiceContract::class, BanService::class);
@@ -79,8 +78,10 @@ class BanServiceProvider extends ServiceProvider
      * Register Ban's models observers.
      *
      * @return void
+     *
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    protected function registerObservers()
+    protected function registerObservers(): void
     {
         $this->app->make(BanContract::class)->observe(new BanObserver);
     }
@@ -90,7 +91,7 @@ class BanServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerPublishes()
+    protected function registerPublishes(): void
     {
         if ($this->app->runningInConsole()) {
             $migrationsPath = __DIR__ . '/../../database/migrations';

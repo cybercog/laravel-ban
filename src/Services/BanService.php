@@ -9,18 +9,16 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Cog\Laravel\Ban\Services;
 
-use Carbon\Carbon;
-use Cog\Contracts\Ban\Bannable;
+use Cog\Contracts\Ban\Ban as BanContract;
+use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Contracts\Ban\BanService as BanServiceContract;
 use Cog\Laravel\Ban\Models\Ban;
+use Illuminate\Support\Carbon;
 
-/**
- * Class BanService.
- *
- * @package Cog\Laravel\Ban\Services
- */
 class BanService implements BanServiceContract
 {
     /**
@@ -30,7 +28,7 @@ class BanService implements BanServiceContract
      * @param array $attributes
      * @return \Cog\Contracts\Ban\Ban
      */
-    public function ban(Bannable $bannable, array $attributes = [])
+    public function ban(BannableContract $bannable, array $attributes = []): BanContract
     {
         return $bannable->bans()->create($attributes);
     }
@@ -41,7 +39,7 @@ class BanService implements BanServiceContract
      * @param \Cog\Contracts\Ban\Bannable $bannable
      * @return void
      */
-    public function unban(Bannable $bannable)
+    public function unban(BannableContract $bannable): void
     {
         $bannable->bans->each(function ($ban) {
             $ban->delete();
@@ -53,9 +51,11 @@ class BanService implements BanServiceContract
      *
      * @return void
      */
-    public function deleteExpiredBans()
+    public function deleteExpiredBans(): void
     {
-        $bans = Ban::where('expired_at', '<=', Carbon::now()->format('Y-m-d H:i:s'))->get();
+        $bans = Ban::query()
+            ->where('expired_at', '<=', Carbon::now()->format('Y-m-d H:i:s'))
+            ->get();
 
         $bans->each(function ($ban) {
             $ban->delete();

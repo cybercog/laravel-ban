@@ -9,22 +9,19 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Cog\Tests\Laravel\Ban\Unit\Models;
 
-use Carbon\Carbon;
 use Cog\Laravel\Ban\Models\Ban;
 use Cog\Tests\Laravel\Ban\Stubs\Models\User;
 use Cog\Tests\Laravel\Ban\TestCase;
+use Illuminate\Support\Carbon;
 
-/**
- * Class BanTest.
- *
- * @package Cog\Tests\Laravel\Ban\Unit\Models
- */
 class BanTest extends TestCase
 {
     /** @test */
-    public function it_can_fill_comment()
+    public function it_can_fill_comment(): void
     {
         $ban = new Ban([
             'comment' => 'Enjoy your ban!',
@@ -34,7 +31,7 @@ class BanTest extends TestCase
     }
 
     /** @test */
-    public function it_can_fill_expired_at()
+    public function it_can_fill_expired_at(): void
     {
         $expiredAt = Carbon::now()->toDateTimeString();
 
@@ -42,41 +39,41 @@ class BanTest extends TestCase
             'expired_at' => $expiredAt,
         ]);
 
-        $this->assertEquals($expiredAt, $ban->expired_at);
+        $this->assertEquals($expiredAt, $ban->getAttribute('expired_at'));
     }
 
     /** @test */
-    public function it_can_fill_created_by_type()
+    public function it_can_fill_created_by_type(): void
     {
         $ban = new Ban([
             'created_by_type' => 'TestType',
         ]);
 
-        $this->assertSame('TestType', $ban->created_by_type);
+        $this->assertSame('TestType', $ban->getAttribute('created_by_type'));
     }
 
     /** @test */
-    public function it_can_fill_created_by_id()
+    public function it_can_fill_created_by_id(): void
     {
         $ban = new Ban([
             'created_by_id' => '4',
         ]);
 
-        $this->assertSame('4', $ban->created_by_id);
+        $this->assertSame('4', $ban->getAttribute('created_by_id'));
     }
 
     /** @test */
-    public function it_casts_expired_at()
+    public function it_casts_expired_at(): void
     {
         $ban = new Ban([
             'expired_at' => '2018-03-28 00:00:00',
         ]);
 
-        $this->assertInstanceOf(Carbon::class, $ban->expired_at);
+        $this->assertInstanceOf(Carbon::class, $ban->getAttribute('expired_at'));
     }
 
     /** @test */
-    public function it_casts_deleted_at()
+    public function it_casts_deleted_at(): void
     {
         $ban = factory(Ban::class)->create([
             'deleted_at' => '2018-03-28 00:00:00',
@@ -86,17 +83,17 @@ class BanTest extends TestCase
     }
 
     /** @test */
-    public function it_not_modify_null_expired_at()
+    public function it_not_modify_null_expired_at(): void
     {
         $ban = new Ban([
             'expired_at' => null,
         ]);
 
-        $this->assertNull($ban->expired_at);
+        $this->assertNull($ban->getAttribute('expired_at'));
     }
 
     /** @test */
-    public function it_can_has_ban_creator()
+    public function it_can_has_ban_creator(): void
     {
         $bannedBy = factory(User::class)->create();
 
@@ -109,7 +106,7 @@ class BanTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_custom_ban_creator()
+    public function it_can_set_custom_ban_creator(): void
     {
         $bannable = factory(User::class)->create();
         $bannedBy = factory(User::class)->create();
@@ -123,7 +120,7 @@ class BanTest extends TestCase
     }
 
     /** @test */
-    public function it_not_overwrite_ban_creator_with_auth_user_if_custom_value_is_provided()
+    public function it_not_overwrite_ban_creator_with_auth_user_if_custom_value_is_provided(): void
     {
         $bannable = factory(User::class)->create();
         $bannedBy = factory(User::class)->create();
@@ -140,7 +137,7 @@ class BanTest extends TestCase
     }
 
     /** @test */
-    public function it_can_make_model_with_expire_carbon_date()
+    public function it_can_make_model_with_expire_carbon_date(): void
     {
         $expiredAt = Carbon::now();
 
@@ -148,32 +145,35 @@ class BanTest extends TestCase
             'expired_at' => $expiredAt,
         ]);
 
-        $this->assertEquals($expiredAt, $ban->expired_at);
+        $this->assertEquals($expiredAt, $ban->getAttribute('expired_at'));
     }
 
     /** @test */
-    public function it_can_make_model_with_expire_string_date()
+    public function it_can_make_model_with_expire_string_date(): void
     {
         $ban = new Ban([
             'expired_at' => '2086-03-28 00:00:00',
         ]);
 
-        $this->assertEquals('2086-03-28 00:00:00', $ban->expired_at);
+        $this->assertEquals('2086-03-28 00:00:00', $ban->getAttribute('expired_at'));
     }
 
     /** @test */
-    public function it_can_make_model_with_expire_relative_date()
+    public function it_can_make_model_with_expire_relative_date(): void
     {
         $ban = new Ban([
             'expired_at' => '+1 year',
         ]);
 
-        // TODO: Mock and check that \Carbon\Carbon::parse() method is called
-        $this->assertEquals(Carbon::parse('+1 year')->format('Y'), $ban->expired_at->format('Y'));
+        // TODO: Mock and check that \Illuminate\Support\Carbon::parse() method is called
+        $this->assertSame(
+            Carbon::parse('+1 year')->format('Y'),
+            $ban->getAttribute('expired_at')->format('Y')
+        );
     }
 
     /** @test */
-    public function it_can_has_bannable_model()
+    public function it_can_has_bannable_model(): void
     {
         $user = factory(User::class)->create();
 
@@ -186,7 +186,7 @@ class BanTest extends TestCase
     }
 
     /** @test */
-    public function it_can_scope_bannable_models()
+    public function it_can_scope_bannable_models(): void
     {
         $user1 = factory(User::class)->create();
         factory(Ban::class, 4)->create([
@@ -205,7 +205,7 @@ class BanTest extends TestCase
     }
 
     /** @test */
-    public function it_can_check_if_ban_is_permanent()
+    public function it_can_check_if_ban_is_permanent(): void
     {
         $permanentBan = new Ban();
         $temporaryBan = new Ban([
@@ -217,7 +217,7 @@ class BanTest extends TestCase
     }
 
     /** @test */
-    public function it_can_check_if_ban_is_temporary()
+    public function it_can_check_if_ban_is_temporary(): void
     {
         $permanentBan = new Ban();
         $temporaryBan = new Ban([
@@ -229,7 +229,7 @@ class BanTest extends TestCase
     }
 
     /** @test */
-    public function it_can_check_if_ban_with_null_expired_at_is_permanent()
+    public function it_can_check_if_ban_with_null_expired_at_is_permanent(): void
     {
         $permanentBan = new Ban([
             'expired_at' => null,

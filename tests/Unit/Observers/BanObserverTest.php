@@ -9,20 +9,17 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Cog\Tests\Laravel\Ban\Unit\Observers;
 
 use Cog\Tests\Laravel\Ban\Stubs\Models\User;
 use Cog\Tests\Laravel\Ban\TestCase;
 
-/**
- * Class BanObserverTest.
- *
- * @package Cog\Tests\Laravel\Ban\Unit\Observers
- */
 class BanObserverTest extends TestCase
 {
     /** @test */
-    public function it_can_set_banned_flag_to_owner_model_on_create()
+    public function it_can_set_banned_flag_to_owner_model_on_create(): void
     {
         $user = factory(User::class)->create([
             'banned_at' => null,

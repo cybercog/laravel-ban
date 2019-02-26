@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Cog\Laravel\Ban\Http\Middleware;
 
 use Closure;
@@ -16,11 +18,6 @@ use Cog\Contracts\Ban\Bannable as BannableContract;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\StatefulGuard as StatefulGuardContract;
 
-/**
- * Class LogsOutBannedUser.
- *
- * @package Cog\Laravel\Ban\Http\Middleware
- */
 class LogsOutBannedUser
 {
     /**

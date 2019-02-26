@@ -9,17 +9,14 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Cog\Laravel\Ban\Observers;
 
 use Cog\Contracts\Ban\Ban as BanContract;
 use Cog\Laravel\Ban\Events\ModelWasBanned;
 use Cog\Laravel\Ban\Events\ModelWasUnbanned;
 
-/**
- * Class BanObserver.
- *
- * @package Cog\Laravel\Ban\Observers
- */
 class BanObserver
 {
     /**
@@ -28,7 +25,7 @@ class BanObserver
      * @param \Cog\Contracts\Ban\Ban $ban
      * @return void
      */
-    public function creating(BanContract $ban)
+    public function creating(BanContract $ban): void
     {
         $bannedBy = auth()->user();
         if ($bannedBy && is_null($ban->created_by_type) && is_null($ban->created_by_id)) {
@@ -45,7 +42,7 @@ class BanObserver
      * @param \Cog\Contracts\Ban\Ban $ban
      * @return void
      */
-    public function created(BanContract $ban)
+    public function created(BanContract $ban): void
     {
         $bannable = $ban->bannable()->withBanned()->first();
         $bannable->setBannedFlag($ban->created_at)->save();
@@ -59,7 +56,7 @@ class BanObserver
      * @param \Cog\Contracts\Ban\Ban $ban
      * @return void
      */
-    public function deleted(BanContract $ban)
+    public function deleted(BanContract $ban): void
     {
         $bannable = $ban->bannable()->withBanned()->first();
         if ($bannable->bans->count() === 0) {

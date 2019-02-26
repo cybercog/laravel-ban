@@ -9,17 +9,14 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Cog\Laravel\Ban\Scopes;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
 
-/**
- * Class BannedAtScope.
- *
- * @package Cog\Laravel\Ban\Scopes
- */
 class BannedAtScope implements Scope
 {
     /**
@@ -55,7 +52,7 @@ class BannedAtScope implements Scope
      * @param \Illuminate\Database\Eloquent\Builder $builder
      * @return void
      */
-    public function extend(Builder $builder)
+    public function extend(Builder $builder): void
     {
         foreach ($this->extensions as $extension) {
             $this->{"add{$extension}"}($builder);
@@ -68,7 +65,7 @@ class BannedAtScope implements Scope
      * @param \Illuminate\Database\Eloquent\Builder $builder
      * @return void
      */
-    protected function addWithBanned(Builder $builder)
+    protected function addWithBanned(Builder $builder): void
     {
         $builder->macro('withBanned', function (Builder $builder) {
             return $builder->withoutGlobalScope($this);
@@ -81,7 +78,7 @@ class BannedAtScope implements Scope
      * @param \Illuminate\Database\Eloquent\Builder $builder
      * @return void
      */
-    protected function addWithoutBanned(Builder $builder)
+    protected function addWithoutBanned(Builder $builder): void
     {
         $builder->macro('withoutBanned', function (Builder $builder) {
             return $builder->withoutGlobalScope($this)->whereNull('banned_at');
@@ -94,7 +91,7 @@ class BannedAtScope implements Scope
      * @param \Illuminate\Database\Eloquent\Builder $builder
      * @return void
      */
-    protected function addOnlyBanned(Builder $builder)
+    protected function addOnlyBanned(Builder $builder): void
     {
         $builder->macro('onlyBanned', function (Builder $builder) {
             return $builder->withoutGlobalScope($this)->whereNotNull('banned_at');

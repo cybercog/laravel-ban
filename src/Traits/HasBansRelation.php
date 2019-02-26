@@ -9,15 +9,13 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Cog\Laravel\Ban\Traits;
 
 use Cog\Contracts\Ban\Ban as BanContract;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
-/**
- * Trait HasBansRelation.
- *
- * @package Cog\Laravel\Ban\Traits
- */
 trait HasBansRelation
 {
     /**
@@ -25,7 +23,7 @@ trait HasBansRelation
      *
      * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      */
-    public function bans()
+    public function bans(): MorphMany
     {
         return $this->morphMany(app(BanContract::class), 'bannable');
     }

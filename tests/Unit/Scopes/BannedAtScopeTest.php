@@ -9,22 +9,19 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Cog\Tests\Laravel\Ban\Unit\Scopes;
 
-use Carbon\Carbon;
 use Cog\Tests\Laravel\Ban\Stubs\Models\User;
 use Cog\Tests\Laravel\Ban\Stubs\Models\UserWithBannedAtScopeApplied;
 use Cog\Tests\Laravel\Ban\TestCase;
+use Illuminate\Support\Carbon;
 
-/**
- * Class BannedAtScopeTest.
- *
- * @package Cog\Tests\Laravel\Ban\Unit\Scopes
- */
 class BannedAtScopeTest extends TestCase
 {
     /** @test */
-    public function it_can_get_all_models_by_default()
+    public function it_can_get_all_models_by_default(): void
     {
         factory(User::class, 2)->create([
             'banned_at' => Carbon::now()->subDay(),
@@ -40,7 +37,7 @@ class BannedAtScopeTest extends TestCase
     }
 
     /** @test */
-    public function it_can_get_models_without_banned()
+    public function it_can_get_models_without_banned(): void
     {
         factory(User::class, 2)->create([
             'banned_at' => Carbon::now()->subDay(),
@@ -55,7 +52,7 @@ class BannedAtScopeTest extends TestCase
     }
 
     /** @test */
-    public function it_can_get_models_with_banned()
+    public function it_can_get_models_with_banned(): void
     {
         factory(User::class, 2)->create([
             'banned_at' => Carbon::now()->subDay(),
@@ -70,7 +67,7 @@ class BannedAtScopeTest extends TestCase
     }
 
     /** @test */
-    public function it_can_get_only_banned_models()
+    public function it_can_get_only_banned_models(): void
     {
         factory(User::class, 2)->create([
             'banned_at' => Carbon::now()->subDay(),
@@ -85,7 +82,7 @@ class BannedAtScopeTest extends TestCase
     }
 
     /** @test */
-    public function it_can_auto_apply_banned_at_default_scope()
+    public function it_can_auto_apply_banned_at_default_scope(): void
     {
         factory(User::class, 3)->create([
             'banned_at' => Carbon::now()->subDay(),

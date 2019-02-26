@@ -9,21 +9,18 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Cog\Tests\Laravel\Ban\Unit\Traits;
 
-use Carbon\Carbon;
 use Cog\Tests\Laravel\Ban\Stubs\Models\User;
 use Cog\Tests\Laravel\Ban\TestCase;
+use Illuminate\Support\Carbon;
 
-/**
- * Class HasBannedAtHelpersTest.
- *
- * @package Cog\Tests\Laravel\Ban\Unit\Traits
- */
 class HasBannedAtHelpersTest extends TestCase
 {
     /** @test */
-    public function it_can_set_banned_flag()
+    public function it_can_set_banned_flag(): void
     {
         $user = factory(User::class)->create([
             'banned_at' => null,
@@ -35,7 +32,7 @@ class HasBannedAtHelpersTest extends TestCase
     }
 
     /** @test */
-    public function it_can_unset_banned_flag()
+    public function it_can_unset_banned_flag(): void
     {
         $user = factory(User::class)->create([
             'banned_at' => Carbon::now(),
@@ -47,7 +44,7 @@ class HasBannedAtHelpersTest extends TestCase
     }
 
     /** @test */
-    public function it_can_check_if_entity_banned()
+    public function it_can_check_if_entity_banned(): void
     {
         $user = factory(User::class)->create([
             'banned_at' => Carbon::now(),
@@ -57,7 +54,7 @@ class HasBannedAtHelpersTest extends TestCase
     }
 
     /** @test */
-    public function it_can_check_if_entity_not_banned()
+    public function it_can_check_if_entity_not_banned(): void
     {
         $user = factory(User::class)->create([
             'banned_at' => null,

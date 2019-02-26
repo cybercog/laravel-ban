@@ -9,17 +9,16 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Cog\Tests\Laravel\Ban;
 
+use Cog\Laravel\Ban\Providers\BanServiceProvider;
 use Cog\Tests\Laravel\Ban\Stubs\Models\User;
 use Illuminate\Support\Facades\File;
+use Orchestra\Database\ConsoleServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
-/**
- * Class TestCase.
- *
- * @package Cog\Tests\Laravel\Ban
- */
 abstract class TestCase extends Orchestra
 {
     /**
@@ -27,7 +26,7 @@ abstract class TestCase extends Orchestra
      *
      * @return void
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -44,7 +43,7 @@ abstract class TestCase extends Orchestra
      * @param \Illuminate\Foundation\Application $app
      * @return void
      */
-    protected function getEnvironmentSetUp($app)
+    protected function getEnvironmentSetUp($app): void
     {
         $this->setDefaultUserModel($app);
     }
@@ -55,11 +54,11 @@ abstract class TestCase extends Orchestra
      * @param \Illuminate\Foundation\Application $app
      * @return array
      */
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [
-            \Cog\Laravel\Ban\Providers\BanServiceProvider::class,
-            \Orchestra\Database\ConsoleServiceProvider::class,
+            BanServiceProvider::class,
+            ConsoleServiceProvider::class,
         ];
     }
 
@@ -68,7 +67,7 @@ abstract class TestCase extends Orchestra
      *
      * @return void
      */
-    protected function publishPackageMigrations()
+    protected function publishPackageMigrations(): void
     {
         $this->artisan('vendor:publish', [
             '--force' => '',
@@ -81,7 +80,7 @@ abstract class TestCase extends Orchestra
      *
      * @return void
      */
-    protected function destroyPackageMigrations()
+    protected function destroyPackageMigrations(): void
     {
         File::cleanDirectory('vendor/orchestra/testbench-core/laravel/database/migrations');
     }
@@ -91,7 +90,7 @@ abstract class TestCase extends Orchestra
      *
      * @return void
      */
-    protected function migrateUnitTestTables()
+    protected function migrateUnitTestTables(): void
     {
         $this->loadMigrationsFrom([
             '--realpath' => realpath(__DIR__ . '/database/migrations'),
@@ -103,7 +102,7 @@ abstract class TestCase extends Orchestra
      *
      * @return void
      */
-    protected function migratePackageTables()
+    protected function migratePackageTables(): void
     {
         $this->loadMigrationsFrom([
             '--realpath' => database_path('migrations'),
@@ -115,7 +114,7 @@ abstract class TestCase extends Orchestra
      *
      * @return void
      */
-    private function registerPackageFactories()
+    private function registerPackageFactories(): void
     {
         $pathToFactories = realpath(__DIR__ . '/database/factories');
         $this->withFactories($pathToFactories);
@@ -124,11 +123,11 @@ abstract class TestCase extends Orchestra
     /**
      * Set default user model used by tests.
      *
-     * @param $app
+     * @param \Illuminate\Foundation\Application $app
      * @return void
      */
-    private function setDefaultUserModel($app)
+    private function setDefaultUserModel($app): void
     {
-        $app['config']->set('auth.providers.users.model', User::class);
+        $app->make('config')->set('auth.providers.users.model', User::class);
     }
 }
