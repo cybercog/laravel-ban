@@ -9,21 +9,18 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Cog\Tests\Laravel\Ban\Unit\Events;
 
 use Cog\Laravel\Ban\Events\ModelWasUnbanned;
 use Cog\Laravel\Ban\Models\Ban;
 use Cog\Tests\Laravel\Ban\TestCase;
 
-/**
- * Class ModelWasUnbannedTest.
- *
- * @package Cog\Tests\Laravel\Ban\Unit\Events
- */
 class ModelWasUnbannedTest extends TestCase
 {
     /** @test */
-    public function it_can_fire_event_on_helper_call()
+    public function it_can_fire_event_on_helper_call(): void
     {
         $this->expectsEvents(ModelWasUnbanned::class);
 
@@ -32,7 +29,7 @@ class ModelWasUnbannedTest extends TestCase
     }
 
     /** @test */
-    public function it_can_fire_event_on_relation_delete()
+    public function it_can_fire_event_on_relation_delete(): void
     {
         $this->expectsEvents(ModelWasUnbanned::class);
 

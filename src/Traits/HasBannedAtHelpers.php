@@ -9,16 +9,14 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Cog\Laravel\Ban\Traits;
 
-use Carbon\Carbon;
+use Cog\Contracts\Ban\Ban as BanContract;
 use Cog\Contracts\Ban\BanService as BanServiceContract;
+use Illuminate\Support\Carbon;
 
-/**
- * Trait HasBannedAtHelpers.
- *
- * @package Cog\Laravel\Ban\Traits
- */
 trait HasBannedAtHelpers
 {
     /**
@@ -28,7 +26,7 @@ trait HasBannedAtHelpers
      */
     public function setBannedFlag()
     {
-        $this->banned_at = Carbon::now();
+        $this->setAttribute('banned_at', Carbon::now());
 
         return $this;
     }
@@ -40,7 +38,7 @@ trait HasBannedAtHelpers
      */
     public function unsetBannedFlag()
     {
-        $this->banned_at = null;
+        $this->setAttribute('banned_at', null);
 
         return $this;
     }
@@ -50,9 +48,9 @@ trait HasBannedAtHelpers
      *
      * @return bool
      */
-    public function isBanned()
+    public function isBanned(): bool
     {
-        return $this->banned_at !== null;
+        return $this->getAttributeValue('banned_at') !== null;
     }
 
     /**
@@ -60,7 +58,7 @@ trait HasBannedAtHelpers
      *
      * @return bool
      */
-    public function isNotBanned()
+    public function isNotBanned(): bool
     {
         return !$this->isBanned();
     }
@@ -71,7 +69,7 @@ trait HasBannedAtHelpers
      * @param null|array $attributes
      * @return \Cog\Contracts\Ban\Ban
      */
-    public function ban(array $attributes = [])
+    public function ban(array $attributes = []): BanContract
     {
         return app(BanServiceContract::class)->ban($this, $attributes);
     }
@@ -81,7 +79,7 @@ trait HasBannedAtHelpers
      *
      * @return void
      */
-    public function unban()
+    public function unban(): void
     {
         app(BanServiceContract::class)->unban($this);
     }

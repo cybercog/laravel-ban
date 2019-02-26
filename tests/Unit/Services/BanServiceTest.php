@@ -9,22 +9,19 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Cog\Tests\Laravel\Ban\Unit\Services;
 
-use Carbon\Carbon;
 use Cog\Laravel\Ban\Models\Ban;
 use Cog\Laravel\Ban\Services\BanService;
 use Cog\Tests\Laravel\Ban\TestCase;
+use Illuminate\Support\Carbon;
 
-/**
- * Class BanServiceTest.
- *
- * @package Cog\Tests\Laravel\Ban\Unit\Services
- */
 class BanServiceTest extends TestCase
 {
     /** @test */
-    public function it_can_delete_all_expired_bans()
+    public function it_can_delete_all_expired_bans(): void
     {
         factory(Ban::class, 3)->create([
             'expired_at' => Carbon::now()->subMonth(),

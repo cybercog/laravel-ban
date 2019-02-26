@@ -9,13 +9,10 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Cog\Laravel\Ban\Traits;
 
-/**
- * Trait Bannable.
- *
- * @package Cog\Laravel\Ban\Traits
- */
 trait Bannable
 {
     use HasBannedAtHelpers;

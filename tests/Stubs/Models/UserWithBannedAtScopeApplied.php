@@ -9,13 +9,10 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Cog\Tests\Laravel\Ban\Stubs\Models;
 
-/**
- * Class UserWithBannedAtScopeApplied.
- *
- * @package Cog\Tests\Laravel\Ban\Stubs\Models
- */
 class UserWithBannedAtScopeApplied extends User
 {
     /**
@@ -23,7 +20,7 @@ class UserWithBannedAtScopeApplied extends User
      *
      * @return bool
      */
-    public function shouldApplyBannedAtScope()
+    public function shouldApplyBannedAtScope(): bool
     {
         return true;
     }

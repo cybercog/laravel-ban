@@ -9,20 +9,18 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Cog\Laravel\Ban\Models;
 
-use Carbon\Carbon;
 use Cog\Contracts\Ban\Ban as BanContract;
 use Cog\Contracts\Ban\Bannable as BannableContract;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Carbon;
 
-/**
- * Class Ban.
- *
- * @package Cog\Laravel\Ban\Models
- */
 class Ban extends Model implements BanContract
 {
     use SoftDeletes;
@@ -59,10 +57,10 @@ class Ban extends Model implements BanContract
     /**
      * Expired timestamp mutator.
      *
-     * @param \Carbon\Carbon|string $value
+     * @param \Illuminate\Support\Carbon|string $value
      * @return void
      */
-    public function setExpiredAtAttribute($value)
+    public function setExpiredAtAttribute($value): void
     {
         if (!is_null($value) && !$value instanceof Carbon) {
             $value = Carbon::parse($value);
@@ -72,31 +70,11 @@ class Ban extends Model implements BanContract
     }
 
     /**
-     * Determine if Ban is permanent.
-     *
-     * @return bool
-     */
-    public function isPermanent()
-    {
-        return !isset($this->attributes['expired_at']) || is_null($this->attributes['expired_at']);
-    }
-
-    /**
-     * Determine if Ban is temporary.
-     *
-     * @return bool
-     */
-    public function isTemporary()
-    {
-        return !$this->isPermanent();
-    }
-
-    /**
      * Entity responsible for ban.
      *
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
-    public function createdBy()
+    public function createdBy(): MorphTo
     {
         return $this->morphTo('created_by');
     }
@@ -106,9 +84,29 @@ class Ban extends Model implements BanContract
      *
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
-    public function bannable()
+    public function bannable(): MorphTo
     {
         return $this->morphTo('bannable');
+    }
+
+    /**
+     * Determine if Ban is permanent.
+     *
+     * @return bool
+     */
+    public function isPermanent(): bool
+    {
+        return !isset($this->attributes['expired_at']) || is_null($this->attributes['expired_at']);
+    }
+
+    /**
+     * Determine if Ban is temporary.
+     *
+     * @return bool
+     */
+    public function isTemporary(): bool
+    {
+        return !$this->isPermanent();
     }
 
     /**
@@ -118,7 +116,7 @@ class Ban extends Model implements BanContract
      * @param \Cog\Contracts\Ban\Bannable $bannable
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeWhereBannable(Builder $query, BannableContract $bannable)
+    public function scopeWhereBannable(Builder $query, BannableContract $bannable): Builder
     {
         return $query->where([
             'bannable_type' => $bannable->getMorphClass(),

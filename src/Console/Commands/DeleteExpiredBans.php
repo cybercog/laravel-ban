@@ -9,16 +9,13 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Cog\Laravel\Ban\Console\Commands;
 
 use Cog\Laravel\Ban\Services\BanService;
 use Illuminate\Console\Command;
 
-/**
- * Class DeleteExpiredBans.
- *
- * @package Cog\Laravel\Ban\Console\Commands
- */
 class DeleteExpiredBans extends Command
 {
     /**
@@ -47,7 +44,7 @@ class DeleteExpiredBans extends Command
      *
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         $this->service = app(BanService::class);
 

@@ -9,15 +9,12 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Cog\Laravel\Ban\Traits;
 
 use Cog\Laravel\Ban\Scopes\BannedAtScope;
 
-/**
- * Trait HasBannedAtScope.
- *
- * @package Cog\Laravel\Ban\Traits
- */
 trait HasBannedAtScope
 {
     /**
@@ -25,8 +22,8 @@ trait HasBannedAtScope
      *
      * @return void
      */
-    public static function bootHasBannedAtScope()
+    public static function bootHasBannedAtScope(): void
     {
-        static::addGlobalScope(new BannedAtScope);
+        static::addGlobalScope(new BannedAtScope());
     }
 }

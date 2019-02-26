@@ -2,6 +2,20 @@
 
 All notable changes to `laravel-ban` will be documented in this file.
 
+## [4.0.0] - 2019-02-26
+
+### Added
+
+- Laravel 5.8 support
+
+### Changed
+
+- All methods are strict typed now
+
+### Removed
+
+- Laravel 5.1, 5.2, 5.3 and 5.4 support
+
 ## [3.5.0] - 2018-10-07
 
 ### Added
@@ -96,6 +110,7 @@ All notable changes to `laravel-ban` will be documented in this file.
 
 - Initial release
 
+[4.0.0]: https://github.com/cybercog/laravel-ban/compare/3.5.0...v4.0.0
 [3.5.0]: https://github.com/cybercog/laravel-ban/compare/3.4.0...3.5.0
 [3.4.0]: https://github.com/cybercog/laravel-ban/compare/3.3.0...3.4.0
 [3.3.0]: https://github.com/cybercog/laravel-ban/compare/3.2.0...3.3.0
