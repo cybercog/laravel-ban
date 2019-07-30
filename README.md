@@ -41,9 +41,9 @@ Use case is not limited to User model, any Eloquent model could be banned: Organ
 
 ## Features
 
-- Model can has many bans.
-- Removed bans keeps in history as Soft deleted record.
-- Most part of the the logic is handled by the `BanService`.
+- Model can have many bans.
+- Removed bans kept in history as soft deleted records.
+- Most parts of the logic is handled by the `BanService`.
 - Has middleware to prevent banned user route access.
 - Use case is not limited to `User` model, any Eloquent model could be banned.
 - Events firing on models `ban` and `unban`.
