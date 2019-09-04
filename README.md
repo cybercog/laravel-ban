@@ -351,8 +351,8 @@ If you discover any security related issues, please email open@cybercog.su inste
 
 ## Contributors
 
-| <a href="https://github.com/antonkomarev">![@antonkomarev](https://avatars.githubusercontent.com/u/1849174?s=110)<br />Anton Komarev</a> | <a href="https://github.com/badrshs">![@badrshs](https://avatars.githubusercontent.com/u/26596347?s=110)<br />badr aldeen shek salim</a> | <a href="https://github.com/rickmacgillis">![@rickmacgillis](https://avatars.githubusercontent.com/u/8941225?s=110)<br />Rick Mac Gillis</a> |
-| :---: | :---: | :---: |
+| <a href="https://github.com/antonkomarev">![@antonkomarev](https://avatars.githubusercontent.com/u/1849174?s=110)<br />Anton Komarev</a> | <a href="https://github.com/badrshs">![@badrshs](https://avatars.githubusercontent.com/u/26596347?s=110)<br />badr aldeen shek salim</a> | <a href="https://github.com/rickmacgillis">![@rickmacgillis](https://avatars.githubusercontent.com/u/8941225?s=110)<br />Rick Mac Gillis</a> | <a href="https://github.com/AnsellC">![@AnsellC](https://avatars.githubusercontent.com/u/2049714?s=110)<br />AnsellC</a> |
+| :---: | :---: | :---: | :---: |
 
 [Laravel Ban contributors list](../../contributors)
 
@@ -362,14 +362,16 @@ If you discover any security related issues, please email open@cybercog.su inste
 
 ## License
 
-- `Laravel Ban` package is open-sourced software licensed under the [MIT License](LICENSE) by [Anton Komarev](https://github.com/antonkomarev/).
+- `Laravel Ban` package is open-sourced software licensed under the [MIT License](LICENSE) by [Anton Komarev].
 - `Fat Boss In Jail` image licensed under [Creative Commons 3.0](https://creativecommons.org/licenses/by/3.0/us/) by Gan Khoon Lay.
 
 ## About CyberCog
 
-[CyberCog](http://www.cybercog.ru) is a Social Unity of enthusiasts. Research best solutions in product & software development is our passion.
+[CyberCog](https://cybercog.ru) is a Social Unity of enthusiasts. Research best solutions in product & software development is our passion.
 
 - [Follow us on Twitter](https://twitter.com/cybercog)
 - [Read our articles on Medium](https://medium.com/cybercog)
 
-<a href="http://cybercog.ru"><img src="https://cloud.githubusercontent.com/assets/1849174/18418932/e9edb390-7860-11e6-8a43-aa3fad524664.png" alt="CyberCog"></a>
+<a href="https://cybercog.ru"><img src="https://cloud.githubusercontent.com/assets/1849174/18418932/e9edb390-7860-11e6-8a43-aa3fad524664.png" alt="CyberCog"></a>
+
+[Anton Komarev]: https://komarev.com
