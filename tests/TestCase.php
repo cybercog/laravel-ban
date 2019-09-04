@@ -92,9 +92,7 @@ abstract class TestCase extends Orchestra
      */
     protected function migrateUnitTestTables(): void
     {
-        $this->loadMigrationsFrom([
-            '--realpath' => realpath(__DIR__ . '/database/migrations'),
-        ]);
+        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
     }
 
     /**
@@ -104,9 +102,7 @@ abstract class TestCase extends Orchestra
      */
     protected function migratePackageTables(): void
     {
-        $this->loadMigrationsFrom([
-            '--realpath' => database_path('migrations'),
-        ]);
+        $this->loadMigrationsFrom(database_path('migrations'));
     }
 
     /**
