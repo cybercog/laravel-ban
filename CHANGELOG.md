@@ -4,6 +4,11 @@ All notable changes to `cybercog/laravel-ban` will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- Added publishable configuration file
+- Added ability to ignore default migrations
+
 ## [4.1.0] - 2019-09-04
 
 ### Added
