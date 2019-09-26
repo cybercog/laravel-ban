@@ -19,6 +19,7 @@ use Cog\Contracts\Ban\BanService as BanServiceContract;
 use Cog\Laravel\Ban\Models\Ban;
 use Cog\Laravel\Ban\Observers\BanObserver;
 use Cog\Laravel\Ban\Services\BanService;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 
 class BanServiceProvider extends ServiceProvider
@@ -43,6 +44,7 @@ class BanServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $this->configure();
         $this->registerPublishes();
         $this->registerObservers();
     }
@@ -94,13 +96,49 @@ class BanServiceProvider extends ServiceProvider
     protected function registerPublishes(): void
     {
         if ($this->app->runningInConsole()) {
-            $migrationsPath = __DIR__ . '/../../database/migrations';
+            $this->publishes([
+                __DIR__ . '/../../config/ban.php' => config_path('ban.php'),
+            ], 'ban-config');
 
             $this->publishes([
-                $migrationsPath => database_path('migrations'),
+                __DIR__ . '/../../database/migrations' => database_path('migrations'),
             ], 'migrations');
-
-            $this->loadMigrationsFrom($migrationsPath);
         }
+
+        $this->registerMigrations();
+    }
+
+    /**
+     * Register the Ban migrations.
+     *
+     * @return void
+     */
+    private function registerMigrations(): void
+    {
+        if ($this->app->runningInConsole() && $this->shouldLoadDefaultMigrations()) {
+            $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
+        }
+    }
+
+    /**
+     * Merge Ban configuration with the application configuration.
+     *
+     * @return void
+     */
+    private function configure(): void
+    {
+        if (!$this->app->configurationIsCached()) {
+            $this->mergeConfigFrom(__DIR__ . '/../../config/ban.php', 'ban');
+        }
+    }
+
+    /**
+     * Determine if we should register default migrations.
+     *
+     * @return bool
+     */
+    private function shouldLoadDefaultMigrations(): bool
+    {
+        return Config::get('ban.load_default_migrations', true);
     }
 }
