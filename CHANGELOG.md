@@ -4,6 +4,8 @@ All notable changes to `cybercog/laravel-ban` will be documented in this file.
 
 ## [Unreleased]
 
+## [4.2.0] - 2019-09-26
+
 ### Added
 
 - ([#50]) Added publishable configuration file
@@ -123,7 +125,8 @@ All notable changes to `cybercog/laravel-ban` will be documented in this file.
 
 - Initial release
 
-[Unreleased]: https://github.com/cybercog/laravel-ban/compare/4.1.0...master
+[Unreleased]: https://github.com/cybercog/laravel-ban/compare/4.2.0...master
+[4.2.0]: https://github.com/cybercog/laravel-ban/compare/4.1.0...4.2.0
 [4.1.0]: https://github.com/cybercog/laravel-ban/compare/4.0.0...4.1.0
 [4.0.0]: https://github.com/cybercog/laravel-ban/compare/3.5.0...4.0.0
 [3.5.0]: https://github.com/cybercog/laravel-ban/compare/3.4.0...3.5.0
