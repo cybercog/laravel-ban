@@ -132,7 +132,7 @@ All notable changes to `cybercog/laravel-ban` will be documented in this file.
 - Initial release
 
 [Unreleased]: https://github.com/cybercog/laravel-ban/compare/4.2.1...master
-[4.2.0]: https://github.com/cybercog/laravel-ban/compare/4.2.0...4.2.1
+[4.2.1]: https://github.com/cybercog/laravel-ban/compare/4.2.0...4.2.1
 [4.2.0]: https://github.com/cybercog/laravel-ban/compare/4.1.0...4.2.0
 [4.1.0]: https://github.com/cybercog/laravel-ban/compare/4.0.0...4.1.0
 [4.0.0]: https://github.com/cybercog/laravel-ban/compare/3.5.0...4.0.0
