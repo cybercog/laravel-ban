@@ -60,7 +60,7 @@ class LogsOutBannedUser
                 ]);
             }
             else{
-                return redirect()->route(config('ban.route', 'login'))->withInput()->withErrors([
+                return redirect()->back()->withInput()->withErrors([
                     'login' => 'This account is blocked.',
                 ]);
             }
