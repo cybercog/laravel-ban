@@ -47,7 +47,7 @@ class ForbidBannedUser
         $user = $this->auth->user();
 
         if ($user && $user instanceof BannableContract && $user->isBanned()) {
-            return redirect()->back()->withInput()->withErrors([
+            return redirect()->route(config('ban.route', 'login'))->withInput()->withErrors([
                 'login' => 'This account is blocked.',
             ]);
         }
