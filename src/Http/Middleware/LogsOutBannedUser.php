@@ -53,7 +53,7 @@ class LogsOutBannedUser
                 $this->auth->logout();
             }
 
-            return redirect()->back()->withInput()->withErrors([
+            return redirect()->route(config('ban.route', 'login'))->withInput()->withErrors([
                 'login' => 'This account is blocked.',
             ]);
         }
