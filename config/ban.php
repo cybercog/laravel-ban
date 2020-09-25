@@ -24,5 +24,17 @@ return [
     */
 
     'load_default_migrations' => true,
-
+   
+    /*
+    |---------------------------------------------------------------------------
+    | Route to redirect banned user to
+    |---------------------------------------------------------------------------
+    |
+    | Provide a route name, this is where a banned user will be redirected to 
+    | by the middleware.
+    |
+    */
+    
+    'route' => 'login',
+    
 ];
