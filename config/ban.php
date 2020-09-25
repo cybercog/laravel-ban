@@ -27,14 +27,14 @@ return [
    
     /*
     |---------------------------------------------------------------------------
-    | Route to redirect banned user to
+    | RURL to redirect banned user to
     |---------------------------------------------------------------------------
     |
-    | Provide a route name, this is where a banned user will be redirected to 
+    | Provide a url, this is where a banned user will be redirected to 
     | by the middleware.
     |
     */
     
-    'route' => 'login',
+    'redirect_url' => null,
     
 ];
