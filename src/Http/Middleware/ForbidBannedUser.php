@@ -45,16 +45,16 @@ class ForbidBannedUser
     public function handle($request, Closure $next)
     {
         $user = $this->auth->user();
-        $redirect_url = config('ban.redirect_url', null);
+        $redirectUrl = config('ban.redirect_url', null);
         $errors = [
             'login' => 'This account is blocked.',
         ];
 
         if ($user && $user instanceof BannableContract && $user->isBanned()) {
-            if ($redirect_url === null) {
+            if ($redirectUrl === null) {
                 return redirect()->back()->withInput()->withErrors($errors);
             } else {
-                return redirect($redirect_url)->withInput()->withErrors($errors);
+                return redirect($redirectUrl)->withInput()->withErrors($errors);
             }
         }
 

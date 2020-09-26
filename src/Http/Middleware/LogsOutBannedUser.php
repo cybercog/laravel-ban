@@ -46,7 +46,7 @@ class LogsOutBannedUser
     public function handle($request, Closure $next)
     {
         $user = $this->auth->user();
-        $redirect_url = config('ban.redirect_url', null);
+        $redirectUrl = config('ban.redirect_url', null);
         $errors = [
             'login' => 'This account is blocked.',
         ];
@@ -57,10 +57,10 @@ class LogsOutBannedUser
                 $this->auth->logout();
             }
 
-            if ($redirect_url === null) {
+            if ($redirectUrl === null) {
                 return redirect()->back()->withInput()->withErrors($errors);
             } else {
-                return redirect($redirect_url)->withInput()->withErrors($errors);
+                return redirect($redirectUrl)->withInput()->withErrors($errors);
             }
         }
 
