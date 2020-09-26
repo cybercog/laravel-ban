@@ -33,6 +33,16 @@ return [
     | Provide a url, this is where a banned user will be redirected to
     | by the middleware.
     |
+    | For example:
+    |
+    | 'redirect_url' => route('banned.user'),
+    |
+    | or
+    |
+    | 'redirect_url' => '/user/banned',
+    |
+    | Leaving the value as null will result in a redirect "back".
+    |
     */
 
     'redirect_url' => null,
