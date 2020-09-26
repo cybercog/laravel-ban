@@ -46,7 +46,6 @@ class LogsOutBannedUser
     public function handle($request, Closure $next)
     {
         $user = $this->auth->user();
-      
 
         if ($user && $user instanceof BannableContract && $user->isBanned()) {
             if ($this->auth instanceof StatefulGuardContract) {
