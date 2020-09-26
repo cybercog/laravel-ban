@@ -51,10 +51,9 @@ class ForbidBannedUser
         ];
 
         if ($user && $user instanceof BannableContract && $user->isBanned()) {
-            if($redirect_url === null){
+            if($redirect_url === null) {
                 return redirect()->back()->withInput()->withErrors($errors);
-            }
-            else{
+            } else {
                 return redirect($redirect_url)->withInput()->withErrors($errors);
             }
             

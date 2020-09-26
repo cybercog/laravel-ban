@@ -24,17 +24,18 @@ return [
     */
 
     'load_default_migrations' => true,
+
    
     /*
     |---------------------------------------------------------------------------
-    | RURL to redirect banned user to
+    | URL to redirect banned user to
     |---------------------------------------------------------------------------
     |
-    | Provide a url, this is where a banned user will be redirected to 
+    | Provide a url, this is where a banned user will be redirected to
     | by the middleware.
     |
     */
-    
+
     'redirect_url' => null,
-    
+
 ];
