@@ -46,7 +46,10 @@ class LogsOutBannedUser
     public function handle($request, Closure $next)
     {
         $user = $this->auth->user();
-        $redirect_url = config('ban.redirect_url', false);
+        $redirect_url = config('ban.redirect_url', null);
+        $errors = [
+            'login' => 'This account is blocked.',
+        ];
 
         if ($user && $user instanceof BannableContract && $user->isBanned()) {
             if ($this->auth instanceof StatefulGuardContract) {
@@ -54,15 +57,11 @@ class LogsOutBannedUser
                 $this->auth->logout();
             }
             
-            if($redirect_url){
-                return redirect($redirect_url)->withInput()->withErrors([
-                    'login' => 'This account is blocked.',
-                ]);
+            f($redirect_url === null){
+                return redirect()->back()->withInput()->withErrors($errors);
             }
             else{
-                return redirect()->back()->withInput()->withErrors([
-                    'login' => 'This account is blocked.',
-                ]);
+                return redirect($redirect_url)->withInput()->withErrors($errors);
             }
         }
 
