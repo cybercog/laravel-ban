@@ -358,8 +358,7 @@ If you discover any security related issues, please email open@cybercog.su inste
 [Laravel Ban contributors list](../../contributors)
 
 ## Alternatives
-
-*Feel free to add more alternatives as Pull Request.* 
+https://github.com/imanghafoori1/laravel-temp-tag
 
 ## License
 
