@@ -57,7 +57,7 @@ class LogsOutBannedUser
                 $this->auth->logout();
             }
             
-            f($redirect_url === null){
+            if($redirect_url === null){
                 return redirect()->back()->withInput()->withErrors($errors);
             }
             else{
