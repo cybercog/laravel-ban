@@ -56,7 +56,6 @@ class ForbidBannedUser
             } else {
                 return redirect($redirect_url)->withInput()->withErrors($errors);
             }
-            
         }
 
         return $next($request);

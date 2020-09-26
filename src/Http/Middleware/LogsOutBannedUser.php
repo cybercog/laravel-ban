@@ -56,7 +56,7 @@ class LogsOutBannedUser
                 // TODO: Cover with tests
                 $this->auth->logout();
             }
-            
+
             if ($redirect_url === null) {
                 return redirect()->back()->withInput()->withErrors($errors);
             } else {
