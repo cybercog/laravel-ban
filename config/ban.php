@@ -25,7 +25,6 @@ return [
 
     'load_default_migrations' => true,
 
-   
     /*
     |---------------------------------------------------------------------------
     | URL to redirect banned user to
