@@ -1,6 +1,6 @@
 name: tests
 
-on: [ push ]
+on: [ push, pull_request ]
 
 jobs:
   test:
@@ -18,9 +18,9 @@ jobs:
           - laravel: 7.*
             dependency-version: prefer-lowest
           - laravel: 8.*
-            php: 7.2
-          - laravel: 8.*
             dependency-version: prefer-lowest
+          - laravel: 8.*
+            php: 7.2
         include:
           - laravel: 6.*
             testbench: 4.*
@@ -57,7 +57,7 @@ jobs:
 
       - name: Install legacy factories dependency
         run: |
-          composer require "laravel/legacy-factories" --no-interaction
+          composer require "laravel/legacy-factories:${{ matrix.legacy-factories }}" --no-interaction
         if: matrix.legacy-factories
 
       - name: Execute tests
