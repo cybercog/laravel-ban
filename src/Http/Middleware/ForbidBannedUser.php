@@ -48,8 +48,9 @@ class ForbidBannedUser
 
         if ($user && $user instanceof BannableContract && $user->isBanned()) {
             $redirectUrl = config('ban.redirect_url', null);
+            $expires_at = $user->bans()->get(['expired_at'])->max('expired_at');
             $errors = [
-                'login' => 'This account is blocked.',
+                'login' => 'This account is blocked untill '.$expires_at. '.',
             ];
 
             if ($redirectUrl === null) {
