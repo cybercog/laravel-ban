@@ -46,5 +46,20 @@ return [
     */
 
     'redirect_url' => null,
-
+	
+    /*
+    |---------------------------------------------------------------------------
+    | Inertia Fix
+    |---------------------------------------------------------------------------
+    |
+    | Inertia contains a bug that you're required to specify the response code
+    | of the redirect to 303, this feature implements a fix to that problem.
+    |
+    | Here is a link with information about the problem:
+    | https://inertiajs.com/redirects#303-response-code
+    |
+    |
+    */
+	
+    'inertia_fix' => false,
 ];
