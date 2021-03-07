@@ -52,7 +52,7 @@ class ForbidBannedUser
                 'login' => 'This account is blocked.',
             ];
 
-            $statusCode = config('ban.inertia_fix', false) ? 303 : 302;
+            $statusCode = config('ban.inertia_fix', false) && $request->header('X-Inertia') ? 303 : 302;
             if ($redirectUrl === null) {
                 return redirect()->back($statusCode)->withInput()->withErrors($errors);
             } else {
