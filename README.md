@@ -353,6 +353,7 @@ If you discover any security related issues, please email open@cybercog.su inste
 ## Contributors
 
 | <a href="https://github.com/antonkomarev">![@antonkomarev](https://avatars.githubusercontent.com/u/1849174?s=110)<br />Anton Komarev</a> | <a href="https://github.com/badrshs">![@badrshs](https://avatars.githubusercontent.com/u/26596347?s=110)<br />badr aldeen shek salim</a> | <a href="https://github.com/rickmacgillis">![@rickmacgillis](https://avatars.githubusercontent.com/u/8941225?s=110)<br />Rick Mac Gillis</a> | <a href="https://github.com/AnsellC">![@AnsellC](https://avatars.githubusercontent.com/u/2049714?s=110)<br />AnsellC</a> | <a href="https://github.com/joearcher">![@joearcher](https://avatars.githubusercontent.com/u/1125046?s=110)<br />Joe Archer</a> |
+| <a href="https://github.com/Im-Fran">![@Im-Fran](https://avatars.githubusercontent.com/u/30329003?s=110)<br />Francisco Solis</a> | | | | |
 | :---: | :---: | :---: | :---: | :---: |
 
 [Laravel Ban contributors list](../../contributors)
