@@ -4,6 +4,12 @@ All notable changes to `cybercog/laravel-ban` will be documented in this file.
 
 ## [Unreleased]
 
+## [4.6.1] - 2021-03-18
+
+### Fixed
+
+- ([#72]) Fixed typo in `LogsOutBannedUser` middleware variable
+
 ## [4.6.0] - 2021-03-08
 
 ### Added
@@ -155,7 +161,8 @@ All notable changes to `cybercog/laravel-ban` will be documented in this file.
 
 - Initial release
 
-[Unreleased]: https://github.com/cybercog/laravel-ban/compare/4.6.0...master
+[Unreleased]: https://github.com/cybercog/laravel-ban/compare/4.6.1...master
+[4.6.1]: https://github.com/cybercog/laravel-ban/compare/4.6.0...4.6.1
 [4.6.0]: https://github.com/cybercog/laravel-ban/compare/4.5.0...4.6.0
 [4.5.0]: https://github.com/cybercog/laravel-ban/compare/4.4.0...4.5.0
 [4.4.0]: https://github.com/cybercog/laravel-ban/compare/4.3.0...4.4.0
@@ -174,6 +181,7 @@ All notable changes to `cybercog/laravel-ban` will be documented in this file.
 [2.0.1]: https://github.com/cybercog/laravel-ban/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/cybercog/laravel-ban/compare/1.0.0...2.0.0
 
+[#72]: https://github.com/cybercog/laravel-ban/pull/72
 [#71]: https://github.com/cybercog/laravel-ban/pull/71
 [#66]: https://github.com/cybercog/laravel-ban/pull/66
 [#63]: https://github.com/cybercog/laravel-ban/pull/63
