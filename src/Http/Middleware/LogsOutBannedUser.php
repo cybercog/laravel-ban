@@ -58,7 +58,7 @@ class LogsOutBannedUser
                 'login' => 'This account is blocked.',
             ];
 
-            $responseCode = $reqest->header('X-Inertia') ? 303 : 302;
+            $responseCode = $request->header('X-Inertia') ? 303 : 302;
             if ($redirectUrl === null) {
                 return redirect()->back($responseCode)->withInput()->withErrors($errors);
             } else {
