@@ -1,5 +1,8 @@
 preset: laravel
 
+enabled:
+  - phpdoc_unalign
+
 disabled:
   - concat_without_spaces
   - phpdoc_no_package
