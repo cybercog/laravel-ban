@@ -38,7 +38,7 @@ jobs:
             testbench: 6.*
             legacy-factories: 1.*
           - laravel: 9.*
-            testbench: 6.*
+            testbench: 7.*
             legacy-factories: 1.*
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.dependency-version }}
