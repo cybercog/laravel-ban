@@ -20,40 +20,25 @@ use Illuminate\Support\Facades\Event;
 
 class ModelWasUnbannedTest extends TestCase
 {
-    public function setUp(): void
-    {
-        if ($this->isLaravel9OrGreater()) {
-            Event::fake();
-        }
-    }
-
     /** @test */
     public function it_can_fire_event_on_helper_call(): void
     {
-        if ($this->isLaravel9OrGreater() === false) {
-            $this->expectsEvents(ModelWasUnbanned::class);
-        }
+        Event::fake();
 
         $ban = factory(Ban::class)->create();
         $ban->bannable->unban();
 
-        if ($this->isLaravel9OrGreater()) {
-            Event::assertDispatched(ModelWasUnbanned::class);
-        }
+        Event::assertDispatched(ModelWasUnbanned::class);
     }
 
     /** @test */
     public function it_can_fire_event_on_relation_delete(): void
     {
-        if ($this->isLaravel9OrGreater() === false) {
-            $this->expectsEvents(ModelWasUnbanned::class);
-        }
+        Event::fake();
 
         $ban = factory(Ban::class)->create();
         $ban->delete();
 
-        if ($this->isLaravel9OrGreater()) {
-            Event::assertDispatched(ModelWasUnbanned::class);
-        }
+        Event::assertDispatched(ModelWasUnbanned::class);
     }
 }
