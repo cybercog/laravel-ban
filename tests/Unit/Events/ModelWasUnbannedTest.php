@@ -16,9 +16,12 @@ namespace Cog\Tests\Laravel\Ban\Unit\Events;
 use Cog\Laravel\Ban\Events\ModelWasUnbanned;
 use Cog\Laravel\Ban\Models\Ban;
 use Cog\Tests\Laravel\Ban\TestCase;
+use Illuminate\Foundation\Testing\Concerns\MocksApplicationServices;
 
 class ModelWasUnbannedTest extends TestCase
 {
+    use MocksApplicationServices;
+
     /** @test */
     public function it_can_fire_event_on_helper_call(): void
     {
