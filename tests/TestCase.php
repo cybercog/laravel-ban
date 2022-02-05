@@ -105,6 +105,10 @@ abstract class TestCase extends Orchestra
         $this->loadMigrationsFrom(database_path('migrations'));
     }
 
+    protected function isLaravel9OrGreater() {
+        return version_compare($this->app->version(), '9.0.0', '>=');
+    }
+
     /**
      * Register package related model factories.
      *
