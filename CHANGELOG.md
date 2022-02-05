@@ -4,6 +4,12 @@ All notable changes to `cybercog/laravel-ban` will be documented in this file.
 
 ## [Unreleased]
 
+## [4.7.0] - 2022-02-05
+
+### Added
+
+- ([#81]) Added Laravel 9 support
+
 ## [4.6.1] - 2021-03-18
 
 ### Fixed
@@ -161,7 +167,8 @@ All notable changes to `cybercog/laravel-ban` will be documented in this file.
 
 - Initial release
 
-[Unreleased]: https://github.com/cybercog/laravel-ban/compare/4.6.1...master
+[Unreleased]: https://github.com/cybercog/laravel-ban/compare/4.7.0...master
+[4.7.0]: https://github.com/cybercog/laravel-ban/compare/4.6.1...4.7.0
 [4.6.1]: https://github.com/cybercog/laravel-ban/compare/4.6.0...4.6.1
 [4.6.0]: https://github.com/cybercog/laravel-ban/compare/4.5.0...4.6.0
 [4.5.0]: https://github.com/cybercog/laravel-ban/compare/4.4.0...4.5.0
@@ -181,6 +188,7 @@ All notable changes to `cybercog/laravel-ban` will be documented in this file.
 [2.0.1]: https://github.com/cybercog/laravel-ban/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/cybercog/laravel-ban/compare/1.0.0...2.0.0
 
+[#81]: https://github.com/cybercog/laravel-ban/pull/81
 [#72]: https://github.com/cybercog/laravel-ban/pull/72
 [#71]: https://github.com/cybercog/laravel-ban/pull/71
 [#66]: https://github.com/cybercog/laravel-ban/pull/66
