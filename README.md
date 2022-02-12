@@ -367,6 +367,10 @@ If you discover any security related issues, please email open@cybercog.su inste
 - `Laravel Ban` package is open-sourced software licensed under the [MIT License](LICENSE) by [Anton Komarev].
 - `Fat Boss In Jail` image licensed under [Creative Commons 3.0](https://creativecommons.org/licenses/by/3.0/us/) by Gan Khoon Lay.
 
+## 🌟 Stargazers over time
+
+[![Stargazers over time](https://chart.yhype.me/github/repository-star/v1/MDEwOlJlcG9zaXRvcnk4Mzk3MTA1NQ==.svg)](https://yhype.me?ref=github-cybercog-laravel-ban)
+
 ## About CyberCog
 
 [CyberCog](https://cybercog.su) is a Social Unity of enthusiasts. Research best solutions in product & software development is our passion.
