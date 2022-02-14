@@ -369,7 +369,7 @@ If you discover any security related issues, please email open@cybercog.su inste
 
 ## 🌟 Stargazers over time
 
-[![Stargazers over time](https://chart.yhype.me/github/repository-star/v1/MDEwOlJlcG9zaXRvcnk4Mzk3MTA1NQ==.svg)](https://yhype.me?utm_source=github&utm_medium=cybercog-laravel-ban&utm_content=repository-star-cumulative)
+[![Stargazers over time](https://chart.yhype.me/github/repository-star/v1/MDEwOlJlcG9zaXRvcnk4Mzk3MTA1NQ==.svg)](https://yhype.me?utm_source=github&utm_medium=cybercog-laravel-ban&utm_content=chart-repository-star-cumulative)
 
 ## About CyberCog
 
