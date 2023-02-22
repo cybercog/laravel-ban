@@ -4,6 +4,10 @@ All notable changes to `cybercog/laravel-ban` will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- Added Laravel 10 support
+
 ## [4.7.0] - 2022-02-05
 
 ### Added
