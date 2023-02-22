@@ -14,9 +14,9 @@ declare(strict_types=1);
 namespace Cog\Tests\Laravel\Ban\Unit\Observers;
 
 use Cog\Tests\Laravel\Ban\Stubs\Models\User;
-use Cog\Tests\Laravel\Ban\TestCase;
+use Cog\Tests\Laravel\Ban\AbstractTestCase;
 
-class BanObserverTest extends TestCase
+final class BanObserverTest extends AbstractTestCase
 {
     /** @test */
     public function it_can_set_banned_flag_to_owner_model_on_create(): void

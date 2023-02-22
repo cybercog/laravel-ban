@@ -15,10 +15,10 @@ namespace Cog\Tests\Laravel\Ban\Unit\Models;
 
 use Cog\Laravel\Ban\Models\Ban;
 use Cog\Tests\Laravel\Ban\Stubs\Models\User;
-use Cog\Tests\Laravel\Ban\TestCase;
+use Cog\Tests\Laravel\Ban\AbstractTestCase;
 use Illuminate\Support\Carbon;
 
-class BanTest extends TestCase
+final class BanTest extends AbstractTestCase
 {
     /** @test */
     public function it_can_fill_comment(): void

@@ -15,10 +15,10 @@ namespace Cog\Tests\Laravel\Ban\Unit\Events;
 
 use Cog\Laravel\Ban\Events\ModelWasUnbanned;
 use Cog\Laravel\Ban\Models\Ban;
-use Cog\Tests\Laravel\Ban\TestCase;
+use Cog\Tests\Laravel\Ban\AbstractTestCase;
 use Illuminate\Foundation\Testing\Concerns\MocksApplicationServices;
 
-class ModelWasUnbannedTest extends TestCase
+final class ModelWasUnbannedTest extends AbstractTestCase
 {
     use MocksApplicationServices;
 

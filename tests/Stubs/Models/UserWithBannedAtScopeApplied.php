@@ -13,8 +13,30 @@ declare(strict_types=1);
 
 namespace Cog\Tests\Laravel\Ban\Stubs\Models;
 
-class UserWithBannedAtScopeApplied extends User
+use Cog\Contracts\Ban\Bannable as BannableInterface;
+use Cog\Laravel\Ban\Traits\Bannable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+final class UserWithBannedAtScopeApplied extends Authenticatable implements BannableInterface
 {
+    use Bannable;
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+    ];
+
     /**
      * Determine which BannedAtScope should be applied by default.
      *

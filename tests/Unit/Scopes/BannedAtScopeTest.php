@@ -15,10 +15,10 @@ namespace Cog\Tests\Laravel\Ban\Unit\Scopes;
 
 use Cog\Tests\Laravel\Ban\Stubs\Models\User;
 use Cog\Tests\Laravel\Ban\Stubs\Models\UserWithBannedAtScopeApplied;
-use Cog\Tests\Laravel\Ban\TestCase;
+use Cog\Tests\Laravel\Ban\AbstractTestCase;
 use Illuminate\Support\Carbon;
 
-class BannedAtScopeTest extends TestCase
+final class BannedAtScopeTest extends AbstractTestCase
 {
     /** @test */
     public function it_can_get_all_models_by_default(): void

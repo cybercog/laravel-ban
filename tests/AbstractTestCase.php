@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\File;
 use Orchestra\Database\ConsoleServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
-abstract class TestCase extends Orchestra
+abstract class AbstractTestCase extends Orchestra
 {
     /**
      * Actions to be performed on PHPUnit start.

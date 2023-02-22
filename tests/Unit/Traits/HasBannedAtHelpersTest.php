@@ -14,10 +14,10 @@ declare(strict_types=1);
 namespace Cog\Tests\Laravel\Ban\Unit\Traits;
 
 use Cog\Tests\Laravel\Ban\Stubs\Models\User;
-use Cog\Tests\Laravel\Ban\TestCase;
+use Cog\Tests\Laravel\Ban\AbstractTestCase;
 use Illuminate\Support\Carbon;
 
-class HasBannedAtHelpersTest extends TestCase
+final class HasBannedAtHelpersTest extends AbstractTestCase
 {
     /** @test */
     public function it_can_set_banned_flag(): void
