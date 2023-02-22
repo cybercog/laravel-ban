@@ -92,11 +92,11 @@ php artisan migrate
 ### Prepare bannable model
 
 ```php
-use Cog\Contracts\Ban\Bannable as BannableContract;
+use Cog\Contracts\Ban\Bannable as BannableInterface;
 use Cog\Laravel\Ban\Traits\Bannable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements BannableContract
+class User extends Authenticatable implements BannableInterface
 {
     use Bannable;
 }
@@ -250,11 +250,11 @@ $users = User::onlyBanned()->get();
 To apply query scopes all the time you can define `shouldApplyBannedAtScope` method in bannable model. If method returns `true` all banned models will be hidden by default.
 
 ```php
-use Cog\Contracts\Ban\Bannable as BannableContract;
+use Cog\Contracts\Ban\Bannable as BannableInterface;
 use Cog\Laravel\Ban\Traits\Bannable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements BannableContract
+class User extends Authenticatable implements BannableInterface
 {
     use Bannable;
     
