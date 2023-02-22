@@ -14,8 +14,8 @@ declare(strict_types=1);
 namespace Cog\Tests\Laravel\Ban\Unit\Models;
 
 use Cog\Laravel\Ban\Models\Ban;
-use Cog\Tests\Laravel\Ban\Stubs\Models\User;
 use Cog\Tests\Laravel\Ban\AbstractTestCase;
+use Cog\Tests\Laravel\Ban\Stubs\Models\User;
 use Illuminate\Support\Carbon;
 
 final class BanTest extends AbstractTestCase

@@ -14,8 +14,8 @@ declare(strict_types=1);
 namespace Cog\Tests\Laravel\Ban\Unit\Events;
 
 use Cog\Laravel\Ban\Events\ModelWasBanned;
-use Cog\Tests\Laravel\Ban\Stubs\Models\User;
 use Cog\Tests\Laravel\Ban\AbstractTestCase;
+use Cog\Tests\Laravel\Ban\Stubs\Models\User;
 use Illuminate\Foundation\Testing\Concerns\MocksApplicationServices;
 
 final class ModelWasBannedTest extends AbstractTestCase

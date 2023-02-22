@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace Cog\Tests\Laravel\Ban\Unit\Observers;
 
-use Cog\Tests\Laravel\Ban\Stubs\Models\User;
 use Cog\Tests\Laravel\Ban\AbstractTestCase;
+use Cog\Tests\Laravel\Ban\Stubs\Models\User;
 
 final class BanObserverTest extends AbstractTestCase
 {
