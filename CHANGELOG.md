@@ -6,7 +6,15 @@ All notable changes to `cybercog/laravel-ban` will be documented in this file.
 
 ### Added
 
-- Added Laravel 10 support
+- ([#89]) Added Laravel 10 support
+
+### Removed
+
+- ([#89]) Dropped PHP 7.x support
+- ([#89]) Dropped Laravel 5.5 support
+- ([#89]) Dropped Laravel 6 support
+- ([#89]) Dropped Laravel 7 support
+- ([#89]) Dropped Laravel 8 support
 
 ## [4.7.0] - 2022-02-05
 
@@ -192,6 +200,7 @@ All notable changes to `cybercog/laravel-ban` will be documented in this file.
 [2.0.1]: https://github.com/cybercog/laravel-ban/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/cybercog/laravel-ban/compare/1.0.0...2.0.0
 
+[#89]: https://github.com/cybercog/laravel-ban/pull/89
 [#81]: https://github.com/cybercog/laravel-ban/pull/81
 [#72]: https://github.com/cybercog/laravel-ban/pull/72
 [#71]: https://github.com/cybercog/laravel-ban/pull/71
