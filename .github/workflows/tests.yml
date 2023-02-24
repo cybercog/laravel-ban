@@ -20,10 +20,8 @@ jobs:
         include:
           - laravel: 9.*
             testbench: 7.*
-            legacy-factories: 1.*
           - laravel: 10.*
             testbench: 8.*
-            legacy-factories: 1.*
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.dependency-version }}
 
@@ -49,11 +47,6 @@ jobs:
         run: |
           composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
           composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction
-
-      - name: Install legacy factories dependency
-        run: |
-          composer require "laravel/legacy-factories:${{ matrix.legacy-factories }}" --no-interaction
-        if: matrix.legacy-factories
 
       - name: Execute tests
         run: vendor/bin/phpunit --testdox
