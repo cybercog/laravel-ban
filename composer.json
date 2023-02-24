@@ -36,7 +36,7 @@
     },
     "require": {
         "php": "^8.0",
-        "illuminate/database": "^9.0",
+        "illuminate/database": "^9.0|^10.0",
         "illuminate/events": "^9.0|^10.0",
         "illuminate/support": "^9.0|^10.0"
     },
