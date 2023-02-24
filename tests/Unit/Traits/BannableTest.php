@@ -81,7 +81,7 @@ final class BannableTest extends AbstractTestCase
     /** @test */
     public function it_can_ban_user_with_banned_at_scope_applied(): void
     {
-        $user = factory(UserWithBannedAtScopeApplied::class)->create([
+        $user = UserWithBannedAtScopeApplied::factory()->create([
             'banned_at' => Carbon::now(),
         ]);
 
@@ -95,7 +95,7 @@ final class BannableTest extends AbstractTestCase
     /** @test */
     public function it_can_unban_user_with_banned_at_scope_applied(): void
     {
-        $user = factory(UserWithBannedAtScopeApplied::class)->create([
+        $user = UserWithBannedAtScopeApplied::factory()->create([
             'banned_at' => Carbon::now(),
         ]);
         factory(Ban::class)->create([
