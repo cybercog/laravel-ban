@@ -21,7 +21,7 @@ final class BanObserverTest extends AbstractTestCase
     /** @test */
     public function it_can_set_banned_flag_to_owner_model_on_create(): void
     {
-        $user = factory(User::class)->create([
+        $user = User::factory()->create([
             'banned_at' => null,
         ]);
 

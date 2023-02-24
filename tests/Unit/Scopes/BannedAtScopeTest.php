@@ -23,11 +23,11 @@ final class BannedAtScopeTest extends AbstractTestCase
     /** @test */
     public function it_can_get_all_models_by_default(): void
     {
-        factory(User::class, 2)->create([
+        User::factory()->count(2)->create([
             'banned_at' => Carbon::now()->subDay(),
         ]);
 
-        factory(User::class, 3)->create([
+        User::factory()->count(3)->create([
             'banned_at' => null,
         ]);
 
@@ -39,10 +39,10 @@ final class BannedAtScopeTest extends AbstractTestCase
     /** @test */
     public function it_can_get_models_without_banned(): void
     {
-        factory(User::class, 2)->create([
+        User::factory()->count(2)->create([
             'banned_at' => Carbon::now()->subDay(),
         ]);
-        factory(User::class, 3)->create([
+        User::factory()->count(3)->create([
             'banned_at' => null,
         ]);
 
@@ -54,10 +54,10 @@ final class BannedAtScopeTest extends AbstractTestCase
     /** @test */
     public function it_can_get_models_with_banned(): void
     {
-        factory(User::class, 2)->create([
+        User::factory()->count(2)->create([
             'banned_at' => Carbon::now()->subDay(),
         ]);
-        factory(User::class, 3)->create([
+        User::factory()->count(3)->create([
             'banned_at' => null,
         ]);
 
@@ -69,10 +69,10 @@ final class BannedAtScopeTest extends AbstractTestCase
     /** @test */
     public function it_can_get_only_banned_models(): void
     {
-        factory(User::class, 2)->create([
+        User::factory()->count(2)->create([
             'banned_at' => Carbon::now()->subDay(),
         ]);
-        factory(User::class, 3)->create([
+        User::factory()->count(3)->create([
             'banned_at' => null,
         ]);
 
@@ -84,10 +84,10 @@ final class BannedAtScopeTest extends AbstractTestCase
     /** @test */
     public function it_can_auto_apply_banned_at_default_scope(): void
     {
-        factory(User::class, 3)->create([
+        User::factory()->count(3)->create([
             'banned_at' => Carbon::now()->subDay(),
         ]);
-        factory(User::class, 2)->create([
+        User::factory()->count(2)->create([
             'banned_at' => null,
         ]);
 

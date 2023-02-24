@@ -22,7 +22,7 @@ final class HasBannedAtHelpersTest extends AbstractTestCase
     /** @test */
     public function it_can_set_banned_flag(): void
     {
-        $user = factory(User::class)->create([
+        $user = User::factory()->create([
             'banned_at' => null,
         ]);
 
@@ -34,7 +34,7 @@ final class HasBannedAtHelpersTest extends AbstractTestCase
     /** @test */
     public function it_can_unset_banned_flag(): void
     {
-        $user = factory(User::class)->create([
+        $user = User::factory()->create([
             'banned_at' => Carbon::now(),
         ]);
 
@@ -46,7 +46,7 @@ final class HasBannedAtHelpersTest extends AbstractTestCase
     /** @test */
     public function it_can_check_if_entity_banned(): void
     {
-        $user = factory(User::class)->create([
+        $user = User::factory()->create([
             'banned_at' => Carbon::now(),
         ]);
 
@@ -56,7 +56,7 @@ final class HasBannedAtHelpersTest extends AbstractTestCase
     /** @test */
     public function it_can_check_if_entity_not_banned(): void
     {
-        $user = factory(User::class)->create([
+        $user = User::factory()->create([
             'banned_at' => null,
         ]);
 

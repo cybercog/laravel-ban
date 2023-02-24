@@ -23,7 +23,7 @@ final class UserFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array<string, mixed>
+     * @return array<string, User>
      */
     public function definition(): array
     {
