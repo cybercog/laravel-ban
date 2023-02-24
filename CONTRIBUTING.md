@@ -25,8 +25,8 @@ This project follows [PSR-12 coding style guide](https://www.php-fig.org/psr/psr
 
 The phpunit script can be used to invoke the PHPUnit test runner:
 
-```shell script
-$ vendor/bin/phpunit
+```shell
+vendor/bin/phpunit
 ```
 
 ## Reporting issues

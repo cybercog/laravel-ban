@@ -14,12 +14,12 @@ declare(strict_types=1);
 namespace Cog\Tests\Laravel\Ban\Unit\Traits;
 
 use Cog\Laravel\Ban\Models\Ban;
+use Cog\Tests\Laravel\Ban\AbstractTestCase;
 use Cog\Tests\Laravel\Ban\Stubs\Models\User;
 use Cog\Tests\Laravel\Ban\Stubs\Models\UserWithBannedAtScopeApplied;
-use Cog\Tests\Laravel\Ban\TestCase;
 use Illuminate\Support\Carbon;
 
-class BannableTest extends TestCase
+final class BannableTest extends AbstractTestCase
 {
     /** @test */
     public function it_can_has_related_ban(): void

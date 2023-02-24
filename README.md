@@ -62,7 +62,7 @@ Use case is not limited to User model, any Eloquent model could be banned: Organ
 
 First, pull in the package through Composer:
 
-```shell script
+```shell
 composer require cybercog/laravel-ban
 ```
 
@@ -82,7 +82,7 @@ Include the service provider within `app/config/app.php`:
 
 At last you need to publish and run database migrations:
 
-```shell script
+```shell
 php artisan vendor:publish --provider="Cog\Laravel\Ban\Providers\BanServiceProvider" --tag="migrations"
 php artisan migrate
 ```
@@ -92,11 +92,11 @@ php artisan migrate
 ### Prepare bannable model
 
 ```php
-use Cog\Contracts\Ban\Bannable as BannableContract;
+use Cog\Contracts\Ban\Bannable as BannableInterface;
 use Cog\Laravel\Ban\Traits\Bannable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements BannableContract
+class User extends Authenticatable implements BannableInterface
 {
     use Bannable;
 }
@@ -108,7 +108,7 @@ Bannable model must have `nullable timestamp` column named `banned_at`. This val
 
 #### Create a new migration file
 
-```shell script
+```shell
 php artisan make:migration add_banned_at_column_to_users_table
 ```
 
@@ -250,11 +250,11 @@ $users = User::onlyBanned()->get();
 To apply query scopes all the time you can define `shouldApplyBannedAtScope` method in bannable model. If method returns `true` all banned models will be hidden by default.
 
 ```php
-use Cog\Contracts\Ban\Bannable as BannableContract;
+use Cog\Contracts\Ban\Bannable as BannableInterface;
 use Cog\Laravel\Ban\Traits\Bannable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements BannableContract
+class User extends Authenticatable implements BannableInterface
 {
     use Bannable;
     
@@ -342,7 +342,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 Run the tests with:
 
-```shell script
+```shell
 vendor/bin/phpunit
 ```
 

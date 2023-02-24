@@ -15,10 +15,10 @@ namespace Cog\Tests\Laravel\Ban\Unit\Services;
 
 use Cog\Laravel\Ban\Models\Ban;
 use Cog\Laravel\Ban\Services\BanService;
-use Cog\Tests\Laravel\Ban\TestCase;
+use Cog\Tests\Laravel\Ban\AbstractTestCase;
 use Illuminate\Support\Carbon;
 
-class BanServiceTest extends TestCase
+final class BanServiceTest extends AbstractTestCase
 {
     /** @test */
     public function it_can_delete_all_expired_bans(): void

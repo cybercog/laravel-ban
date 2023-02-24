@@ -15,28 +15,34 @@ namespace Cog\Tests\Laravel\Ban\Unit\Events;
 
 use Cog\Laravel\Ban\Events\ModelWasUnbanned;
 use Cog\Laravel\Ban\Models\Ban;
-use Cog\Tests\Laravel\Ban\TestCase;
-use Illuminate\Foundation\Testing\Concerns\MocksApplicationServices;
+use Cog\Tests\Laravel\Ban\AbstractTestCase;
+use Illuminate\Support\Facades\Event;
 
-class ModelWasUnbannedTest extends TestCase
+final class ModelWasUnbannedTest extends AbstractTestCase
 {
-    use MocksApplicationServices;
-
     /** @test */
     public function it_can_fire_event_on_helper_call(): void
     {
-        $this->expectsEvents(ModelWasUnbanned::class);
-
+        Event::fake([
+            ModelWasUnbanned::class,
+        ]);
         $ban = factory(Ban::class)->create();
+
         $ban->bannable->unban();
+
+        Event::assertDispatched(ModelWasUnbanned::class);
     }
 
     /** @test */
     public function it_can_fire_event_on_relation_delete(): void
     {
-        $this->expectsEvents(ModelWasUnbanned::class);
-
+        Event::fake([
+            ModelWasUnbanned::class,
+        ]);
         $ban = factory(Ban::class)->create();
+
         $ban->delete();
+
+        Event::assertDispatched(ModelWasUnbanned::class);
     }
 }

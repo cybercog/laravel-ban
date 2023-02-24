@@ -16,10 +16,9 @@ namespace Cog\Tests\Laravel\Ban;
 use Cog\Laravel\Ban\Providers\BanServiceProvider;
 use Cog\Tests\Laravel\Ban\Stubs\Models\User;
 use Illuminate\Support\Facades\File;
-use Orchestra\Database\ConsoleServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
-abstract class TestCase extends Orchestra
+abstract class AbstractTestCase extends Orchestra
 {
     /**
      * Actions to be performed on PHPUnit start.
@@ -58,7 +57,6 @@ abstract class TestCase extends Orchestra
     {
         return [
             BanServiceProvider::class,
-            ConsoleServiceProvider::class,
         ];
     }
 
