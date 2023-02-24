@@ -26,7 +26,7 @@ final class ModelWasBannedTest extends AbstractTestCase
         Event::fake([
             ModelWasBanned::class,
         ]);
-        $entity = factory(User::class)->create();
+        $entity = User::factory()->create();
 
         $entity->ban();
 
@@ -39,7 +39,7 @@ final class ModelWasBannedTest extends AbstractTestCase
         Event::fake([
             ModelWasBanned::class,
         ]);
-        $entity = factory(User::class)->create();
+        $entity = User::factory()->create();
 
         $entity->bans()->create([]);
 

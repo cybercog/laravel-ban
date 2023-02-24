@@ -95,7 +95,7 @@ final class BanTest extends AbstractTestCase
     /** @test */
     public function it_can_has_ban_creator(): void
     {
-        $bannedBy = factory(User::class)->create();
+        $bannedBy = User::factory()->create();
 
         $ban = factory(Ban::class)->create([
             'created_by_type' => $bannedBy->getMorphClass(),
@@ -108,8 +108,8 @@ final class BanTest extends AbstractTestCase
     /** @test */
     public function it_can_set_custom_ban_creator(): void
     {
-        $bannable = factory(User::class)->create();
-        $bannedBy = factory(User::class)->create();
+        $bannable = User::factory()->create();;
+        $bannedBy = User::factory()->create();;
 
         $ban = $bannable->bans()->create([
             'created_by_type' => $bannedBy->getMorphClass(),
@@ -122,9 +122,9 @@ final class BanTest extends AbstractTestCase
     /** @test */
     public function it_not_overwrite_ban_creator_with_auth_user_if_custom_value_is_provided(): void
     {
-        $bannable = factory(User::class)->create();
-        $bannedBy = factory(User::class)->create();
-        $currentUser = factory(User::class)->create();
+        $bannable = User::factory()->create();
+        $bannedBy = User::factory()->create();
+        $currentUser = User::factory()->create();
 
         $this->actingAs($currentUser);
 
@@ -175,7 +175,7 @@ final class BanTest extends AbstractTestCase
     /** @test */
     public function it_can_has_bannable_model(): void
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $ban = factory(Ban::class)->create([
             'bannable_id' => $user->getKey(),
@@ -188,12 +188,12 @@ final class BanTest extends AbstractTestCase
     /** @test */
     public function it_can_scope_bannable_models(): void
     {
-        $user1 = factory(User::class)->create();
+        $user1 = User::factory()->create();
         factory(Ban::class, 4)->create([
             'bannable_id' => $user1->getKey(),
             'bannable_type' => $user1->getMorphClass(),
         ]);
-        $user2 = factory(User::class)->create();
+        $user2 = User::factory()->create();
         factory(Ban::class, 3)->create([
             'bannable_id' => $user2->getKey(),
             'bannable_type' => $user2->getMorphClass(),

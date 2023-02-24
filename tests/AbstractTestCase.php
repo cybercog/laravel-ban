@@ -110,7 +110,7 @@ abstract class AbstractTestCase extends Orchestra
      */
     private function registerPackageFactories(): void
     {
-        $pathToFactories = realpath(__DIR__ . '/database/factories');
+        $pathToFactories = realpath(__DIR__ . '/database/legacy-factories');
         $this->withFactories($pathToFactories);
     }
 

@@ -24,7 +24,7 @@ final class BannableTest extends AbstractTestCase
     /** @test */
     public function it_can_has_related_ban(): void
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $ban = factory(Ban::class)->create([
             'bannable_id' => $user->getKey(),
@@ -38,7 +38,7 @@ final class BannableTest extends AbstractTestCase
     /** @test */
     public function it_can_has_many_related_bans(): void
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         factory(Ban::class, 2)->create([
             'bannable_id' => $user->getKey(),
@@ -170,7 +170,7 @@ final class BannableTest extends AbstractTestCase
     /** @test */
     public function it_can_has_current_user_as_banned_by(): void
     {
-        $bannedBy = factory(User::class)->create();
+        $bannedBy = User::factory()->create();
         $user = factory(User::class)->create([
             'banned_at' => null,
         ]);

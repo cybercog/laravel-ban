@@ -15,10 +15,14 @@ namespace Cog\Tests\Laravel\Ban\Stubs\Models;
 
 use Cog\Contracts\Ban\Bannable as BannableInterface;
 use Cog\Laravel\Ban\Traits\Bannable;
+use Cog\Tests\Laravel\Ban\Database\Factories\UserFactory;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 final class User extends Authenticatable implements BannableInterface
 {
+    use HasFactory;
     use Bannable;
 
     /**
@@ -36,4 +40,9 @@ final class User extends Authenticatable implements BannableInterface
     protected $fillable = [
         'name',
     ];
+
+    protected static function newFactory(): Factory
+    {
+        return UserFactory::new();
+    }
 }

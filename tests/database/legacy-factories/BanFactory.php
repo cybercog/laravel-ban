@@ -17,7 +17,7 @@ use Faker\Generator as Faker;
 
 /* @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(Ban::class, function (Faker $faker) {
-    $bannable = factory(User::class)->create();
+    $bannable = User::factory()->create();
 
     return [
         'bannable_id' => $bannable->getKey(),

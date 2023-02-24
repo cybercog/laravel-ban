@@ -11,20 +11,24 @@
 
 declare(strict_types=1);
 
+namespace Cog\Tests\Laravel\Ban\Database\Factories;
+
 use Cog\Tests\Laravel\Ban\Stubs\Models\User;
-use Cog\Tests\Laravel\Ban\Stubs\Models\UserWithBannedAtScopeApplied;
-use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-/* @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(User::class, function (Faker $faker) {
-    return [
-        'name' => $faker->name,
-    ];
-});
+final class UserFactory extends Factory
+{
+    protected $model = User::class;
 
-/* @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(UserWithBannedAtScopeApplied::class, function (Faker $faker) {
-    return [
-        'name' => $faker->name,
-    ];
-});
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        return [
+            'name' => fake()->name(),
+        ];
+    }
+}
