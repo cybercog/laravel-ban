@@ -16,29 +16,33 @@ namespace Cog\Tests\Laravel\Ban\Unit\Events;
 use Cog\Laravel\Ban\Events\ModelWasBanned;
 use Cog\Tests\Laravel\Ban\AbstractTestCase;
 use Cog\Tests\Laravel\Ban\Stubs\Models\User;
-use Illuminate\Foundation\Testing\Concerns\MocksApplicationServices;
+use Illuminate\Support\Facades\Event;
 
 final class ModelWasBannedTest extends AbstractTestCase
 {
-    use MocksApplicationServices;
-
     /** @test */
     public function it_can_fire_event_on_helper_call(): void
     {
-        $this->expectsEvents(ModelWasBanned::class);
-
+        Event::fake([
+            ModelWasBanned::class,
+        ]);
         $entity = factory(User::class)->create();
 
         $entity->ban();
+
+        Event::assertDispatched(ModelWasBanned::class);
     }
 
     /** @test */
     public function it_can_fire_event_on_relation_create(): void
     {
-        $this->expectsEvents(ModelWasBanned::class);
-
+        Event::fake([
+            ModelWasBanned::class,
+        ]);
         $entity = factory(User::class)->create();
 
         $entity->bans()->create([]);
+
+        Event::assertDispatched(ModelWasBanned::class);
     }
 }
