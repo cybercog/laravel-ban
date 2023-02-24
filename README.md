@@ -5,7 +5,7 @@
 <p align="center">
 <a href="https://discord.gg/nAZBEkH"><img src="https://img.shields.io/static/v1?logo=discord&label=&message=Discord&color=36393f&style=flat-square" alt="Discord"></a>
 <a href="https://github.com/cybercog/laravel-ban/releases"><img src="https://img.shields.io/github/release/cybercog/laravel-ban.svg?style=flat-square" alt="Releases"></a>
-<a href="https://travis-ci.org/cybercog/laravel-ban"><img src="https://img.shields.io/travis/cybercog/laravel-ban/master.svg?style=flat-square" alt="Build Status"></a>
+<a href="https://github.com/cybercog/laravel-ban/actions/workflows/tests.yml"><img src="https://img.shields.io/github/actions/workflow/status/cybercog/laravel-ban/tests.yml?style=flat-square" alt="Build"></a>
 <a href="https://styleci.io/repos/83971055"><img src="https://styleci.io/repos/83971055/shield" alt="StyleCI"></a>
 <a href="https://scrutinizer-ci.com/g/cybercog/laravel-ban/?branch=master"><img src="https://img.shields.io/scrutinizer/g/cybercog/laravel-ban.svg?style=flat-square" alt="Code Quality"></a>
 <a href="https://github.com/cybercog/laravel-ban/blob/master/LICENSE"><img src="https://img.shields.io/github/license/cybercog/laravel-ban.svg?style=flat-square" alt="License"></a>
@@ -80,7 +80,7 @@ Include the service provider within `app/config/app.php`:
 
 #### Apply database migrations
 
-At last you need to publish and run database migrations:
+At last, you need to publish and run database migrations:
 
 ```shell
 php artisan vendor:publish --provider="Cog\Laravel\Ban\Providers\BanServiceProvider" --tag="migrations"
