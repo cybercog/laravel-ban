@@ -23,10 +23,8 @@ final class ModelWasUnbannedTest extends AbstractTestCase
     /** @test */
     public function it_can_fire_event_on_helper_call(): void
     {
-        Event::fake([
-            ModelWasUnbanned::class,
-        ]);
-        $ban = factory(Ban::class)->create();
+        Event::fake(ModelWasUnbanned::class);
+        $ban = Ban::factory()->create();
 
         $ban->bannable->unban();
 
@@ -36,10 +34,8 @@ final class ModelWasUnbannedTest extends AbstractTestCase
     /** @test */
     public function it_can_fire_event_on_relation_delete(): void
     {
-        Event::fake([
-            ModelWasUnbanned::class,
-        ]);
-        $ban = factory(Ban::class)->create();
+        Event::fake(ModelWasUnbanned::class);
+        $ban = Ban::factory()->create();
 
         $ban->delete();
 

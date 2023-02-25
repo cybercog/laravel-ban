@@ -11,16 +11,26 @@
 
 declare(strict_types=1);
 
+namespace Cog\Tests\Laravel\Ban\Database\Factories;
+
 use Cog\Laravel\Ban\Models\Ban;
 use Cog\Tests\Laravel\Ban\Stubs\Models\User;
-use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-/* @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(Ban::class, function (Faker $faker) {
-    $bannable = factory(User::class)->create();
+final class BanFactory extends Factory
+{
+    protected $model = Ban::class;
 
-    return [
-        'bannable_id' => $bannable->getKey(),
-        'bannable_type' => $bannable->getMorphClass(),
-    ];
-});
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        return [
+            'bannable_type' => (new User())->getMorphClass(),
+            'bannable_id' => User::factory(),
+        ];
+    }
+}

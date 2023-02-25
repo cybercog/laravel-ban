@@ -16,6 +16,7 @@ namespace Cog\Laravel\Ban\Models;
 use Cog\Contracts\Ban\Ban as BanContract;
 use Cog\Contracts\Ban\Bannable as BannableContract;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -23,6 +24,7 @@ use Illuminate\Support\Carbon;
 
 class Ban extends Model implements BanContract
 {
+    use HasFactory;
     use SoftDeletes;
 
     /**

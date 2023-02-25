@@ -23,10 +23,10 @@ final class BanServiceTest extends AbstractTestCase
     /** @test */
     public function it_can_delete_all_expired_bans(): void
     {
-        factory(Ban::class, 3)->create([
+        Ban::factory()->count(3)->create([
             'expired_at' => Carbon::now()->subMonth(),
         ]);
-        factory(Ban::class, 4)->create([
+        Ban::factory()->count(4)->create([
             'expired_at' => Carbon::now()->addMonth(),
         ]);
         $banService = new BanService();

@@ -15,11 +15,14 @@ namespace Cog\Tests\Laravel\Ban\Stubs\Models;
 
 use Cog\Contracts\Ban\Bannable as BannableInterface;
 use Cog\Laravel\Ban\Traits\Bannable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-final class User extends Authenticatable implements BannableInterface
+final class User extends Authenticatable implements
+    BannableInterface
 {
     use Bannable;
+    use HasFactory;
 
     /**
      * The table associated with the model.

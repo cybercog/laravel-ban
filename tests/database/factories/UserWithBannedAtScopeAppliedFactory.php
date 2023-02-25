@@ -13,12 +13,12 @@ declare(strict_types=1);
 
 namespace Cog\Tests\Laravel\Ban\Database\Factories;
 
-use Cog\Tests\Laravel\Ban\Stubs\Models\User;
+use Cog\Tests\Laravel\Ban\Stubs\Models\UserWithBannedAtScopeApplied;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-final class UserFactory extends Factory
+final class UserWithBannedAtScopeAppliedFactory extends Factory
 {
-    protected $model = User::class;
+    protected $model = UserWithBannedAtScopeApplied::class;
 
     /**
      * Define the model's default state.

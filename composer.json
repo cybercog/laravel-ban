@@ -41,7 +41,6 @@
         "illuminate/support": "^9.0|^10.0"
     },
     "require-dev": {
-        "laravel/legacy-factories": "^1.3",
         "mockery/mockery": "^1.0",
         "orchestra/testbench": "^7.0|^8.0",
         "phpunit/phpunit": "^9.6"
@@ -54,7 +53,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Cog\\Tests\\Laravel\\Ban\\": "tests/"
+            "Cog\\Tests\\Laravel\\Ban\\": "tests/",
+            "Cog\\Tests\\Laravel\\Ban\\Database\\Factories\\": "tests/database/factories"
         }
     },
     "scripts": {
