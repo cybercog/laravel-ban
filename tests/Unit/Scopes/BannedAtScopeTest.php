@@ -26,7 +26,6 @@ final class BannedAtScopeTest extends AbstractTestCase
         User::factory()->count(2)->create([
             'banned_at' => Carbon::now()->subDay(),
         ]);
-
         User::factory()->count(3)->create([
             'banned_at' => null,
         ]);

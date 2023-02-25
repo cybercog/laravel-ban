@@ -23,9 +23,7 @@ final class ModelWasBannedTest extends AbstractTestCase
     /** @test */
     public function it_can_fire_event_on_helper_call(): void
     {
-        Event::fake([
-            ModelWasBanned::class,
-        ]);
+        Event::fake(ModelWasBanned::class);
         $entity = User::factory()->create();
 
         $entity->ban();
@@ -36,12 +34,10 @@ final class ModelWasBannedTest extends AbstractTestCase
     /** @test */
     public function it_can_fire_event_on_relation_create(): void
     {
-        Event::fake([
-            ModelWasBanned::class,
-        ]);
+        Event::fake(ModelWasBanned::class);
         $entity = User::factory()->create();
 
-        $entity->bans()->create([]);
+        $entity->bans()->create();
 
         Event::assertDispatched(ModelWasBanned::class);
     }
