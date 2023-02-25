@@ -26,7 +26,7 @@ final class BannableTest extends AbstractTestCase
     {
         $user = User::factory()->create();
 
-        $ban = factory(Ban::class)->create([
+        $ban = Ban::factory()->create([
             'bannable_id' => $user->getKey(),
             'bannable_type' => $user->getMorphClass(),
         ]);
@@ -40,7 +40,7 @@ final class BannableTest extends AbstractTestCase
     {
         $user = User::factory()->create();
 
-        factory(Ban::class, 2)->create([
+        Ban::factory()->count(2)->create([
             'bannable_id' => $user->getKey(),
             'bannable_type' => $user->getMorphClass(),
         ]);
@@ -67,7 +67,7 @@ final class BannableTest extends AbstractTestCase
         $user = User::factory()->create([
             'banned_at' => Carbon::now(),
         ]);
-        factory(Ban::class)->create([
+        Ban::factory()->create([
             'bannable_id' => $user->getKey(),
             'bannable_type' => $user->getMorphClass(),
         ]);
@@ -98,7 +98,7 @@ final class BannableTest extends AbstractTestCase
         $user = UserWithBannedAtScopeApplied::factory()->create([
             'banned_at' => Carbon::now(),
         ]);
-        factory(Ban::class)->create([
+        Ban::factory()->create([
             'bannable_id' => $user->getKey(),
             'bannable_type' => $user->getMorphClass(),
         ]);
@@ -115,7 +115,7 @@ final class BannableTest extends AbstractTestCase
         $user = User::factory()->create([
             'banned_at' => Carbon::now(),
         ]);
-        factory(Ban::class)->create([
+        Ban::factory()->create([
             'bannable_id' => $user->getKey(),
             'bannable_type' => $user->getMorphClass(),
         ]);
@@ -132,7 +132,7 @@ final class BannableTest extends AbstractTestCase
         $user = User::factory()->create([
             'banned_at' => Carbon::now(),
         ]);
-        factory(Ban::class)->create([
+        Ban::factory()->create([
             'bannable_id' => $user->getKey(),
             'bannable_type' => $user->getMorphClass(),
         ]);

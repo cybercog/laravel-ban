@@ -15,6 +15,7 @@ namespace Cog\Tests\Laravel\Ban;
 
 use Cog\Laravel\Ban\Providers\BanServiceProvider;
 use Cog\Tests\Laravel\Ban\Stubs\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\File;
 use Orchestra\Testbench\TestCase as Orchestra;
 
@@ -110,8 +111,9 @@ abstract class AbstractTestCase extends Orchestra
      */
     private function registerPackageFactories(): void
     {
-        $pathToFactories = realpath(__DIR__ . '/database/legacy-factories');
-        $this->withFactories($pathToFactories);
+        Factory::guessFactoryNamesUsing(function (string $modelName) {
+            return 'Cog\\Tests\\Laravel\\Ban\\Database\\Factories\\' . class_basename($modelName) . 'Factory';
+        });
     }
 
     /**

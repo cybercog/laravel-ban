@@ -75,7 +75,7 @@ final class BanTest extends AbstractTestCase
     /** @test */
     public function it_casts_deleted_at(): void
     {
-        $ban = factory(Ban::class)->create([
+        $ban = Ban::factory()->create([
             'deleted_at' => '2018-03-28 00:00:00',
         ]);
 
@@ -97,7 +97,7 @@ final class BanTest extends AbstractTestCase
     {
         $bannedBy = User::factory()->create();
 
-        $ban = factory(Ban::class)->create([
+        $ban = Ban::factory()->create([
             'created_by_type' => $bannedBy->getMorphClass(),
             'created_by_id' => $bannedBy->getKey(),
         ]);
@@ -177,7 +177,7 @@ final class BanTest extends AbstractTestCase
     {
         $user = User::factory()->create();
 
-        $ban = factory(Ban::class)->create([
+        $ban = Ban::factory()->create([
             'bannable_id' => $user->getKey(),
             'bannable_type' => $user->getMorphClass(),
         ]);
@@ -189,12 +189,12 @@ final class BanTest extends AbstractTestCase
     public function it_can_scope_bannable_models(): void
     {
         $user1 = User::factory()->create();
-        factory(Ban::class, 4)->create([
+        Ban::factory()->count(4)->create([
             'bannable_id' => $user1->getKey(),
             'bannable_type' => $user1->getMorphClass(),
         ]);
         $user2 = User::factory()->create();
-        factory(Ban::class, 3)->create([
+        Ban::factory()->count(3)->create([
             'bannable_id' => $user2->getKey(),
             'bannable_type' => $user2->getMorphClass(),
         ]);
