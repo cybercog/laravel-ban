@@ -23,7 +23,7 @@ final class UserWithBannedAtScopeAppliedFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array<string, UserWithBannedAtScopeApplied>
+     * @return array<string, mixed>
      */
     public function definition(): array
     {

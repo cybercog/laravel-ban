@@ -24,13 +24,13 @@ final class BanFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array<string, Ban>
+     * @return array<string, mixed>
      */
     public function definition(): array
     {
         return [
-            'bannable_id' => User::factory(),
             'bannable_type' => (new User())->getMorphClass(),
+            'bannable_id' => User::factory(),
         ];
     }
 }
