@@ -18,7 +18,8 @@ use Cog\Laravel\Ban\Traits\Bannable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-final class User extends Authenticatable implements BannableInterface
+final class User extends Authenticatable implements
+    BannableInterface
 {
     use Bannable;
     use HasFactory;
