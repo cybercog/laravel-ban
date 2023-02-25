@@ -108,8 +108,8 @@ final class BanTest extends AbstractTestCase
     /** @test */
     public function it_can_set_custom_ban_creator(): void
     {
-        $bannable = User::factory()->create();;
-        $bannedBy = User::factory()->create();;
+        $bannable = User::factory()->create();
+        $bannedBy = User::factory()->create();
 
         $ban = $bannable->bans()->create([
             'created_by_type' => $bannedBy->getMorphClass(),
