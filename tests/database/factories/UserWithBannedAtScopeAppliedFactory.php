@@ -28,7 +28,7 @@ final class UserWithBannedAtScopeAppliedFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
+            'name' => $this->faker->name(),
         ];
     }
 }
