@@ -4,7 +4,13 @@ All notable changes to `cybercog/laravel-ban` will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
 - ([#95]) Added Laravel 11 support
+
+### Removed
+
+- Dropped PHP 8 support
 
 ## [4.8.0] - 2023-02-24
 
