@@ -373,7 +373,7 @@ If you discover any security related issues, please email open@cybercog.su inste
 
 ## About CyberCog
 
-[CyberCog](https://cybercog.su) is a Social Unity of enthusiasts. Research best solutions in product & software development is our passion.
+[CyberCog](https://cybercog.su) is a Social Unity of enthusiasts. Research the best solutions in product & software development is our passion.
 
 - [Follow us on Twitter](https://twitter.com/cybercog)
 - [Read our articles on Medium](https://medium.com/cybercog)
