@@ -53,6 +53,10 @@ class ForbidBannedUser
                 'login' => 'This account is blocked.',
             ];
 
+            if ($request->expectsJson()) {
+                abort(403, $errors['login']);
+            }
+
             $responseCode = $request->header('X-Inertia') ? 303 : 302;
             if ($redirectUrl === null) {
                 return redirect()->back($responseCode)->withInput()->withErrors($errors);
