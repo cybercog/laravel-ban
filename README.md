@@ -19,26 +19,46 @@ Use case is not limited to User model, any Eloquent model could be banned: Organ
 
 ## Contents
 
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-  - [Prepare bannable model](#prepare-bannable-model)
-  - [Prepare bannable model database table](#prepare-bannable-model-database-table)
-  - [Available methods](#available-methods)
-  - [Scopes](#scopes)
-  - [Events](#events)
-  - [Middleware](#middleware)
-  - [Scheduling](#scheduling)
-- [Integrations](#integrations)
-- [Changelog](#changelog)
-- [Upgrading](#upgrading)
-- [Contributing](#contributing)
-- [Testing](#testing)
-- [Security](#security)
-- [Contributors](#contributors)
-- [Alternatives](#alternatives)
-- [License](#license)
-- [About CyberCog](#about-cybercog)
+- [Laravel Ban](#laravel-ban)
+  - [Introduction](#introduction)
+  - [Contents](#contents)
+  - [Features](#features)
+  - [Installation](#installation)
+      - [Registering package](#registering-package)
+      - [Apply database migrations](#apply-database-migrations)
+  - [Usage](#usage)
+    - [Prepare bannable model](#prepare-bannable-model)
+    - [Prepare bannable model database table](#prepare-bannable-model-database-table)
+      - [Create a new migration file](#create-a-new-migration-file)
+    - [Available methods](#available-methods)
+      - [Apply ban for the entity](#apply-ban-for-the-entity)
+      - [Apply ban for the entity with reason comment](#apply-ban-for-the-entity-with-reason-comment)
+      - [Apply ban for the entity which will be deleted over time](#apply-ban-for-the-entity-which-will-be-deleted-over-time)
+      - [Remove ban from entity](#remove-ban-from-entity)
+      - [Check if entity is banned](#check-if-entity-is-banned)
+      - [Check if entity is not banned](#check-if-entity-is-not-banned)
+      - [Delete expired bans manually](#delete-expired-bans-manually)
+      - [Determine if ban is permanent](#determine-if-ban-is-permanent)
+      - [Determine if ban is temporary](#determine-if-ban-is-temporary)
+    - [Scopes](#scopes)
+      - [Get all models which are not banned](#get-all-models-which-are-not-banned)
+      - [Get banned and not banned models](#get-banned-and-not-banned-models)
+      - [Get only banned models](#get-only-banned-models)
+      - [Scope auto-apply](#scope-auto-apply)
+    - [Events](#events)
+    - [Middleware](#middleware)
+    - [Scheduling](#scheduling)
+  - [Integrations](#integrations)
+  - [Changelog](#changelog)
+  - [Upgrading](#upgrading)
+  - [Contributing](#contributing)
+  - [Testing](#testing)
+  - [Security](#security)
+  - [Contributors](#contributors)
+  - [Alternatives](#alternatives)
+  - [License](#license)
+  - [🌟 Stargazers over time](#-stargazers-over-time)
+  - [About CyberCog](#about-cybercog)
 
 ## Features
 
@@ -137,6 +157,12 @@ return new class extends Migration
         });
     }
 };
+```
+
+After that, run migration again to add 'banner_at' column to users table:
+
+```shell
+php artisan migrate
 ```
 
 ### Available methods
@@ -303,6 +329,41 @@ If you want force logout banned user on protected routes access, use `LogsOutBan
 protected $routeMiddleware = [
     'logs-out-banned-user' => \Cog\Laravel\Ban\Http\Middleware\LogsOutBannedUser::class,
 ]
+```
+
+However, if you use Laravel 11 or above and you don't have `app/Http/Kernel.php` file, you can follow this step in `bootstrap\app.php`.
+
+```php
+return Application::configure(basePath: dirname(__DIR__))
+    ->withRouting(
+        web: __DIR__.'/../routes/web.php',
+        api: __DIR__.'/../routes/api.php',
+        commands: __DIR__.'/../routes/console.php',
+        health: '/up',
+    )
+    ->withMiddleware(function (Middleware $middleware) {
+        // Forbid banned user
+        $middleware->appendToGroup('forbid-banned-user', [
+            \Cog\Laravel\Ban\Http\Middleware\ForbidBannedUser::class,
+        ]);
+
+        // Force logout banned user
+        $middleware->appendToGroup('logs-out-banned-user', [
+            \Cog\Laravel\Ban\Http\Middleware\LogsOutBannedUser::class,
+        ]);
+    })->withExceptions(function (Exceptions $exceptions) {
+        //
+    })->create();
+```
+
+Then, you can use this middleware in any routes and route groups you need to protect:
+
+```php
+// If you want to forbid banned user
+Route::get('/user', [UserController::class, 'index'])->middleware('forbid-banned-user');
+
+// If you want to force logout banned user
+Route::get('/user', [UserController::class, 'index'])->middleware('logs-out-banned-user');
 ```
 
 ### Scheduling
