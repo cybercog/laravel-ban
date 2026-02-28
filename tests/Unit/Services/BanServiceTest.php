@@ -20,8 +20,7 @@ use Illuminate\Support\Carbon;
 
 final class BanServiceTest extends AbstractTestCase
 {
-    /** @test */
-    public function it_can_delete_all_expired_bans(): void
+    public function test_it_can_delete_all_expired_bans(): void
     {
         Ban::factory()->count(3)->create([
             'expired_at' => Carbon::now()->subMonth(),

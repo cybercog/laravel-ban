@@ -20,8 +20,7 @@ use Illuminate\Support\Carbon;
 
 final class BannedAtScopeTest extends AbstractTestCase
 {
-    /** @test */
-    public function it_can_get_all_models_by_default(): void
+    public function test_it_can_get_all_models_by_default(): void
     {
         User::factory()->count(2)->create([
             'banned_at' => Carbon::now()->subDay(),
@@ -35,8 +34,7 @@ final class BannedAtScopeTest extends AbstractTestCase
         $this->assertCount(5, $entities);
     }
 
-    /** @test */
-    public function it_can_get_models_without_banned(): void
+    public function test_it_can_get_models_without_banned(): void
     {
         User::factory()->count(2)->create([
             'banned_at' => Carbon::now()->subDay(),
@@ -50,8 +48,7 @@ final class BannedAtScopeTest extends AbstractTestCase
         $this->assertCount(3, $entities);
     }
 
-    /** @test */
-    public function it_can_get_models_with_banned(): void
+    public function test_it_can_get_models_with_banned(): void
     {
         User::factory()->count(2)->create([
             'banned_at' => Carbon::now()->subDay(),
@@ -65,8 +62,7 @@ final class BannedAtScopeTest extends AbstractTestCase
         $this->assertCount(5, $entities);
     }
 
-    /** @test */
-    public function it_can_get_only_banned_models(): void
+    public function test_it_can_get_only_banned_models(): void
     {
         User::factory()->count(2)->create([
             'banned_at' => Carbon::now()->subDay(),
@@ -80,8 +76,7 @@ final class BannedAtScopeTest extends AbstractTestCase
         $this->assertCount(2, $entities);
     }
 
-    /** @test */
-    public function it_can_auto_apply_banned_at_default_scope(): void
+    public function test_it_can_auto_apply_banned_at_default_scope(): void
     {
         User::factory()->count(3)->create([
             'banned_at' => Carbon::now()->subDay(),

@@ -18,8 +18,7 @@ use Cog\Tests\Laravel\Ban\Stubs\Models\User;
 
 final class BanObserverTest extends AbstractTestCase
 {
-    /** @test */
-    public function it_can_set_banned_flag_to_owner_model_on_create(): void
+    public function test_it_can_set_banned_flag_to_owner_model_on_create(): void
     {
         $user = User::factory()->create([
             'banned_at' => null,

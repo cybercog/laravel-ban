@@ -20,8 +20,7 @@ use Illuminate\Support\Facades\Event;
 
 final class ModelWasBannedTest extends AbstractTestCase
 {
-    /** @test */
-    public function it_can_fire_event_on_helper_call(): void
+    public function test_it_can_fire_event_on_helper_call(): void
     {
         Event::fake(ModelWasBanned::class);
         $entity = User::factory()->create();
@@ -31,8 +30,7 @@ final class ModelWasBannedTest extends AbstractTestCase
         Event::assertDispatched(ModelWasBanned::class);
     }
 
-    /** @test */
-    public function it_can_fire_event_on_relation_create(): void
+    public function test_it_can_fire_event_on_relation_create(): void
     {
         Event::fake(ModelWasBanned::class);
         $entity = User::factory()->create();
