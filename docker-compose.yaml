@@ -5,7 +5,7 @@ services:
     image: laravel-ban-lib-81
     build:
       context: ./
-      dockerfile: ./.docker/php/php81/Dockerfile
+      dockerfile: ./.docker/php81.Dockerfile
     tty: true
     working_dir: /app
     volumes:
@@ -16,7 +16,7 @@ services:
     image: laravel-ban-lib-82
     build:
       context: ./
-      dockerfile: ./.docker/php/php82/Dockerfile
+      dockerfile: ./.docker/php82.Dockerfile
     tty: true
     working_dir: /app
     volumes:
@@ -27,7 +27,7 @@ services:
     image: laravel-ban-lib-83
     build:
       context: ./
-      dockerfile: ./.docker/php/php83/Dockerfile
+      dockerfile: ./.docker/php83.Dockerfile
     tty: true
     working_dir: /app
     volumes:
@@ -38,7 +38,7 @@ services:
     image: laravel-ban-lib-84
     build:
       context: ./
-      dockerfile: ./.docker/php/php84/Dockerfile
+      dockerfile: ./.docker/php84.Dockerfile
     tty: true
     working_dir: /app
     volumes:
