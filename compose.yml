@@ -1,4 +1,3 @@
-version: "3.9"
 services:
   php81:
     container_name: laravel-ban-lib-81
