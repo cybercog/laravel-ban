@@ -19,8 +19,7 @@ use Illuminate\Support\Carbon;
 
 final class HasBannedAtHelpersTest extends AbstractTestCase
 {
-    /** @test */
-    public function it_can_set_banned_flag(): void
+    public function test_it_can_set_banned_flag(): void
     {
         $user = User::factory()->create([
             'banned_at' => null,
@@ -31,8 +30,7 @@ final class HasBannedAtHelpersTest extends AbstractTestCase
         $this->assertNotNull($user->banned_at);
     }
 
-    /** @test */
-    public function it_can_unset_banned_flag(): void
+    public function test_it_can_unset_banned_flag(): void
     {
         $user = User::factory()->create([
             'banned_at' => Carbon::now(),
@@ -43,8 +41,7 @@ final class HasBannedAtHelpersTest extends AbstractTestCase
         $this->assertNull($user->banned_at);
     }
 
-    /** @test */
-    public function it_can_check_if_entity_banned(): void
+    public function test_it_can_check_if_entity_banned(): void
     {
         $user = User::factory()->create([
             'banned_at' => Carbon::now(),
@@ -53,8 +50,7 @@ final class HasBannedAtHelpersTest extends AbstractTestCase
         $this->assertTrue($user->isBanned());
     }
 
-    /** @test */
-    public function it_can_check_if_entity_not_banned(): void
+    public function test_it_can_check_if_entity_not_banned(): void
     {
         $user = User::factory()->create([
             'banned_at' => null,

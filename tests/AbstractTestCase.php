@@ -21,6 +21,8 @@ use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class AbstractTestCase extends Orchestra
 {
+    public static $latestResponse;
+
     /**
      * Actions to be performed on PHPUnit start.
      *
