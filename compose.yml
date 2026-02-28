@@ -42,3 +42,14 @@ services:
     working_dir: /app
     volumes:
       - ./:/app
+
+  php85:
+    container_name: laravel-ban-lib-85
+    image: laravel-ban-lib-85
+    build:
+      context: ./
+      dockerfile: ./.docker/php85.Dockerfile
+    tty: true
+    working_dir: /app
+    volumes:
+      - ./:/app
