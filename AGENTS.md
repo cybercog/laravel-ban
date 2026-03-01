@@ -62,4 +62,4 @@ Tests extend `AbstractTestCase` (Orchestra Testbench). The base class handles pu
 
 ## Supported versions
 
-PHP 8.0+, Laravel 9–12, with corresponding Orchestra Testbench versions. CI tests against PHP 8.0–8.4 with prefer-lowest and prefer-stable dependency resolution.
+PHP 8.0+, Laravel 9–13, with corresponding Orchestra Testbench versions. CI tests against PHP 8.0–8.5 with prefer-lowest and prefer-stable dependency resolution.
