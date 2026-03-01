@@ -8,7 +8,7 @@ Laravel Ban (`cybercog/laravel-ban`) is a Laravel package for banning/unbanning 
 
 ## Commands
 
-All commands run inside Docker. Use the `php84` service (or any other PHP version service from `compose.yml`).
+All commands run inside Docker. Use the `php85` service (or any other PHP version service from `compose.yml`).
 
 ```bash
 # Build and start the container
