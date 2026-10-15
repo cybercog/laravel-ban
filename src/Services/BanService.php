@@ -16,7 +16,6 @@ namespace Cog\Laravel\Ban\Services;
 use Cog\Contracts\Ban\Ban as BanContract;
 use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Contracts\Ban\BanService as BanServiceContract;
-use Cog\Laravel\Ban\Models\Ban;
 use Illuminate\Support\Carbon;
 
 class BanService implements BanServiceContract
@@ -53,7 +52,7 @@ class BanService implements BanServiceContract
      */
     public function deleteExpiredBans(): void
     {
-        $bans = Ban::query()
+        $bans = app(BanContract::class)->newQuery()
             ->where('expired_at', '<=', Carbon::now()->format('Y-m-d H:i:s'))
             ->get();
 
