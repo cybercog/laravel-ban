@@ -89,4 +89,43 @@ final class BannedAtScopeTest extends AbstractTestCase
 
         $this->assertCount(2, $entities);
     }
+
+    public function test_it_can_get_models_without_banned_when_joining_bannable_tables(): void
+    {
+        $active = User::factory()->create(['banned_at' => null]);
+        User::factory()->create(['banned_at' => Carbon::now()]);
+
+        $entities = User::withoutBanned()
+            ->join('users as related', 'users.id', '=', 'related.id')
+            ->select('users.*')
+            ->get();
+
+        $this->assertSame([$active->getKey()], $entities->modelKeys());
+    }
+
+    public function test_it_can_get_only_banned_models_when_joining_bannable_tables(): void
+    {
+        User::factory()->create(['banned_at' => null]);
+        $banned = User::factory()->create(['banned_at' => Carbon::now()]);
+
+        $entities = User::onlyBanned()
+            ->join('users as related', 'users.id', '=', 'related.id')
+            ->select('users.*')
+            ->get();
+
+        $this->assertSame([$banned->getKey()], $entities->modelKeys());
+    }
+
+    public function test_it_can_auto_apply_scope_when_joining_bannable_tables(): void
+    {
+        $active = User::factory()->create(['banned_at' => null]);
+        User::factory()->create(['banned_at' => Carbon::now()]);
+
+        $entities = UserWithBannedAtScopeApplied::query()
+            ->join('users as related', 'users.id', '=', 'related.id')
+            ->select('users.*')
+            ->get();
+
+        $this->assertSame([$active->getKey()], $entities->modelKeys());
+    }
 }

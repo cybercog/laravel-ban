@@ -40,7 +40,7 @@ class BannedAtScope implements Scope
     public function apply(Builder $builder, Model $model)
     {
         if (method_exists($model, 'shouldApplyBannedAtScope') && $model->shouldApplyBannedAtScope()) {
-            return $builder->whereNull('banned_at');
+            return $builder->whereNull($model->qualifyColumn('banned_at'));
         }
 
         return $builder;
@@ -81,7 +81,7 @@ class BannedAtScope implements Scope
     protected function addWithoutBanned(Builder $builder): void
     {
         $builder->macro('withoutBanned', function (Builder $builder) {
-            return $builder->withoutGlobalScope($this)->whereNull('banned_at');
+            return $builder->withoutGlobalScope($this)->whereNull($builder->getModel()->qualifyColumn('banned_at'));
         });
     }
 
@@ -94,7 +94,7 @@ class BannedAtScope implements Scope
     protected function addOnlyBanned(Builder $builder): void
     {
         $builder->macro('onlyBanned', function (Builder $builder) {
-            return $builder->withoutGlobalScope($this)->whereNotNull('banned_at');
+            return $builder->withoutGlobalScope($this)->whereNotNull($builder->getModel()->qualifyColumn('banned_at'));
         });
     }
 }
